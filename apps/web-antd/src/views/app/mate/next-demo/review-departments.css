@@ -1,0 +1,56 @@
+.department-report-list {
+  display: grid;
+  gap: 18px;
+}
+
+.department-group {
+  min-width: 0;
+}
+
+.department-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  color: #294f45;
+  cursor: pointer;
+  background: #e7f0ed;
+  border: 1px solid #cfdfda;
+  border-radius: 9px;
+}
+
+.department-heading:hover {
+  background: #dcebe6;
+}
+
+.department-heading > span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.department-heading strong {
+  font-size: 14px !important;
+}
+
+.department-heading em {
+  padding: 3px 7px;
+  font-size: 12px !important;
+  font-style: normal;
+  color: #4e6d65;
+  background: rgb(255 255 255 / 72%);
+  border-radius: 99px;
+}
+
+.department-heading svg {
+  width: 16px;
+  height: 16px;
+}
+
+.department-group .employee-report-grid {
+  margin: 0;
+}

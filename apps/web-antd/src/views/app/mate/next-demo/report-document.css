@@ -1,0 +1,400 @@
+.report-document {
+  min-width: 0;
+  color: #17352f;
+  background: #fff;
+}
+
+.report-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 28px 34px 22px;
+  border-bottom: 1px solid #e4ece9;
+}
+
+.report-kicker {
+  font-size: 10px;
+  font-weight: 800;
+  color: #0b806f;
+  letter-spacing: 0.14em;
+}
+
+.report-head h1 {
+  margin: 7px 0 5px;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+
+.report-head p {
+  margin: 0;
+  color: #6e837c;
+}
+
+.score-orb {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border: 6px solid #d8eee7;
+  border-top-color: #0b806f;
+  border-radius: 50%;
+}
+
+.score-orb strong {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.score-orb span {
+  font-size: 9px;
+  color: #6c817a;
+}
+
+.report-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 34px;
+  background: rgb(255 255 255 / 94%);
+  border-bottom: 1px solid #e6eeeb;
+  backdrop-filter: blur(10px);
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.toolbar-actions :deep(.ant-btn) {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.html-report,
+.markdown-view {
+  max-width: 940px;
+  padding: 26px 38px 48px;
+  margin: auto;
+}
+
+.hero-summary {
+  padding: 24px 26px;
+  margin-bottom: 14px;
+  background: #eff7f4;
+  border-left: 4px solid #0b806f;
+}
+
+.hero-summary > span {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0b806f;
+}
+
+.hero-summary h2 {
+  max-width: 720px;
+  margin: 9px 0 14px;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.report-section {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 8px;
+  padding: 28px 4px;
+  border-bottom: 1px solid #e8efec;
+}
+
+.section-number {
+  font-size: 12px;
+  font-weight: 800;
+  color: #8aa199;
+}
+
+.section-copy h2,
+.evidence-title h2 {
+  margin: 0 0 14px;
+  font-size: 19px;
+}
+
+.section-copy ul,
+.section-copy ol {
+  display: grid;
+  gap: 12px;
+  padding-left: 20px;
+  margin: 0;
+  line-height: 1.8;
+  color: #405b53;
+}
+
+.report-section.is-warning {
+  margin-top: 12px;
+  background: linear-gradient(90deg, #fff9ed, transparent);
+  border-left: 3px solid #e7a13b;
+}
+
+.evidence-section {
+  padding: 30px 4px;
+}
+
+.evidence-title,
+.evidence-title > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.evidence-title > div {
+  gap: 25px;
+}
+
+.evidence-title span {
+  font-size: 12px;
+  font-weight: 800;
+  color: #8aa199;
+}
+
+.evidence-title h2 {
+  margin: 0;
+}
+
+.evidence-title small {
+  color: #83968f;
+}
+
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.evidence-grid button {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  padding: 13px;
+  color: #1c453c;
+  text-align: left;
+  cursor: pointer;
+  background: #f7faf9;
+  border: 1px solid #dce8e4;
+  border-radius: 10px;
+  transition: 0.18s;
+}
+
+.evidence-grid button:hover {
+  border-color: #75b9a8;
+  transform: translateY(-1px);
+}
+
+.evidence-grid button > span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: #0b806f;
+  background: #dff0ea;
+  border-radius: 8px;
+}
+
+.evidence-grid button > div {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+
+.evidence-grid strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.evidence-grid small {
+  margin-top: 3px;
+  color: #859790;
+}
+
+.markdown-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.markdown-title span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-weight: 700;
+}
+
+.markdown-view pre {
+  padding: 24px;
+  overflow: auto;
+  font:
+    13px/1.8 ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    monospace;
+  white-space: pre-wrap;
+  background: #f4f7f6;
+  border: 1px solid #dce7e3;
+  border-radius: 10px;
+}
+
+.comment-list {
+  display: grid;
+  gap: 18px;
+  max-height: 390px;
+  overflow: auto;
+}
+
+.comment-list article {
+  display: flex;
+  gap: 10px;
+}
+
+.comment-avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: #fff;
+  background: #0b806f;
+  border-radius: 50%;
+}
+
+.comment-list article > div {
+  flex: 1;
+}
+
+.comment-list header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.comment-list time {
+  margin-left: auto;
+  font-size: 11px;
+  color: #91a19c;
+}
+
+.comment-list p {
+  margin: 7px 0;
+  line-height: 1.65;
+  color: #3b554e;
+}
+
+.reply {
+  padding: 9px 11px;
+  font-size: 12px;
+  background: #f1f6f4;
+  border-radius: 7px;
+}
+
+.comment-editor {
+  display: grid;
+  gap: 10px;
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid #e2eae7;
+}
+
+.comment-editor > .ant-btn {
+  justify-self: end;
+}
+
+.share-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.share-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background: #f5f8f7;
+  border-radius: 8px;
+}
+
+.share-row span {
+  flex: 1;
+}
+
+.share-panel small {
+  color: #778b84;
+}
+
+.evidence-preview {
+  display: grid;
+  gap: 14px;
+}
+
+.preview-stage {
+  display: grid;
+  gap: 12px;
+  place-items: center;
+  min-height: 230px;
+  font-size: 14px;
+  color: #5f766f;
+  background: linear-gradient(135deg, #eaf4f0, #f8faf9);
+  border: 1px solid #dbe8e3;
+  border-radius: 12px;
+}
+
+.preview-stage :deep(svg) {
+  font-size: 48px;
+  color: #0b806f;
+}
+
+.evidence-preview p {
+  line-height: 1.8;
+}
+
+.is-compact .report-head {
+  padding: 22px 26px;
+}
+
+.is-compact .html-report {
+  padding: 20px 28px 38px;
+}
+
+@media (max-width: 900px) {
+  .report-toolbar {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 10px 18px;
+  }
+
+  .html-report,
+  .markdown-view {
+    padding: 18px;
+  }
+
+  .evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .report-head {
+    padding: 22px 18px;
+  }
+
+  .score-orb {
+    width: 62px;
+    height: 62px;
+  }
+
+  .report-head h1 {
+    font-size: 22px;
+  }
+}

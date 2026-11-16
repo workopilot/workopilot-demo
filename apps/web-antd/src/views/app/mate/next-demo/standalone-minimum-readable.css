@@ -1,0 +1,181 @@
+/* Readability floor for the standalone HTML report system chrome. */
+.report-topbar b,
+.report-topbar small,
+.report-topbar button,
+.report-topbar .employee-switch-trigger b,
+.report-topbar .employee-switch-trigger small,
+.employee-review-menu b,
+.employee-review-menu small,
+.employee-review-menu em {
+  font-size: 12px !important;
+}
+
+.report-topbar .topbar-brand > span {
+  gap: 2px;
+}
+
+.employee-switch-trigger {
+  min-width: 210px;
+}
+
+.employee-review-menu {
+  width: 310px;
+}
+
+.employee-review-menu em.pending {
+  color: #8a5126 !important;
+  background: #f6e8dc !important;
+}
+
+.social-sidebar,
+.social-sidebar b,
+.social-sidebar strong,
+.social-sidebar span,
+.social-sidebar small,
+.social-sidebar p,
+.social-sidebar button,
+.social-sidebar textarea,
+.social-sidebar em {
+  font-size: max(12px, 1em);
+}
+
+.social-sidebar .manager-rating strong {
+  font-size: 38px !important;
+}
+
+.social-sidebar .ai-audit-suggestions > header b {
+  font-size: 16px !important;
+}
+
+.social-sidebar .ai-audit-suggestions h3 {
+  font-size: 15px !important;
+}
+
+.social-sidebar .related-entities > header b,
+.social-sidebar .source-list header b {
+  font-size: 15px !important;
+}
+
+.social-sidebar .comment-feed header b {
+  font-size: 14px !important;
+}
+
+.personal-ai-suggestions {
+  flex: 0 0 auto !important;
+  order: 10;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 10px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #c7ddd6 !important;
+  border-radius: 10px;
+  box-shadow: 0 5px 16px rgb(18 70 57 / 6%);
+}
+
+.personal-ai-suggestions > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 17px;
+  color: #164b40;
+  background: linear-gradient(135deg, #dbefe9, #f1f8f5);
+}
+
+.personal-ai-suggestions > header > span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.personal-ai-suggestions > header b {
+  font-size: 16px !important;
+}
+
+.personal-ai-suggestions > header em {
+  padding: 4px 8px;
+  font-size: 12px !important;
+  font-style: normal;
+  color: #fff;
+  background: #087565;
+  border-radius: 99px;
+}
+
+.personal-completeness {
+  padding: 16px 17px;
+  border-bottom: 1px solid #e0ebe7;
+}
+
+.personal-completeness > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.personal-completeness strong {
+  font-size: 28px !important;
+  color: #087565;
+}
+
+.personal-completeness > i {
+  display: block;
+  height: 7px;
+  margin: 10px 0;
+  overflow: hidden;
+  background: #e2ece8;
+  border-radius: 99px;
+}
+
+.personal-completeness > i span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #087565, #55b99f);
+  border-radius: inherit;
+}
+
+.personal-completeness p {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin: 0;
+  color: #39675c;
+}
+
+.personal-ai-suggestions article {
+  padding: 14px 17px;
+  border-bottom: 1px solid #e5edea;
+}
+
+.personal-ai-suggestions article > span {
+  display: inline-block;
+  padding: 3px 7px;
+  color: #905a2e;
+  background: #f7e9dd;
+  border-radius: 5px;
+}
+
+.personal-ai-suggestions h3 {
+  margin: 8px 0 5px;
+  font-size: 15px !important;
+}
+
+.personal-ai-suggestions article p,
+.personal-ai-action p {
+  margin: 0;
+  line-height: 1.65;
+  color: #536f67;
+}
+
+.personal-ai-action {
+  padding: 14px 17px;
+  background: #f4f8f6;
+}
+
+.personal-ai-action b {
+  color: #315c51;
+}
+
+.personal-ai-action p {
+  margin-top: 6px;
+}

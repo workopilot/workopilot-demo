@@ -1,0 +1,140 @@
+.report-topbar {
+  display: flex !important;
+  grid-template-columns: none !important;
+  justify-content: space-between;
+  padding-inline: 22px !important;
+}
+
+.report-layout {
+  box-sizing: border-box;
+  grid-template-columns: minmax(0, 1fr) 360px !important;
+  gap: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.report-canvas {
+  min-width: 0;
+  margin: 20px;
+  overflow: hidden;
+  background: #f4f1ea;
+  border-radius: 14px;
+  box-shadow: 0 12px 38px rgb(17 44 38 / 12%);
+}
+
+.document-nav {
+  position: sticky;
+  top: 66px;
+  z-index: 15;
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 18px;
+  background: rgb(248 245 238 / 96%);
+  border-bottom: 1px solid #d7e0dc;
+  backdrop-filter: blur(12px);
+}
+
+.document-nav > span {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding-right: 12px;
+  margin-right: 7px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #315a50;
+  white-space: nowrap;
+  border-right: 1px solid #ccd8d4;
+}
+
+.document-nav button {
+  padding: 7px 9px;
+  font-size: 9px;
+  color: #536c65;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+}
+
+.document-nav button:hover {
+  color: #08715f;
+  background: #e3efea;
+}
+
+.report-anchor {
+  scroll-margin-top: 128px !important;
+}
+
+.social-sidebar {
+  position: sticky !important;
+  top: 66px !important;
+  box-sizing: border-box;
+  justify-self: end;
+  width: 360px !important;
+  min-width: 360px !important;
+  height: calc(100vh - 66px) !important;
+  border: 0 !important;
+  border-left: 1px solid #cedbd7 !important;
+  border-radius: 0 !important;
+  box-shadow: -8px 0 24px rgb(17 44 38 / 7%);
+}
+
+@media (max-width: 1120px) {
+  .report-layout {
+    grid-template-columns: minmax(0, 1fr) 360px !important;
+  }
+
+  .social-sidebar {
+    position: sticky !important;
+    top: 66px !important;
+    width: 360px !important;
+    min-width: 360px !important;
+    height: calc(100vh - 66px) !important;
+  }
+
+  .hero-section {
+    padding: 50px 38px;
+  }
+
+  .content-section,
+  .dark-section,
+  .next-section,
+  .feature-band {
+    padding: 45px 38px;
+  }
+}
+
+@media (max-width: 720px) {
+  .report-layout {
+    grid-template-columns: minmax(0, 1fr) 360px !important;
+  }
+
+  .report-canvas {
+    margin: 10px;
+  }
+
+  .social-sidebar {
+    width: 360px !important;
+    min-width: 360px !important;
+  }
+
+  .document-nav {
+    top: 66px;
+    overflow-x: auto;
+  }
+
+  .document-nav > span {
+    display: none;
+  }
+
+  .document-nav button {
+    white-space: nowrap;
+  }
+}

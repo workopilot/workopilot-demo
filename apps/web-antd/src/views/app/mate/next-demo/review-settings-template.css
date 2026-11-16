@@ -1,0 +1,169 @@
+.review-settings-page .settings-tabs {
+  min-height: 0;
+}
+
+.review-settings-page .settings-tabs > .ant-tabs-nav {
+  padding: 0 26px;
+  margin: 0;
+  background: #fff;
+  border-bottom: 1px solid #d9e5e1;
+}
+
+.review-settings-page .settings-tabs > .ant-tabs-nav::before {
+  display: none;
+}
+
+.review-settings-page .settings-tabs .ant-tabs-tab {
+  min-height: 50px;
+  padding: 13px 2px;
+  margin: 0 28px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #61776f;
+}
+
+.review-settings-page .settings-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #087565;
+}
+
+.review-settings-page .settings-tabs .ant-tabs-ink-bar {
+  height: 3px;
+  background: #087565;
+}
+
+.review-settings-page .settings-tabs .ant-tabs-content-holder,
+.review-settings-page .settings-tabs .ant-tabs-content,
+.review-settings-page .settings-tabs .ant-tabs-tabpane {
+  min-height: 0;
+}
+
+.review-settings-page .settings-tabs .settings-layout {
+  min-height: calc(100vh - 250px);
+}
+
+.template-security-note {
+  display: flex;
+  gap: 9px;
+  padding: 12px;
+  margin-top: 18px;
+  color: #45655c;
+  background: #edf6f3;
+  border: 1px solid #cfe0da;
+  border-radius: 9px;
+}
+
+.template-security-note > svg {
+  flex: none;
+  margin-top: 2px;
+  color: #087565;
+}
+
+.template-security-note b {
+  font-size: 12px;
+}
+
+.template-security-note p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.template-field-grid {
+  grid-template-columns: 0.8fr 0.7fr 1.5fr;
+}
+
+.template-field-grid .department-field {
+  grid-column: auto;
+}
+
+.report-template-card > label {
+  margin-top: 17px;
+}
+
+.template-feature-switches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.template-feature-switches > label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 12px;
+  background: #f6f9f8;
+  border: 1px solid #dbe6e2;
+  border-radius: 9px;
+}
+
+.template-feature-switches > label > span {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  align-items: center;
+}
+
+.template-feature-switches svg {
+  grid-row: 1 / 3;
+  color: #087565;
+}
+
+.template-feature-switches b {
+  font-size: 13px;
+  color: #294f45;
+}
+
+.template-feature-switches small {
+  font-size: 12px;
+  color: #748880;
+}
+
+.admin-template-prompt {
+  padding: 15px;
+  background: #f7faf9;
+  border: 1px solid #dce7e3;
+  border-radius: 9px;
+}
+
+.template-footer-note {
+  display: flex !important;
+  gap: 7px !important;
+  align-items: center;
+  font-size: 12px;
+  color: #60766f;
+}
+
+.template-footer-note svg {
+  flex: none;
+  color: #087565;
+}
+
+@media (max-width: 1100px) {
+  .template-field-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .template-field-grid .department-field {
+    grid-column: 1 / -1;
+  }
+
+  .template-feature-switches {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .review-settings-page .settings-tabs > .ant-tabs-nav {
+    padding: 0 14px;
+  }
+
+  .template-field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .template-field-grid .department-field {
+    grid-column: auto;
+  }
+}

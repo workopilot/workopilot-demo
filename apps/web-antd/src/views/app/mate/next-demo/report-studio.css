@@ -1,0 +1,263 @@
+.markdown-studio {
+  display: grid;
+  gap: 14px;
+  max-width: 980px;
+  padding: 22px 28px 48px;
+  margin: auto;
+  background: #f7faf9;
+}
+
+.studio-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  background: #edf4f1;
+  border: 1px solid #d9e6e1;
+  border-radius: 9px;
+}
+
+.studio-steps span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 11px;
+  color: #667c75;
+}
+
+.studio-steps span.is-active {
+  font-weight: 700;
+  color: #0b6e65;
+}
+
+.studio-steps b {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  font-size: 10px;
+  background: #fff;
+  border: 1px solid #c8d9d3;
+  border-radius: 50%;
+}
+
+.studio-steps .is-active b {
+  color: #fff;
+  background: #0b806f;
+  border-color: #0b806f;
+}
+
+.studio-steps > i {
+  width: 60px;
+  height: 1px;
+  margin: 0 12px;
+  background: #cddcd7;
+}
+
+.markdown-editor-card,
+.generator-card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #d9e5e1;
+  border-radius: 11px;
+}
+
+.markdown-editor-card > header,
+.generator-card > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  border-bottom: 1px solid #e3ece8;
+}
+
+.markdown-editor-card header > div,
+.generator-card header > div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.markdown-editor-card header span,
+.generator-card header span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.markdown-editor-card header small,
+.generator-card header small {
+  font-size: 10px;
+  color: #80928c;
+}
+
+.markdown-editor {
+  font:
+    13px/1.75 ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    monospace !important;
+  resize: vertical;
+  background: #fbfdfc !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.generator-card {
+  padding-bottom: 16px;
+}
+
+.prompt-template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  padding: 15px 16px 13px;
+}
+
+.prompt-template-grid button {
+  position: relative;
+  display: grid;
+  grid-template-columns: 5px 1fr;
+  gap: 4px 9px;
+  min-height: 78px;
+  padding: 11px;
+  color: #36554c;
+  text-align: left;
+  cursor: pointer;
+  background: #f8fbfa;
+  border: 1px solid #dbe6e2;
+  border-radius: 8px;
+  transition: 0.18s;
+}
+
+.prompt-template-grid button:hover {
+  border-color: #8ebdaf;
+  transform: translateY(-1px);
+}
+
+.prompt-template-grid button.is-active {
+  background: #e9f4f0;
+  border-color: #72af9e;
+}
+
+.prompt-template-grid button > i {
+  grid-row: 1 / 3;
+  width: 5px;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.prompt-template-grid strong {
+  font-size: 12px;
+}
+
+.prompt-template-grid small {
+  font-size: 10px;
+  line-height: 1.45;
+  color: #71867f;
+}
+
+.prompt-template-grid button > svg {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  color: #0b806f;
+}
+
+.generator-card > label {
+  display: block;
+  padding: 0 16px 7px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #345149;
+}
+
+.generator-card > textarea {
+  width: calc(100% - 32px);
+  margin: 0 16px;
+}
+
+.generator-card > footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px 0;
+}
+
+.generator-card footer > div {
+  display: grid;
+}
+
+.generator-card footer span {
+  font-size: 11px;
+  color: #506a62;
+}
+
+.generator-card footer small {
+  font-size: 9px;
+  color: #879892;
+}
+
+.generator-card footer .ant-btn {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.generation-banner {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 9px 12px;
+  margin-bottom: 16px;
+  background: #e9f5f0;
+  border: 1px solid #bcdccf;
+  border-radius: 8px;
+}
+
+.generation-banner > span {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0a6b5d;
+}
+
+.generation-banner > small {
+  flex: 1;
+  color: #72867f;
+}
+
+.generation-banner .ant-btn {
+  font-size: 10px;
+}
+
+@media (max-width: 900px) {
+  .markdown-studio {
+    padding: 16px;
+  }
+
+  .prompt-template-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-steps > i {
+    width: 18px;
+    margin: 0 6px;
+  }
+
+  .studio-steps span {
+    font-size: 9px;
+  }
+
+  .generator-card > footer,
+  .generation-banner {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}

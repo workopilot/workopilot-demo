@@ -1,0 +1,37 @@
+.mate-light-modal .ant-btn.brand-button {
+  color: #fff !important;
+  text-shadow: none !important;
+  background: #087565 !important;
+  border-color: #087565 !important;
+  box-shadow: 0 3px 8px rgb(8 117 101 / 25%) !important;
+}
+
+.mate-light-modal .ant-btn.brand-button span,
+.mate-light-modal .ant-btn.brand-button svg,
+.mate-light-modal .ant-btn.brand-button .anticon {
+  color: #fff !important;
+}
+
+.mate-light-modal .ant-btn.brand-button:hover,
+.mate-light-modal .ant-btn.brand-button:focus {
+  color: #fff !important;
+  background: #065f53 !important;
+  border-color: #065f53 !important;
+}
+
+.mate-light-modal .ant-btn.brand-button:hover span,
+.mate-light-modal .ant-btn.brand-button:hover svg,
+.mate-light-modal .ant-btn.brand-button:focus span,
+.mate-light-modal .ant-btn.brand-button:focus svg {
+  color: #fff !important;
+}
+
+.mate-light-modal .ant-btn.brand-button.ant-btn-loading {
+  color: #fff !important;
+  background: #087565 !important;
+  opacity: 1 !important;
+}
+
+.mate-light-modal .ant-btn.brand-button .ant-btn-loading-icon {
+  color: #fff !important;
+}

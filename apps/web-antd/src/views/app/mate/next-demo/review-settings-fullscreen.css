@@ -1,0 +1,38 @@
+.review-settings-page {
+  box-sizing: border-box !important;
+  flex: 1 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.review-settings-page .settings-layout {
+  width: 100%;
+  min-width: 0;
+}
+
+.review-settings-page .settings-editor {
+  box-sizing: border-box;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  min-width: 0;
+}
+
+.review-settings-page .config-card {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 1500px) {
+  .review-settings-page .settings-layout {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+
+  .review-settings-page .settings-editor {
+    padding: 26px 30px;
+  }
+
+  .review-settings-page .config-card {
+    padding: 24px 28px;
+  }
+}

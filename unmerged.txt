@@ -1,0 +1,2 @@
+apps/web-antd/src/views/agent/management/index.vue
+apps/web-antd/src/views/smart/service-mgmt/index.vue

@@ -1,0 +1,32 @@
+.archive-collapse-trigger {
+  display: inline-flex;
+  flex: none;
+  gap: 5px;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #315a50;
+  cursor: pointer;
+  background: #edf5f2;
+  border: 1px solid #c6dbd4;
+  border-radius: 8px;
+}
+
+.archive-collapse-trigger:hover {
+  color: #087565;
+  background: #e1f0eb;
+  border-color: #82b9aa;
+}
+
+.archive-collapse-trigger svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 920px) {
+  .archive-collapse-trigger {
+    display: none;
+  }
+}

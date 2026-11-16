@@ -1,0 +1,503 @@
+.zy-settings {
+  --zy-green: #127b65;
+  --zy-ink: #203c38;
+  --zy-muted: #6a7d78;
+  --zy-border: #e1e9e6;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  background: #f4f7f6;
+  color: var(--zy-ink);
+  font-size: 13px;
+  padding: 20px;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+.zy-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: white;
+  border: 1px solid var(--zy-border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  flex-wrap: wrap;
+}
+.zy-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.zy-brand > span {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: #e0f2eb;
+  color: var(--zy-green);
+  border-radius: 12px;
+  font-size: 24px;
+}
+.zy-brand h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+.zy-brand small {
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 8px;
+  color: var(--zy-muted);
+}
+.zy-brand p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--zy-muted);
+}
+.zy-top nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-left: auto;
+}
+.zy-top nav button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 8px;
+  font-size: 12px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  color: #5b6e68;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.zy-top nav button:hover {
+  background: #f2f7f4;
+}
+.zy-top nav button.active {
+  background: #e2f2eb;
+  color: #096b54;
+  font-weight: 650;
+}
+.zy-top nav svg {
+  font-size: 16px;
+}
+.zy-main {
+  max-width: 1250px;
+  margin: 30px auto;
+}
+.zy-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.zy-eyebrow {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--zy-green);
+  font-weight: 700;
+}
+.zy-heading h2 {
+  font-size: 26px;
+  font-weight: 650;
+  margin: 5px 0;
+}
+.zy-heading p,
+.zy-card-head p {
+  color: var(--zy-muted);
+  margin: 4px 0 0;
+}
+.zy-mode {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7f78;
+  font-size: 12px;
+  border: 1px solid var(--zy-border);
+  padding: 7px 10px;
+  border-radius: 7px;
+}
+.zy-card {
+  background: white;
+  border: 1px solid var(--zy-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.zy-card-head {
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.zy-settings h3 {
+  font-size: 15px;
+  font-weight: 650;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.zy-tag {
+  display: inline-block;
+  color: #16775e;
+  background: #e9f4ef;
+  padding: 3px 8px;
+  font-size: 11px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.zy-outline,
+.zy-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 8px 13px;
+  border: 1px solid var(--zy-border);
+  border-radius: 7px;
+  background: white;
+  color: var(--zy-ink);
+  cursor: pointer;
+}
+.zy-primary {
+  background: var(--zy-green);
+  border-color: var(--zy-green);
+  color: white;
+}
+.zy-settings button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.zy-settings button:focus-visible,
+.zy-settings input:focus-visible,
+.zy-settings select:focus-visible {
+  outline: 2px solid var(--zy-green);
+  outline-offset: 3px;
+}
+.zy-preview {
+  display: flex;
+  margin: 0 22px 24px;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.zy-preview > div {
+  flex: 1;
+  min-width: 110px;
+  min-height: 63px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  padding: 12px 18px;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 9px) 0,
+    100% 50%,
+    calc(100% - 9px) 100%,
+    0 100%,
+    9px 50%
+  );
+  font-weight: 650;
+}
+.zy-preview > div:first-child {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 9px) 0,
+    100% 50%,
+    calc(100% - 9px) 100%,
+    0 100%
+  );
+  border-radius: 7px 0 0 7px;
+}
+.zy-preview small {
+  font-size: 10px;
+  opacity: 0.8;
+}
+.zy-preview span {
+  margin-left: auto;
+  font-size: 11px;
+}
+.zy-preview .zy-closed {
+  background: #e8eeeb;
+  color: #556c63;
+  flex: 0.7;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+.zy-settings table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+.zy-settings th {
+  padding: 13px 14px;
+  background: #f5f8f6;
+  color: #718079;
+  font-weight: 500;
+  border-block: 1px solid var(--zy-border);
+}
+.zy-settings td {
+  padding: 15px 14px;
+  border-bottom: 1px solid #edf1ee;
+}
+.zy-settings tbody tr:last-child td {
+  border-bottom: 0;
+}
+.zy-settings tbody tr:nth-child(even) {
+  background: #fafcfb;
+}
+.zy-settings input:not([type="color"]),
+.zy-settings select,
+.zy-field-form input,
+.zy-field-form select {
+  border: 1px solid #dce5e0;
+  border-radius: 6px;
+  background: white;
+  color: #29463e;
+  padding: 8px 9px;
+  min-width: 0;
+  max-width: 100%;
+  font: inherit;
+}
+.zy-settings td > input {
+  width: 100%;
+}
+.zy-stage-name {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.zy-stage-name input:not([type="color"]) {
+  width: 120px;
+}
+.zy-stage-name input[type="color"] {
+  width: 20px;
+  height: 24px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.zy-number {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  background: #edf2ef;
+  border-radius: 6px;
+  color: #60766b;
+}
+.zy-unit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  color: #6a7d75;
+}
+.zy-unit input {
+  width: 65px;
+}
+.zy-row-actions {
+  white-space: nowrap;
+}
+.zy-row-actions button {
+  padding: 7px;
+  background: transparent;
+  border: 0;
+  color: #70847b;
+  cursor: pointer;
+}
+.zy-row-actions button:hover {
+  background: #eaf3ee;
+  border-radius: 5px;
+}
+.zy-outcomes {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 22px;
+  border-top: 1px solid var(--zy-border);
+  flex-wrap: wrap;
+}
+.zy-outcomes span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.zy-outcomes i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.zy-outcomes .won {
+  background: #139d68;
+}
+.zy-outcomes .lost {
+  background: #dc6677;
+}
+.zy-outcomes b {
+  font-size: 12px;
+}
+.zy-outcomes small,
+.zy-muted {
+  color: var(--zy-muted);
+}
+.zy-note {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #72837b;
+  font-size: 12px;
+  margin: 17px 2px;
+}
+.zy-note svg {
+  flex-shrink: 0;
+}
+.zy-save {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 26px;
+  padding: 16px 0;
+  border-top: 1px solid #dfe8e2;
+}
+.zy-save > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #74867c;
+  font-size: 12px;
+}
+.zy-save i {
+  width: 6px;
+  height: 6px;
+  background: #8aa698;
+  border-radius: 50%;
+}
+.zy-save i.dirty {
+  background: #ce9139;
+}
+.zy-save > div {
+  display: flex;
+  gap: 10px;
+}
+.zy-rule-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #e5f2ec;
+  border: 1px solid #cde4d7;
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+.zy-rule-banner > svg {
+  font-size: 24px;
+  color: var(--zy-green);
+}
+.zy-rule-banner p {
+  margin: 5px 0 0;
+  color: #617c6e;
+  font-size: 12px;
+}
+.zy-rule-banner > .zy-tag {
+  margin-left: auto;
+  background: white;
+}
+.zy-permissions td,
+.zy-permissions th {
+  padding: 19px 22px;
+}
+.zy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.zy-setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 22px;
+  padding: 20px 0;
+  border-top: 1px solid #edf1ee;
+}
+.zy-setting small {
+  display: block;
+  color: var(--zy-muted);
+  font-size: 11px;
+  margin-top: 5px;
+}
+.zy-field-form {
+  display: grid;
+  gap: 16px;
+  padding: 16px 0;
+}
+.zy-field-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.zy-table-wrap {
+  overflow-x: auto;
+}
+@media (max-width: 1100px) {
+  .zy-top {
+    padding: 16px;
+  }
+  .zy-top nav {
+    margin-left: 0;
+  }
+  .zy-settings {
+    padding: 14px;
+  }
+  .zy-main {
+    margin: 22px auto;
+  }
+  .zy-settings td,
+  .zy-settings th {
+    padding: 12px 8px;
+  }
+  .zy-stage-name input:not([type="color"]) {
+    width: 100px;
+  }
+}
+@media (max-width: 750px) {
+  .zy-grid {
+    grid-template-columns: 1fr;
+  }
+  .zy-top nav button {
+    padding: 10px;
+    font-size: 12px;
+  }
+  .zy-table-wrap table {
+    min-width: 700px;
+  }
+  .zy-save {
+    flex-wrap: wrap;
+  }
+  .zy-permissions {
+    font-size: 11px;
+  }
+  .zy-permissions td,
+  .zy-permissions th {
+    padding: 10px;
+  }
+  .zy-mode {
+    display: none;
+  }
+  .zy-rule-banner > .zy-tag {
+    display: none;
+  }
+}

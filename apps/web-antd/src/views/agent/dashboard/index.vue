@@ -1,0 +1,711 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+
+import { Icon } from '@iconify/vue';
+import { Steps, Tag } from 'ant-design-vue';
+import MarkdownIt from 'markdown-it';
+
+import { useAgentStore } from '#/store/agent';
+
+import 'github-markdown-css/github-markdown.css';
+
+// Initialize Markdown renderer
+const md = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: true,
+});
+
+const agentStore = useAgentStore();
+const currentAgent = computed(() => agentStore.currentAgent);
+
+// Agent info with defaults
+const agentInfo = computed(() => ({
+  name: currentAgent.value?.name || '智能体',
+  code: currentAgent.value?.code || 'agent',
+  description: currentAgent.value?.description || '智能业务助手',
+  logo: currentAgent.value?.logo || 'lucide:bot',
+  logoColor: currentAgent.value?.logoColor || '#3b82f6',
+  logoBgColor: currentAgent.value?.logoBgColor || '#eff6ff',
+  status: currentAgent.value?.status || 'active',
+  version: currentAgent.value?.version || 'v1.0.0',
+}));
+
+// Status display
+const statusInfo = computed(() => {
+  const status = agentInfo.value.status;
+  if (status === 'active') {
+    return { text: '运行中', color: 'success', dotClass: 'bg-emerald-500' };
+  } else if (status === 'development') {
+    return { text: '开发中', color: 'processing', dotClass: 'bg-blue-500' };
+  }
+  return { text: '已停用', color: 'default', dotClass: 'bg-gray-400' };
+});
+
+// Markdown content per agent
+const documentContent = computed(() => {
+  const code = currentAgent.value?.code;
+
+  switch (code) {
+    case 'data-collection': {
+      return {
+        overview:
+          '提供自动化智能采集工具，通过API接口、公网RPA及第三方系统RPA等方式采集异构数据，并统一归集为标准JSON格式，存入万能数据池，为后续AI处理提供统一数据源。',
+        features: [
+          {
+            icon: 'lucide:calendar-clock',
+            title: '采集任务',
+            desc: '配置RPA或API自动化采集任务与Cron频率',
+          },
+          {
+            icon: 'lucide:database',
+            title: '数据查询',
+            desc: '按类别查询清洗好的结构化业务数据',
+          },
+          {
+            icon: 'lucide:webhook',
+            title: '开放接口',
+            desc: '对外开放标准的Webhook与API推送能力',
+          },
+        ],
+        markdown: `
+## 🚀 核心优势
+
+- **多源归集** - 无缝对接内外部各类业务系统与公开网站
+- **万能结构** - 利用无Schema限制的JSON统一存储异构数据
+- **极简接入** - 自带完善的对外API，可快速接入已有系统
+- **灵活筛选** - 支持基于多种业务属性过滤数据池内容
+
+---
+
+## 📋 功能流程
+
+1. **配置任务** - 在“采集任务”界面新增或管理已有 RPA/API 任务，支持上传脚本和配置鉴权。
+2. **监控采集** - 依靠配置的 Cron 频率自动执行采集，查看执行状态。
+3. **数据查询** - 进入“数据查询”页面，根据左侧数据分类（如单据、客户、产品）实时查询抓取到的内容。
+
+---
+
+## 📚 子菜单说明
+
+| 菜单 | 功能描述 |
+|------|----------|
+| **采集任务** | 包含 RPA、AI 抓取任务的管理，支持 Cron 表达式和高级设置 |
+| **数据查询** | 左侧选择分类（如单据、客户、产品），右侧按不同字段展示数据 |
+            `,
+      };
+    }
+    case 'smart_audit': {
+      return {
+        overview:
+          '基于智能审核智能体，通过自然语言编写审核规则，工具链无缝对接内部数据与外部数据源，浏览器插件实现非侵入式对接，让审核智能化更简单。',
+        features: [
+          {
+            icon: 'lucide:library',
+            title: '制度列表',
+            desc: '导入企业审核制度，AI自动解析生成规则',
+          },
+          {
+            icon: 'lucide:brain-circuit',
+            title: '规则配置',
+            desc: '自然语言编写审核规则，无需编程基础',
+          },
+          {
+            icon: 'lucide:flask-conical',
+            title: '规则测试',
+            desc: '沙箱环境验证规则准确性和覆盖率',
+          },
+          {
+            icon: 'lucide:workflow',
+            title: '审核方案',
+            desc: '组合规则形成完整审核流程',
+          },
+          {
+            icon: 'lucide:shield-check',
+            title: '审核策略',
+            desc: '配置业务系统审核策略和回调接口',
+          },
+        ],
+        markdown: `
+## 🚀 核心优势
+
+- **自然语言规则** - 无需编程，用自然语言描述审核逻辑
+- **工具链对接** - 灵活连接内部ERP、财务系统及外部数据源
+- **非侵入式** - 浏览器插件方式，无需改造现有系统
+- **智能学习** - AI持续学习优化审核准确率
+- **自动回调** - 审核结果自动回调业务系统
+
+---
+
+## 📋 配置流程
+
+1. **制度列表** - 导入企业审核制度文档
+2. **规则配置** - AI解析制度并生成审核规则
+3. **规则测试** - 沙箱验证规则效果
+4. **审核方案** - 组合规则并上线运行
+5. **审核策略** - 配置业务系统审核策略
+
+---
+
+## 📚 子菜单说明
+
+| 菜单 | 功能描述 |
+|------|----------|
+| **制度列表** | 导入、管理企业审核制度文档 |
+| **规则配置** | 自然语言编写和管理审核规则 |
+| **规则测试** | 上传测试数据验证规则效果 |
+| **审核方案** | 组合规则形成完整审核流程 |
+| **审核策略** | 配置业务系统审核策略和回调接口 |
+
+---
+
+## 💡 审核策略说明
+
+审核策略用于配置业务系统的审核行为和结果处理方式，支持三种模式：
+
+- **辅助模式** - AI提供审核建议，需要人工确认后才能通过
+- **半自动模式** - 根据置信度自动决策，低于阈值需要人工审核
+- **全自动模式** - AI自动完成审核并直接调用业务系统接口
+
+通过配置审核策略，可以实现AI审核结果与业务系统的无缝对接。
+            `,
+      };
+    }
+    case 'smart_classify': {
+      return {
+        overview:
+          '基于分类智能体，运用自然语言处理技术对非标附件进行智能分类，自动提取关键数据字段，让财务文档管理更高效。',
+        features: [
+          {
+            icon: 'lucide:settings-2',
+            title: '分类配置',
+            desc: '自然语言定义分类规则和类别',
+          },
+          {
+            icon: 'lucide:move',
+            title: '分类调整',
+            desc: '手动调整和纠正AI分类结果',
+          },
+          {
+            icon: 'lucide:flask-conical',
+            title: '测试沙箱',
+            desc: '上传文件验证分类和提取效果',
+          },
+        ],
+        markdown: `
+## 🚀 核心优势
+
+- **非标处理** - 专门处理非标准化的附件文档
+- **自然语言** - 用自然语言描述分类规则
+- **数据提取** - 自动识别并提取关键信息字段
+- **持续优化** - AI学习用户调整，不断提升准确率
+
+---
+
+## 📋 配置流程
+
+1. **分类配置** - 自然语言定义附件类别和规则
+2. **测试沙箱** - 上传样本验证分类效果
+3. **分类调整** - 根据实际情况微调结果
+
+---
+
+## 📚 子菜单说明
+
+| 菜单 | 功能描述 |
+|------|----------|
+| **分类配置** | 自然语言定义分类规则 |
+| **分类调整** | 手动纠正分类结果 |
+| **测试沙箱** | 上传文件测试分类效果 |
+            `,
+      };
+    }
+    case 'smart_compliance': {
+      return {
+        overview:
+          '智能合规实时监测业务操作，自动识别合规风险并提供整改建议，确保业务流程符合规范要求。',
+        features: [
+          {
+            icon: 'lucide:shield-alert',
+            title: '风险监测',
+            desc: '实时扫描业务数据识别风险',
+          },
+          {
+            icon: 'lucide:file-check',
+            title: '合规报告',
+            desc: '生成详细的合规检查报告',
+          },
+        ],
+        markdown: `
+## 📋 配置流程
+
+1. **规则配置** - 定义合规检查规则
+2. **监测设置** - 配置监测范围和频率
+3. **报告生成** - 定期生成合规分析报告
+
+---
+
+## 🎯 使用技巧
+
+- 根据行业规范定制合规规则
+- 设置自动告警及时发现问题
+
+---
+
+## 📚 功能说明
+
+> ⚠️ 该智能体正在开发中，部分功能尚未实装。
+
+敬请期待更多功能！
+            `,
+      };
+    }
+    case 'smart_filling': {
+      return {
+        overview:
+          '提供AI填报智能体，基于企业制度和规则自动生成单据数据，内置AI智能RPA能力，直接填写到三方系统，无需任何系统对接。',
+        features: [
+          {
+            icon: 'lucide:wand-2',
+            title: '生成规则',
+            desc: '基于制度配置数据生成逻辑',
+          },
+          {
+            icon: 'lucide:scroll-text',
+            title: '填报脚本管理',
+            desc: 'AI-RPA脚本管理，自动填写三方系统',
+          },
+          {
+            icon: 'lucide:file-clock',
+            title: '执行日志',
+            desc: '实时监控填报任务执行状态',
+          },
+        ],
+        processFlow: [
+          {
+            step: 1,
+            title: '获取必要信息',
+            icon: 'lucide:message-square',
+            description: '多种途径便捷获取单据信息',
+            details: [
+              '通过多轮对话收集填报需求',
+              '上传各类附件，AI自动识别多模态文件内容',
+              '使用智能硬件通过扫描、打印等方法采集数据',
+            ],
+          },
+          {
+            step: 2,
+            title: '推断整理填报数据',
+            icon: 'lucide:brain-circuit',
+            description: '基于规则和AI推断生成结构化数据',
+            details: [
+              '智能解析企业制度规则',
+              '从对话和附件中提取关键信息与单据填报项匹配',
+              '自动生成标准填报数据格式',
+            ],
+          },
+          {
+            step: 3,
+            title: '智能填写单据',
+            icon: 'lucide:play-circle',
+            description: 'AI自动填写三方系统单据',
+            details: [
+              '支持浏览器插件、嵌入边栏等非侵入式填单',
+              '自动识别页面元素，模拟人工操作完成填单',
+              '可选后台静默填单或前台可视化填单',
+            ],
+          },
+        ],
+        markdown: `
+## 🚀 核心优势
+
+- **无需对接** - 浏览器RPA方式，无需与三方系统做API对接
+- **制度驱动** - 基于企业制度和规则自动生成合规数据
+- **智能填写** - AI-RPA自动识别页面元素并填写
+- **全程可控** - 详细执行日志，问题快速定位
+
+---
+
+## 📋 配置流程
+
+1. **模板中心** - 选择和应用标准业务模板
+2. **智能填报设置** - 配置AI模型和附件处理工具
+3. **填报规则与脚本** - 创建RPA填报脚本
+4. **测试沙箱** - 测试填报流程
+5. **执行日志** - 监控任务执行并排查问题
+
+---
+
+## 📚 子菜单说明
+
+| 菜单 | 功能描述 |
+|------|----------|
+| **模板中心** | 浏览并应用内置的标准业务模板 |
+| **智能填报设置** | 配置对话模型、填报模型和附件处理工具 |
+| **填报规则与脚本** | 管理AI-RPA自动化填报脚本 |
+| **测试沙箱** | 上传测试数据验证填报效果 |
+| **执行日志** | 查看任务执行记录与日志 |
+            `,
+      };
+    }
+    // No default
+  }
+
+  // Default
+  return {
+    overview: '欢迎使用智能体助手，请从左侧菜单选择功能开始使用。',
+    features: [],
+    markdown: '',
+  };
+});
+
+// Render markdown content
+const renderedMarkdown = computed(() => {
+  return md.render(documentContent.value.markdown || '');
+});
+
+// Process flow for smart_filling
+const processFlow = computed(() => {
+  return (documentContent.value as any).processFlow || [];
+});
+
+// Check if logo is an image URL
+const isImageLogo = computed(() => {
+  const logo = agentInfo.value.logo;
+  return (
+    logo.startsWith('data:') || logo.startsWith('http') || logo.startsWith('/')
+  );
+});
+
+// Get tags for each step
+const getStepTags = (index: number) => {
+  const tagsMap = [
+    [
+      { text: '多轮对话', color: 'blue' },
+      { text: '多模态附件', color: 'green' },
+      { text: '智能硬件', color: 'purple' },
+    ],
+    [
+      { text: '规则解析', color: 'cyan' },
+      { text: '信息提取', color: 'orange' },
+      { text: '数据生成', color: 'pink' },
+    ],
+    [
+      { text: '后台静默填单', color: 'geekblue' },
+      { text: '前台可视填单', color: 'lime' },
+    ],
+  ];
+  return tagsMap[index] || [];
+};
+</script>
+
+<template>
+  <div class="space-y-6">
+    <!-- Hero Card - Agent Info -->
+    <div
+      class="relative overflow-hidden rounded-3xl p-8 shadow-xl"
+      :style="{
+        background: `linear-gradient(135deg, ${agentInfo.logoBgColor} 0%, #ffffff 100%)`,
+      }"
+    >
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <div
+          class="absolute -right-20 -top-20 h-80 w-80 rounded-full"
+          :style="{ backgroundColor: agentInfo.logoColor }"
+        ></div>
+        <div
+          class="absolute -bottom-10 -left-10 h-40 w-40 rounded-full"
+          :style="{ backgroundColor: agentInfo.logoColor }"
+        ></div>
+      </div>
+
+      <div class="relative flex items-start gap-6">
+        <!-- Logo -->
+        <div
+          class="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl shadow-lg"
+          :style="{ backgroundColor: agentInfo.logoColor }"
+        >
+          <img
+            v-if="isImageLogo"
+            :src="agentInfo.logo"
+            class="h-full w-full object-cover"
+            alt="Logo"
+          />
+          <Icon v-else :icon="agentInfo.logo" class="size-10 text-white" />
+        </div>
+
+        <!-- Info -->
+        <div class="min-w-0 flex-1">
+          <div class="mb-2 flex items-center gap-3">
+            <h1 class="text-2xl font-bold text-slate-900">
+              {{ agentInfo.name }}
+            </h1>
+            <Tag :color="statusInfo.color" class="flex items-center gap-1.5">
+              <span class="relative flex h-2 w-2">
+                <span
+                  v-if="agentInfo.status === 'active'"
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
+                  :class="statusInfo.dotClass"
+                ></span>
+                <span
+                  class="relative inline-flex h-2 w-2 rounded-full"
+                  :class="statusInfo.dotClass"
+                ></span>
+              </span>
+              {{ statusInfo.text }}
+            </Tag>
+          </div>
+
+          <p class="mb-4 max-w-2xl text-base text-slate-600">
+            {{ documentContent.overview }}
+          </p>
+
+          <div class="flex items-center gap-6 text-sm text-slate-500">
+            <div class="flex items-center gap-1.5">
+              <Icon icon="lucide:hash" class="size-4" />
+              <code class="font-mono text-slate-700">{{ agentInfo.code }}</code>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <Icon icon="lucide:tag" class="size-4" />
+              <span class="font-medium text-slate-700">{{
+                agentInfo.version
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Cards - Bento Grid -->
+    <div
+      v-if="documentContent.features.length > 0"
+      class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4"
+    >
+      <div
+        v-for="(feature, index) in documentContent.features"
+        :key="index"
+        class="group cursor-pointer rounded-2xl border border-slate-100 bg-white p-5 transition-all duration-300 hover:border-slate-200 hover:shadow-lg"
+      >
+        <div
+          class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl transition-transform group-hover:scale-110"
+          :style="{
+            backgroundColor: agentInfo.logoBgColor,
+            color: agentInfo.logoColor,
+          }"
+        >
+          <Icon :icon="feature.icon" class="size-6" />
+        </div>
+        <h3 class="mb-1 font-bold text-slate-900">{{ feature.title }}</h3>
+        <p class="text-sm leading-relaxed text-slate-500">{{ feature.desc }}</p>
+      </div>
+    </div>
+
+    <!-- Process Flow - Smart Filling Only -->
+    <div
+      v-if="agentInfo.code === 'smart_filling' && processFlow.length > 0"
+      class="rounded-2xl border bg-gradient-to-br from-blue-50 to-emerald-50 p-8"
+    >
+      <div class="mb-6 text-center">
+        <h2 class="text-2xl font-bold text-slate-900">
+          <Icon icon="lucide:workflow" class="mr-2 inline-block size-6" />
+          智能填报流程
+        </h2>
+        <p class="mt-2 text-slate-600">三步完成智能填报，无需系统对接</p>
+      </div>
+
+      <!-- Steps Component -->
+      <Steps current="3" direction="horizontal" class="steps-with-tags mb-8">
+        <Steps.Step
+          v-for="(step, index) in processFlow"
+          :key="index"
+          :title="step.title"
+        >
+          <template #icon>
+            <Icon :icon="step.icon" class="text-2xl" />
+          </template>
+          <template #description>
+            <div class="text-center">
+              <div class="whitespace-nowrap text-sm text-slate-600">
+                {{ step.description }}
+              </div>
+              <!-- Tags for this step -->
+              <div
+                class="mt-2 flex"
+                :class="
+                  index === 2
+                    ? 'justify-end gap-1 pl-8 pr-2'
+                    : 'justify-center gap-1 px-2'
+                "
+              >
+                <Tag
+                  v-for="tag in getStepTags(index)"
+                  :key="tag.text"
+                  :color="tag.color"
+                  class="!cursor-pointer whitespace-nowrap text-xs hover:!border-current"
+                >
+                  {{ tag.text }}
+                </Tag>
+              </div>
+            </div>
+          </template>
+        </Steps.Step>
+      </Steps>
+
+      <!-- Detailed Steps Grid -->
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div
+          v-for="(step, index) in processFlow"
+          :key="index"
+          class="space-y-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+        >
+          <div class="mb-3 flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-lg"
+              :style="{
+                backgroundColor: agentInfo.logoBgColor,
+                color: agentInfo.logoColor,
+              }"
+            >
+              <Icon :icon="step.icon" class="size-5" />
+            </div>
+            <div class="flex-1">
+              <h3 class="font-semibold text-slate-900">{{ step.title }}</h3>
+            </div>
+            <div
+              class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 font-mono text-xs font-bold text-slate-500"
+            >
+              {{ step.step }}
+            </div>
+          </div>
+
+          <p class="mb-3 text-sm text-slate-600">{{ step.description }}</p>
+
+          <ul class="space-y-1.5">
+            <li
+              v-for="(detail, idx) in step.details"
+              :key="idx"
+              class="flex items-start gap-2 text-sm text-slate-600"
+            >
+              <Icon
+                icon="lucide:check-circle-2"
+                class="mt-0.5 size-4 flex-shrink-0 text-emerald-500"
+              />
+              <span>{{ detail }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documentation Card with Markdown Rendering -->
+    <div
+      v-if="documentContent.markdown"
+      class="rounded-2xl border border-slate-100 bg-white p-8 shadow-sm"
+    >
+      <div class="mb-6 flex items-center gap-3">
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100"
+        >
+          <Icon icon="lucide:book-open" class="size-5 text-slate-600" />
+        </div>
+        <h2 class="text-xl font-bold text-slate-900">使用指南</h2>
+      </div>
+
+      <!-- Markdown Rendered Content -->
+      <!-- eslint-disable vue/no-v-html -->
+      <article
+        class="markdown-body prose-custom"
+        v-html="renderedMarkdown"
+      ></article>
+      <!-- eslint-enable vue/no-v-html -->
+    </div>
+
+    <!-- Quick Actions -->
+    <div
+      class="flex items-center justify-between rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 p-6"
+    >
+      <div class="flex items-center gap-4">
+        <div
+          class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10"
+        >
+          <Icon icon="lucide:rocket" class="size-6 text-white" />
+        </div>
+        <div>
+          <h3 class="mb-0.5 font-bold text-white">开始使用</h3>
+          <p class="text-sm text-slate-400">从左侧菜单选择功能模块开始配置</p>
+        </div>
+      </div>
+      <button
+        class="rounded-xl bg-white px-6 py-2.5 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-100"
+      >
+        查看文档
+      </button>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+/* Custom markdown styles */
+.prose-custom {
+  @apply text-slate-700;
+}
+
+:deep(.prose-custom h2) {
+  @apply mb-4 mt-6 border-b border-slate-100 pb-2 text-lg font-bold text-slate-800;
+}
+
+:deep(.prose-custom h3) {
+  @apply mb-2 mt-4 text-base font-semibold text-slate-700;
+}
+
+:deep(.prose-custom p) {
+  @apply mb-4 leading-relaxed;
+}
+
+:deep(.prose-custom ul),
+:deep(.prose-custom ol) {
+  @apply mb-4 space-y-2 pl-6;
+}
+
+:deep(.prose-custom li) {
+  @apply text-slate-600;
+}
+
+:deep(.prose-custom strong) {
+  @apply font-semibold text-slate-800;
+}
+
+:deep(.prose-custom hr) {
+  @apply my-6 border-slate-100;
+}
+
+:deep(.prose-custom blockquote) {
+  @apply my-4 rounded-r-lg border-l-4 border-amber-400 bg-amber-50 py-2 pl-4 pr-4 text-amber-800;
+}
+
+:deep(.prose-custom table) {
+  @apply my-4 w-full border-collapse;
+}
+
+:deep(.prose-custom th) {
+  @apply border border-slate-200 bg-slate-50 px-4 py-2 text-left font-semibold text-slate-700;
+}
+
+:deep(.prose-custom td) {
+  @apply border border-slate-200 px-4 py-2 text-slate-600;
+}
+
+:deep(.prose-custom code) {
+  @apply rounded bg-slate-100 px-1.5 py-0.5 font-mono text-sm text-slate-700;
+}
+
+/* Custom styles for Steps with tags */
+:deep(.steps-with-tags .ant-steps-item-description) {
+  min-width: 200px !important;
+}
+
+:deep(.steps-with-tags .ant-steps-item) {
+  min-width: 220px !important;
+}
+</style>

@@ -1,0 +1,60 @@
+diff --cc apps/web-antd/src/views/agent/management/index.vue
+index 864be0ca,c4f30466..00000000
+--- a/apps/web-antd/src/views/agent/management/index.vue
++++ b/apps/web-antd/src/views/agent/management/index.vue
+@@@ -182,7 -182,8 +182,12 @@@ onMounted(() => 
+                  >
+                    <code
+                      class="font-mono text-[11px] font-bold text-slate-400 transition-colors group-hover/code:text-slate-600"
+++<<<<<<< HEAD
+ +                    >{{ agent.code }}</code>
+++=======
++                     >{{ agent.code }}</code
++                   >
+++>>>>>>> e1857d7dc31b7ef62e33064db6cd0288577ca238
+                    <Icon
+                      icon="lucide:copy"
+                      class="size-2.5 text-slate-300 opacity-0 transition-opacity group-hover/code:opacity-100"
+@@@ -228,7 -229,8 +233,12 @@@
+          >
+            <span
+              class="font-mono text-xs font-medium tracking-tight text-slate-400"
+++<<<<<<< HEAD
+ +            >{{ agent.version }}</span>
+++=======
++             >{{ agent.version }}</span
++           >
+++>>>>>>> e1857d7dc31b7ef62e33064db6cd0288577ca238
+  
+            <div
+              class="flex translate-y-2 items-center gap-2 opacity-0 duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+diff --cc apps/web-antd/src/views/smart/service-mgmt/index.vue
+index 7f3c9bfd,0c4d64b9..00000000
+--- a/apps/web-antd/src/views/smart/service-mgmt/index.vue
++++ b/apps/web-antd/src/views/smart/service-mgmt/index.vue
+@@@ -181,7 -181,8 +181,12 @@@ async function handleDelete(id: string
+            </div>
+            <span
+              class="text-sm font-bold text-gray-600 group-hover/create:text-blue-600"
+++<<<<<<< HEAD
+ +            >新建服务</span>
+++=======
++             >新建服务</span
++           >
+++>>>>>>> e1857d7dc31b7ef62e33064db6cd0288577ca238
+          </div>
+  
+          <!-- Import Zone -->
+@@@ -234,7 -235,8 +239,12 @@@
+                >
+                  <code
+                    class="rounded bg-gray-100 px-1 py-0.5 text-[10px] text-gray-400 transition-colors group-hover/code:bg-blue-50 group-hover/code:text-blue-500"
+++<<<<<<< HEAD
+ +                  >{{ item.serviceCode }}</code>
+++=======
++                   >{{ item.serviceCode }}</code
++                 >
+++>>>>>>> e1857d7dc31b7ef62e33064db6cd0288577ca238
+                  <Icon
+                    icon="lucide:copy"
+                    class="size-2.5 text-gray-300 opacity-0 transition-opacity group-hover/code:text-blue-500 group-hover/code:opacity-100"

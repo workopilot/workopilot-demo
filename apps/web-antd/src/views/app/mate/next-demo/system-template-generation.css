@@ -1,0 +1,127 @@
+.system-generator-dialog {
+  display: grid;
+  gap: 16px;
+}
+
+.system-generator-dialog .dialog-intro {
+  margin: 0;
+}
+
+.system-template-card {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 15px;
+  color: #234d42;
+  background: #f4f8f6;
+  border: 1px solid #cfe0da;
+  border-radius: 10px;
+}
+
+.system-template-card > span {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: #087565;
+  background: #dff0ea;
+  border-radius: 10px;
+}
+
+.system-template-card > span svg {
+  width: 21px;
+  height: 21px;
+}
+
+.system-template-card > div {
+  display: grid;
+  gap: 2px;
+}
+
+.system-template-card small {
+  font-size: 12px;
+  color: #73877f;
+}
+
+.system-template-card strong {
+  font-size: 16px;
+}
+
+.system-template-card p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #5d756d;
+}
+
+.system-template-card em {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  color: #087565;
+  background: #e0f2ec;
+  border-radius: 999px;
+}
+
+.generation-capabilities {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.generation-capabilities span {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 7px;
+  font-size: 12px;
+  color: #42655c;
+  background: #fff;
+  border: 1px solid #d8e4e0;
+  border-radius: 8px;
+}
+
+.generation-capabilities svg {
+  color: #087565;
+}
+
+.system-template-note {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 11px 12px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #5f746d;
+  background: #f7f4ed;
+  border: 1px solid #e6ddcc;
+  border-radius: 8px;
+}
+
+.system-template-note svg {
+  flex: none;
+  margin-top: 1px;
+  color: #8e6b3e;
+}
+
+@media (max-width: 640px) {
+  .generation-capabilities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .system-template-card {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+
+  .system-template-card > em {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

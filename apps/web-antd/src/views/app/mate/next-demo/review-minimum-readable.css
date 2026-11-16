@@ -1,0 +1,88 @@
+.review-center .week-sidebar span,
+.review-center .week-sidebar strong,
+.review-center .week-sidebar small,
+.review-center .week-sidebar em,
+.review-center .week-sidebar p,
+.review-center .week-sidebar button,
+.review-center .report-card-area span,
+.review-center .report-card-area strong,
+.review-center .report-card-area small,
+.review-center .report-card-area p,
+.review-center .report-card-area button,
+.review-center .report-card-area em {
+  font-size: 12px !important;
+}
+
+.review-center .week-sidebar h2 {
+  font-size: 22px !important;
+}
+
+.review-center .center-header h1 {
+  font-size: 25px !important;
+}
+
+.review-center .header-stat strong {
+  font-size: 20px !important;
+}
+
+.employee-report-grid > article {
+  min-height: 208px !important;
+}
+
+.employee-report-grid article > header strong {
+  font-size: 14px !important;
+}
+
+.review-center .report-card-area .employee-report-grid article > header small {
+  font-size: 12px !important;
+}
+
+.review-center .report-card-area .employee-report-grid article > h2 {
+  display: -webkit-box;
+  min-height: 38px;
+  margin: 10px 0 5px !important;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  -webkit-box-orient: vertical;
+}
+
+.review-center .report-card-area .employee-report-grid article > p {
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+}
+
+.employee-report-grid footer {
+  flex-wrap: nowrap;
+  gap: 4px !important;
+  padding-top: 7px !important;
+}
+
+.review-center .report-card-area .employee-report-grid article footer > button {
+  min-height: 34px;
+  padding: 6px 8px !important;
+  font-size: 12px !important;
+  white-space: nowrap;
+}
+
+.employee-report-grid .report-status,
+.employee-report-grid .card-score b,
+.employee-report-grid .reply-state,
+.employee-report-grid .card-entities span {
+  font-size: 12px !important;
+}
+
+.employee-report-grid .report-status {
+  padding: 4px 7px !important;
+}
+
+.employee-report-grid .card-entities span {
+  padding: 4px 7px;
+}
+
+@media (max-width: 1100px) {
+  .employee-report-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}

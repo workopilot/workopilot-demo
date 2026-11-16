@@ -1,0 +1,590 @@
+/**
+ * 计费管理 Mock 数据
+ */
+
+import type {
+  Product,
+  ServiceConfig,
+  TenantSubscription,
+  UsageMonitor,
+} from '#/types/billing';
+
+/**
+ * 模拟异步延迟
+ */
+export function mockDelay(ms: number = 300): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * 生成统一响应格式
+ */
+export function createMockResponse<T>(data: T) {
+  return {
+    code: 0,
+    data,
+    message: 'success',
+  };
+}
+
+// ==================== 服务配置 Mock 数据 ====================
+
+/**
+ * 服务列表 Mock 数据（左侧服务列表）
+ */
+export const mockServiceConfigs: ServiceConfig[] = [
+  {
+    id: 's1',
+    name: '智能附件分类',
+    description: '智能识别和分类各类附件文档',
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  {
+    id: 's2',
+    name: '智能附件比对',
+    description: '智能比对附件内容，发现差异和异常',
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  {
+    id: 's3',
+    name: '智能单据填报',
+    description: '智能识别单据并自动填报系统',
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  {
+    id: 's4',
+    name: '智能单据审核',
+    description: '智能审核单据，自动识别异常',
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  {
+    id: 's5',
+    name: '智能业务合规',
+    description: '智能检测业务合规性，预警风险',
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  {
+    id: 's6',
+    name: '智能合规审计',
+    description: '智能审计业务流程，确保合规',
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+];
+
+// ==================== 产品服务 Mock 数据 ====================
+
+/**
+ * 产品版本列表 Mock 数据（右侧产品版本列表）
+ */
+export const mockProducts: Product[] = [
+  // 智能附件分类 - 标准版
+  {
+    id: 'p1',
+    serviceName: '智能附件分类',
+    version: 'standard',
+    versionDescription: '支持20种常见票据类型识别',
+    price: 1000,
+    usageLimit: 10_000,
+    tokensLimit: 1_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能附件分类 - Plus版
+  {
+    id: 'p2',
+    serviceName: '智能附件分类',
+    version: 'plus',
+    versionDescription: '支持50+种票据类型识别和OCR提取',
+    price: 6000,
+    usageLimit: 100_000,
+    tokensLimit: 10_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能附件分类 - Pro版
+  {
+    id: 'p3',
+    serviceName: '智能附件分类',
+    version: 'pro',
+    versionDescription: '支持100+种票据类型，AI智能识别',
+    price: 25_000,
+    usageLimit: 500_000,
+    tokensLimit: 50_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能附件分类 - ProMax版
+  {
+    id: 'p4',
+    serviceName: '智能附件分类',
+    version: 'promax',
+    versionDescription: '无限量识别，专属定制服务',
+    price: 40_000,
+    usageLimit: 1_000_000,
+    tokensLimit: 100_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能附件比对 - 标准版
+  {
+    id: 'p5',
+    serviceName: '智能附件比对',
+    version: 'standard',
+    versionDescription: '基础比对功能，支持发票与订单核对',
+    price: 1000,
+    usageLimit: 10_000,
+    tokensLimit: 1_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能附件比对 - Plus版
+  {
+    id: 'p6',
+    serviceName: '智能附件比对',
+    version: 'plus',
+    versionDescription: '多维度比对，支持10种文档类型',
+    price: 6000,
+    usageLimit: 100_000,
+    tokensLimit: 10_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能附件比对 - Pro版
+  {
+    id: 'p7',
+    serviceName: '智能附件比对',
+    version: 'pro',
+    versionDescription: 'AI智能比对，异常自动标注',
+    price: 25_000,
+    usageLimit: 500_000,
+    tokensLimit: 50_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能附件比对 - ProMax版
+  {
+    id: 'p8',
+    serviceName: '智能附件比对',
+    version: 'promax',
+    versionDescription: '全量比对，企业级定制服务',
+    price: 40_000,
+    usageLimit: 1_000_000,
+    tokensLimit: 100_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能单据填报 - 标准版
+  {
+    id: 'p9',
+    serviceName: '智能单据填报',
+    version: 'standard',
+    versionDescription: '支持5种常见单据类型自动填报',
+    price: 1000,
+    usageLimit: 10_000,
+    tokensLimit: 1_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能单据填报 - Plus版
+  {
+    id: 'p10',
+    serviceName: '智能单据填报',
+    version: 'plus',
+    versionDescription: '支持20种单据类型，智能关联',
+    price: 6000,
+    usageLimit: 100_000,
+    tokensLimit: 10_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能单据填报 - Pro版
+  {
+    id: 'p11',
+    serviceName: '智能单据填报',
+    version: 'pro',
+    versionDescription: '支持50+种单据，AI智能识别',
+    price: 25_000,
+    usageLimit: 500_000,
+    tokensLimit: 50_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能单据填报 - ProMax版
+  {
+    id: 'p12',
+    serviceName: '智能单据填报',
+    version: 'promax',
+    versionDescription: '无限量填报，专属定制服务',
+    price: 40_000,
+    usageLimit: 1_000_000,
+    tokensLimit: 100_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能单据审核 - 标准版
+  {
+    id: 'p13',
+    serviceName: '智能单据审核',
+    version: 'standard',
+    versionDescription: '基础审核规则，支持常见异常检测',
+    price: 1000,
+    usageLimit: 10_000,
+    tokensLimit: 1_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能单据审核 - Plus版
+  {
+    id: 'p14',
+    serviceName: '智能单据审核',
+    version: 'plus',
+    versionDescription: '高级规则引擎，自定义审核流程',
+    price: 6000,
+    usageLimit: 100_000,
+    tokensLimit: 10_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能单据审核 - Pro版
+  {
+    id: 'p15',
+    serviceName: '智能单据审核',
+    version: 'pro',
+    versionDescription: 'AI智能审核，自动学习优化',
+    price: 25_000,
+    usageLimit: 500_000,
+    tokensLimit: 50_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能单据审核 - ProMax版
+  {
+    id: 'p16',
+    serviceName: '智能单据审核',
+    version: 'promax',
+    versionDescription: '企业级审核系统，全流程管控',
+    price: 40_000,
+    usageLimit: 1_000_000,
+    tokensLimit: 100_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能业务合规 - 标准版
+  {
+    id: 'p17',
+    serviceName: '智能业务合规',
+    version: 'standard',
+    versionDescription: '基础合规检查，支持100条规则',
+    price: 1000,
+    usageLimit: 10_000,
+    tokensLimit: 1_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能业务合规 - Plus版
+  {
+    id: 'p18',
+    serviceName: '智能业务合规',
+    version: 'plus',
+    versionDescription: '支持500条规则，实时预警',
+    price: 6000,
+    usageLimit: 100_000,
+    tokensLimit: 10_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能业务合规 - Pro版
+  {
+    id: 'p19',
+    serviceName: '智能业务合规',
+    version: 'pro',
+    versionDescription: '支持2000+条规则，AI智能分析',
+    price: 25_000,
+    usageLimit: 500_000,
+    tokensLimit: 50_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能业务合规 - ProMax版
+  {
+    id: 'p20',
+    serviceName: '智能业务合规',
+    version: 'promax',
+    versionDescription: '无限规则，专属合规专家服务',
+    price: 40_000,
+    usageLimit: 1_000_000,
+    tokensLimit: 100_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能合规审计 - 标准版
+  {
+    id: 'p21',
+    serviceName: '智能合规审计',
+    version: 'standard',
+    versionDescription: '基础审计功能，支持月度审计报告',
+    price: 1000,
+    usageLimit: 10_000,
+    tokensLimit: 1_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能合规审计 - Plus版
+  {
+    id: 'p22',
+    serviceName: '智能合规审计',
+    version: 'plus',
+    versionDescription: '支持周度审计，多维度分析',
+    price: 6000,
+    usageLimit: 100_000,
+    tokensLimit: 10_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能合规审计 - Pro版
+  {
+    id: 'p23',
+    serviceName: '智能合规审计',
+    version: 'pro',
+    versionDescription: '实时审计，AI预测风险',
+    price: 25_000,
+    usageLimit: 500_000,
+    tokensLimit: 50_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  // 智能合规审计 - ProMax版
+  {
+    id: 'p24',
+    serviceName: '智能合规审计',
+    version: 'promax',
+    versionDescription: '全量审计，专属审计专家服务',
+    price: 40_000,
+    usageLimit: 1_000_000,
+    tokensLimit: 100_000_000,
+    status: 'enabled',
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+];
+
+// ==================== 租户订阅 Mock 数据 ====================
+
+/**
+ * 租户订阅 Mock 数据
+ */
+export const mockSubscriptions: TenantSubscription[] = [
+  {
+    id: 's1',
+    tenantId: 't001',
+    tenantName: '华为技术有限公司',
+    productId: 'p2',
+    productName: '智能附件分类',
+    productVersion: 'plus',
+    subscribeDate: '2024-01-15T00:00:00Z',
+    expiryDate: '2025-01-15T00:00:00Z',
+    quantity: 12,
+    status: 'active',
+    price: 6000,
+    usageLimit: 100_000,
+    tokensLimit: 10_000_000,
+    usedAmount: 15_820,
+    createdAt: '2024-01-15T00:00:00Z',
+    updatedAt: '2024-12-20T00:00:00Z',
+  },
+  {
+    id: 's2',
+    tenantId: 't002',
+    tenantName: '腾讯科技有限公司',
+    productId: 'p4',
+    productName: '智能附件分类',
+    productVersion: 'promax',
+    subscribeDate: '2024-06-01T00:00:00Z',
+    expiryDate: '2025-06-01T00:00:00Z',
+    quantity: 12,
+    status: 'active',
+    price: 40_000,
+    usageLimit: 1_000_000,
+    tokensLimit: 100_000_000,
+    usedAmount: 23_500,
+    createdAt: '2024-06-01T00:00:00Z',
+    updatedAt: '2024-12-20T00:00:00Z',
+  },
+  {
+    id: 's3',
+    tenantId: 't003',
+    tenantName: '阿里巴巴网络技术有限公司',
+    productId: 'p1',
+    productName: '智能附件分类',
+    productVersion: 'standard',
+    subscribeDate: '2024-03-10T00:00:00Z',
+    expiryDate: '2024-12-31T23:59:59Z',
+    quantity: 10,
+    status: 'active',
+    price: 1000,
+    usageLimit: 10_000,
+    tokensLimit: 1_000_000,
+    usedAmount: 420,
+    createdAt: '2024-03-10T00:00:00Z',
+    updatedAt: '2024-12-20T00:00:00Z',
+  },
+  {
+    id: 's4',
+    tenantId: 't004',
+    tenantName: '百度在线网络技术公司',
+    productId: 'p6',
+    productName: '智能附件比对',
+    productVersion: 'plus',
+    subscribeDate: '2024-02-20T00:00:00Z',
+    expiryDate: '2025-02-20T00:00:00Z',
+    quantity: 12,
+    status: 'active',
+    price: 6000,
+    usageLimit: 100_000,
+    tokensLimit: 10_000_000,
+    usedAmount: 125_000,
+    createdAt: '2024-02-20T00:00:00Z',
+    updatedAt: '2024-12-20T00:00:00Z',
+  },
+  {
+    id: 's5',
+    tenantId: 't005',
+    tenantName: '京东科技控股有限公司',
+    productId: 'p10',
+    productName: '智能单据填报',
+    productVersion: 'plus',
+    subscribeDate: '2024-04-15T00:00:00Z',
+    expiryDate: '2025-04-15T00:00:00Z',
+    quantity: 12,
+    status: 'active',
+    price: 6000,
+    usageLimit: 100_000,
+    tokensLimit: 10_000_000,
+    usedAmount: 89_000,
+    createdAt: '2024-04-15T00:00:00Z',
+    updatedAt: '2024-12-20T00:00:00Z',
+  },
+];
+
+// ==================== 用量监控 Mock 数据 ====================
+
+/**
+ * 用量监控 Mock 数据
+ */
+export const mockUsageMonitors: UsageMonitor[] = [
+  {
+    id: 'u1',
+    tenantId: 't001',
+    tenantName: '华为技术有限公司',
+    productId: 'p2',
+    productName: '智能附件分类',
+    productVersion: 'plus',
+    subscriptionId: 's1',
+    usageLimit: 100_000,
+    usedAmount: 15_820,
+    remainingAmount: 84_180,
+    usagePercentage: 15.82,
+    status: 'normal',
+    expiryDate: '2025-01-15T00:00:00Z',
+    lastUpdated: '2024-12-23T08:00:00Z',
+  },
+  {
+    id: 'u2',
+    tenantId: 't002',
+    tenantName: '腾讯科技有限公司',
+    productId: 'p4',
+    productName: '智能附件分类',
+    productVersion: 'promax',
+    subscriptionId: 's2',
+    usageLimit: 1_000_000,
+    usedAmount: 23_500,
+    remainingAmount: 976_500,
+    usagePercentage: 2.35,
+    status: 'normal',
+    expiryDate: '2025-06-01T00:00:00Z',
+    lastUpdated: '2024-12-23T08:00:00Z',
+  },
+  {
+    id: 'u3',
+    tenantId: 't003',
+    tenantName: '阿里巴巴网络技术有限公司',
+    productId: 'p1',
+    productName: '智能附件分类',
+    productVersion: 'standard',
+    subscriptionId: 's3',
+    usageLimit: 10_000,
+    usedAmount: 4200,
+    remainingAmount: 5800,
+    usagePercentage: 42,
+    status: 'normal',
+    expiryDate: '2024-12-31T23:59:59Z',
+    lastUpdated: '2024-12-23T08:00:00Z',
+  },
+  {
+    id: 'u4',
+    tenantId: 't004',
+    tenantName: '百度在线网络技术公司',
+    productId: 'p6',
+    productName: '智能附件比对',
+    productVersion: 'plus',
+    subscriptionId: 's4',
+    usageLimit: 100_000,
+    usedAmount: 95_000,
+    remainingAmount: 5000,
+    usagePercentage: 95,
+    status: 'warning',
+    expiryDate: '2025-02-20T00:00:00Z',
+    lastUpdated: '2024-12-23T08:00:00Z',
+  },
+  {
+    id: 'u5',
+    tenantId: 't005',
+    tenantName: '京东科技控股有限公司',
+    productId: 'p10',
+    productName: '智能单据填报',
+    productVersion: 'plus',
+    subscriptionId: 's5',
+    usageLimit: 100_000,
+    usedAmount: 50_670,
+    remainingAmount: 49_330,
+    usagePercentage: 50.67,
+    status: 'normal',
+    expiryDate: '2025-04-15T00:00:00Z',
+    lastUpdated: '2024-12-23T08:00:00Z',
+  },
+];
