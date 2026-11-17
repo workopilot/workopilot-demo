@@ -103,7 +103,7 @@ const visibilityOptions = [
   { label: '交付项目组', value: '交付项目组' },
   { label: '客户服务组', value: '客户服务组' },
   { label: '产品团队', value: '产品团队' },
-  { label: '王安康', value: '王安康' },
+  { label: '韩立', value: '韩立' },
 ];
 const readonly = computed(() => props.report.status === 'submitted');
 const objectKind = computed<ReportObjectKind>(() =>

@@ -48,7 +48,7 @@ const samples: Record<string, EntitySample> = {
 };
 const mentionPeople = [
   '小刚',
-  '王安康',
+  '韩立',
   '杨总',
   '张三',
   '李明',

@@ -64,13 +64,13 @@ const opportunities = ref<Opportunity[]>([
     id: 'opp-suzhou', company: '苏州智造科技有限公司', product: '设备运维系统', type: '新签', stage: '报备与归属', amount: 80, probability: 15, owner: '待确认', ownership: 'private', source: '私人关系介绍', contact: '陈经理 · 信息部', lastFollowup: '今天 10:38', daysInStage: 0, poolDays: 15, health: 'attention', missingMaterials: ['商机来源证明', '销售范围主责确认'], nextAction: '补充张总身份，等待销售负责人确认主责', aiNext: '同集团存在进行中商机，且同时命中区域和行业负责人。建议先确认来源证明和主责，不要重复联系客户。',
   },
   {
-    id: 'opp-ningde', company: '宁德新能源装备有限公司', product: '视觉检测扩容', type: '增购', stage: '范围确认', amount: 68, probability: 35, owner: '王安康', ownership: 'private', source: '客户主动咨询', contact: '林工 · 设备部', lastFollowup: '昨天 16:20', daysInStage: 4, poolDays: 11, health: 'healthy', missingMaterials: ['原范围差异表'], nextAction: '周五前确认新增相机数量和现场节拍', aiNext: '客户已明确新增产线，但尚未确认相机数量。建议携带原合同范围差异表完成需求确认。',
+    id: 'opp-ningde', company: '宁德新能源装备有限公司', product: '视觉检测扩容', type: '增购', stage: '范围确认', amount: 68, probability: 35, owner: '韩立', ownership: 'private', source: '客户主动咨询', contact: '林工 · 设备部', lastFollowup: '昨天 16:20', daysInStage: 4, poolDays: 11, health: 'healthy', missingMaterials: ['原范围差异表'], nextAction: '周五前确认新增相机数量和现场节拍', aiNext: '客户已明确新增产线，但尚未确认相机数量。建议携带原合同范围差异表完成需求确认。',
   },
   {
     id: 'opp-huadong', company: '华东智能制造集团', product: '工厂数字化平台', type: '新签', stage: '需求确认', amount: 120, probability: 30, owner: '公海待领取', ownership: 'public', source: '超期自动回收', contact: '赵总 · 信息中心', lastFollowup: '5 天前', daysInStage: 12, poolDays: 0, health: 'attention', missingMaterials: ['预算与采购计划', '客户决策链'], nextAction: '领取后 2 个工作日内联系客户并形成有效跟进', aiNext: '该客户因超过保护期未形成有效跟进进入公海。领取前请先检查所属区域和当前工作量。',
   },
   {
-    id: 'opp-kunshan', company: '昆山精密部件有限公司', product: '运维服务续约', type: '续约', stage: '服务复盘', amount: 36, probability: 60, owner: '王安康', ownership: 'private', source: '原客户续约', contact: '周经理 · 生产部', lastFollowup: '今天 09:15', daysInStage: 6, poolDays: 14, health: 'healthy', missingMaterials: ['服务复盘材料'], nextAction: '准备年度服务成果和改进清单', aiNext: '客户表达了续约意愿，但对响应时效有异议。AI 已整理全年工单数据，建议在续约方案中加入服务改进承诺。',
+    id: 'opp-kunshan', company: '昆山精密部件有限公司', product: '运维服务续约', type: '续约', stage: '服务复盘', amount: 36, probability: 60, owner: '韩立', ownership: 'private', source: '原客户续约', contact: '周经理 · 生产部', lastFollowup: '今天 09:15', daysInStage: 6, poolDays: 14, health: 'healthy', missingMaterials: ['服务复盘材料'], nextAction: '准备年度服务成果和改进清单', aiNext: '客户表达了续约意愿，但对响应时效有异议。AI 已整理全年工单数据，建议在续约方案中加入服务改进承诺。',
   },
   {
     id: 'opp-wuxi', company: '无锡汽车电子有限公司', product: '质量检测系统', type: '新签', stage: '方案验证', amount: 95, probability: 55, owner: '陈立', ownership: 'private', source: '渠道推荐', contact: '孙工 · 质量部', lastFollowup: '3 天前', daysInStage: 18, poolDays: 6, health: 'blocked', missingMaterials: ['POC 验证记录', '售前投入审批'], nextAction: '确认客户测试数据，申请延长 POC 周期', aiNext: 'POC 因客户测试数据未提供而受阻，已超过阶段建议时限 3 天。建议生成延期申请并保留客户侧阻塞证据。',
@@ -79,19 +79,19 @@ const opportunities = ref<Opportunity[]>([
     id: 'opp-shanghai', company: '上海智联物流有限公司', product: '仓储调度平台', type: '新签', stage: '商务报价', amount: 150, probability: 75, owner: '李伟', ownership: 'private', source: '销售自拓', contact: '徐总 · 运营中心', lastFollowup: '昨天 14:40', daysInStage: 5, poolDays: 12, health: 'attention', missingMaterials: ['折扣审批'], nextAction: '提交 12% 折扣特批', aiNext: '客户要求的折扣超出销售经理权限 4 个百分点。系统已准备审批材料，未经批准不能发送正式报价。',
   },
   {
-    id: 'opp-changzhou', company: '常州动力科技有限公司', product: '设备数据平台', type: '增购', stage: '增购报价', amount: 42, probability: 80, owner: '王安康', ownership: 'private', source: '客户增购', contact: '高经理 · 数字化部', lastFollowup: '今天 11:05', daysInStage: 2, poolDays: 15, health: 'healthy', missingMaterials: [], nextAction: '发送已审批的增购报价', aiNext: '新增范围、价格权限和协作分配均已确认，可以发送正式报价并约定合同时间。',
+    id: 'opp-changzhou', company: '常州动力科技有限公司', product: '设备数据平台', type: '增购', stage: '增购报价', amount: 42, probability: 80, owner: '韩立', ownership: 'private', source: '客户增购', contact: '高经理 · 数字化部', lastFollowup: '今天 11:05', daysInStage: 2, poolDays: 15, health: 'healthy', missingMaterials: [], nextAction: '发送已审批的增购报价', aiNext: '新增范围、价格权限和协作分配均已确认，可以发送正式报价并约定合同时间。',
   },
   {
-    id: 'opp-hangzhou', company: '杭州智能装备股份有限公司', product: '智能审核平台', type: '新签', stage: '合同签订', amount: 210, probability: 90, owner: '王安康', ownership: 'private', source: '公司级商机', contact: '吴总 · 采购中心', lastFollowup: '今天 08:50', daysInStage: 7, poolDays: 15, health: 'attention', missingMaterials: ['非标付款条款审批', '销售转交清单'], nextAction: '完成非标账期审批并准备交付移交', aiNext: '合同已完成法务评审，但 90 天账期尚未获财务批准。建议今天完成特批，避免影响本周签署。',
+    id: 'opp-hangzhou', company: '杭州智能装备股份有限公司', product: '智能审核平台', type: '新签', stage: '合同签订', amount: 210, probability: 90, owner: '韩立', ownership: 'private', source: '公司级商机', contact: '吴总 · 采购中心', lastFollowup: '今天 08:50', daysInStage: 7, poolDays: 15, health: 'attention', missingMaterials: ['非标付款条款审批', '销售转交清单'], nextAction: '完成非标账期审批并准备交付移交', aiNext: '合同已完成法务评审，但 90 天账期尚未获财务批准。建议今天完成特批，避免影响本周签署。',
   },
 ]);
 
 const filteredOpportunities = computed(() => {
   const search = keyword.value.trim().toLowerCase();
   return opportunities.value.filter((item) => {
-    if (role.value === 'sales' && item.ownership === 'private' && item.owner !== '王安康' && item.owner !== '待确认') return false;
-    if (scope.value === 'mine' && (item.ownership !== 'private' || (item.owner !== '王安康' && item.owner !== '待确认'))) return false;
-    if (scope.value === 'team' && (item.ownership !== 'private' || !['王安康', '李伟', '待确认'].includes(item.owner))) return false;
+    if (role.value === 'sales' && item.ownership === 'private' && item.owner !== '韩立' && item.owner !== '待确认') return false;
+    if (scope.value === 'mine' && (item.ownership !== 'private' || (item.owner !== '韩立' && item.owner !== '待确认'))) return false;
+    if (scope.value === 'team' && (item.ownership !== 'private' || !['韩立', '李伟', '待确认'].includes(item.owner))) return false;
     if (scope.value === 'public' && item.ownership !== 'public') return false;
     if (typeFilter.value !== '全部类型' && item.type !== typeFilter.value) return false;
     if (stageFilter.value !== '全部阶段' && item.stage !== stageFilter.value) return false;
@@ -158,7 +158,7 @@ function askAi() {
 
     <section class="permission-bar">
       <div class="role-icon"><Icon :icon="role === 'director' ? 'lucide:shield-check' : 'lucide:user-round'" /></div>
-      <div><strong>{{ role === 'director' ? '销售总监视角' : '销售人员 · 王安康' }}</strong><span>{{ role === 'director' ? '可查看全公司私有商机与公海客户' : '可查看本人私有商机与公海客户' }}</span></div>
+      <div><strong>{{ role === 'director' ? '销售总监视角' : '销售人员 · 韩立' }}</strong><span>{{ role === 'director' ? '可查看全公司私有商机与公海客户' : '可查看本人私有商机与公海客户' }}</span></div>
       <div class="role-switch"><button :class="{ active: role === 'sales' }" @click="changeRole('sales')">销售人员</button><button :class="{ active: role === 'director' }" @click="changeRole('director')">销售总监</button></div>
     </section>
 

@@ -331,7 +331,7 @@ const templates = ref<ProjectTemplate[]>([
       {
         version: 'V2.3',
         date: '2026-08-30',
-        author: '王安康',
+        author: '韩立',
         status: '当前发布版',
         note: '补充客户验收失败和容缺推进规则。',
       },

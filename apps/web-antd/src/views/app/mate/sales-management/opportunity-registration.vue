@@ -115,7 +115,7 @@ const records = ref([
     company: '宁德新能源装备有限公司',
     type: '增购',
     source: '客户主动咨询',
-    owner: '王安康',
+    owner: '韩立',
     amount: '68 万元',
     status: '备案成功',
     updatedAt: '今天 09:32',

@@ -9,7 +9,7 @@ export const reportSchemes = reactive<ReportScheme[]>([
     type: '个人报告',
     icon: 'lucide:calendar-days',
     color: '#268475',
-    object: '王安康',
+    object: '韩立',
     enabled: true,
     cadence: '每周六 09:00',
     start: '2026-10-12',
@@ -62,14 +62,14 @@ export const reportSchemes = reactive<ReportScheme[]>([
         kind: '任务',
         title: '汇报引擎需求梳理',
         detail:
-          '负责人：王安康；状态：已完成。交付物：需求方案 V1.3，明确类型、分发和行动确认规则。',
+          '负责人：韩立；状态：已完成。交付物：需求方案 V1.3，明确类型、分发和行动确认规则。',
       },
       {
         id: 'T-108',
         kind: '任务',
         title: '新汇报助理交互 Demo',
         detail:
-          '负责人：王安康；状态：进行中。计划：10 月 19—25 日；已有任务覆盖“绘制汇报 Demo”，可直接关联。',
+          '负责人：韩立；状态：进行中。计划：10 月 19—25 日；已有任务覆盖“绘制汇报 Demo”，可直接关联。',
       },
       {
         id: 'DOC-21',
@@ -86,7 +86,7 @@ export const reportSchemes = reactive<ReportScheme[]>([
     type: '个人报告',
     icon: 'lucide:sun',
     color: '#b68135',
-    object: '王安康',
+    object: '韩立',
     enabled: true,
     cadence: '工作日 18:00',
     start: '2026-10-22',

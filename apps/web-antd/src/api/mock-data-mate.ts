@@ -796,7 +796,7 @@ export const mockMateFiles: MateFile[] = [
     name: '2026 年员工手册.pdf',
     category: '人事制度',
     size: '2.4 MB',
-    owner: '王安康',
+    owner: '韩立',
     updatedAt: '今天 09:18',
     status: 'ready',
   },

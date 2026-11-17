@@ -72,7 +72,7 @@ export interface ReportCatalogItem {
   reportType: ReportType;
   /** 报告名称，含对象与周期，如「华达智能打印项目周报」 */
   title: string;
-  /** 补充说明，如「产品研发部 · 王安康」 */
+  /** 补充说明，如「产品研发部 · 韩立」 */
   subtitle?: string;
   period: ReportPeriod;
   /** 生成节奏说明，如「每周五 18:00 截止」 */
@@ -85,7 +85,7 @@ export const reportCatalog = reactive<ReportCatalogItem[]>([
     id: 'my-daily',
     reportType: 'personal',
     title: '我的日报',
-    subtitle: '产品研发部 · 王安康',
+    subtitle: '产品研发部 · 韩立',
     period: 'daily',
     schedule: '每日 18:00 截止',
   },
@@ -93,7 +93,7 @@ export const reportCatalog = reactive<ReportCatalogItem[]>([
     id: 'my-weekly',
     reportType: 'personal',
     title: '我的周报',
-    subtitle: '产品研发部 · 王安康',
+    subtitle: '产品研发部 · 韩立',
     period: 'weekly',
     schedule: '每周五 18:00 截止',
   },
@@ -101,7 +101,7 @@ export const reportCatalog = reactive<ReportCatalogItem[]>([
     id: 'proj-huada-weekly',
     reportType: 'project',
     title: '华达智能打印项目周报',
-    subtitle: '项目经理 · 王安康',
+    subtitle: '项目经理 · 韩立',
     period: 'weekly',
     schedule: '每周五 18:00 截止',
   },
@@ -117,7 +117,7 @@ export const reportCatalog = reactive<ReportCatalogItem[]>([
     id: 'proj-ningde-monthly',
     reportType: 'project',
     title: '宁德 D4 项目月报',
-    subtitle: '项目经理 · 王安康',
+    subtitle: '项目经理 · 韩立',
     period: 'monthly',
     schedule: '每月最后一个工作日截止',
   },
@@ -174,8 +174,8 @@ export const mockProjects: ProjectEntity[] = [
   {
     id: 'proj-huada',
     name: '华达智能打印项目',
-    manager: '王安康',
-    members: ['王安康', '周小曼', '陈浩'],
+    manager: '韩立',
+    members: ['韩立', '周小曼', '陈浩'],
     stage: '接口联调阶段',
   },
   {
@@ -188,8 +188,8 @@ export const mockProjects: ProjectEntity[] = [
   {
     id: 'proj-ningde-d4',
     name: '宁德 D4 检测相机升级交付项目',
-    manager: '王安康',
-    members: ['王安康', '王天豪'],
+    manager: '韩立',
+    members: ['韩立', '王天豪'],
     stage: '实施研发阶段',
   },
 ];
@@ -341,7 +341,7 @@ export interface GeneratedReportVersion {
 
 const w34ReferenceMarkdown = `# 喔壳智能体平台研发周报
 
-> 汇报人：王安康 · 产品研发部 · 第 3 周（W34）
+> 汇报人：韩立 · 产品研发部 · 第 3 周（W34）
 
 ## 本周概览
 
@@ -1340,8 +1340,8 @@ export function toggleLike() {
 export function addComment(content: string, kind: CommentKind = 'comment') {
   comments.value.push({
     id: `c-${Date.now()}`,
-    author: '王安康',
-    avatar: '王',
+    author: '韩立',
+    avatar: '韩',
     content,
     createdAt: '刚刚',
     kind,
@@ -1437,7 +1437,7 @@ export function parseReportMarkdown(markdown: string) {
 
 /** 个人设置中可选的联系人（姓名取自本文件 mentions 与评论数据） */
 export const mateContactOptions = [
-  { label: '王安康（产品研发部）', value: 'wang-ankang' },
+  { label: '韩立（产品研发部）', value: 'wang-ankang' },
   { label: '张三（产品研发部）', value: 'zhang-san' },
   { label: '赵琳（销售部）', value: 'zhao-lin' },
   { label: '周小曼（交付部）', value: 'zhou-xiaoman' },
@@ -1514,7 +1514,7 @@ export const reportEntityDictionary = ref<ReportEntity[]>([
     const name = c.label.split('（')[0] ?? '';
     const dept = c.label.match(/（(.+?)）/)?.[1] || '';
     const aliasMap: Record<string, string[]> = {
-      王安康: ['安康', '王工', '老王'],
+      韩立: ['小韩', '韩工', '老韩'],
       张三: ['小张', '张工'],
       赵琳: ['琳姐', '小赵'],
       周小曼: ['小曼', '周工'],
@@ -1581,9 +1581,9 @@ export const reportEntityCorrections = ref<EntityCorrection[]>([
     reason: '语音识别错误，应为「报价平台」（产品）',
   },
   {
-    wrong: '王安刚',
-    correct: '王安康',
-    reason: '语音识别同音字，应为「王安康」（同事）',
+    wrong: '韩力',
+    correct: '韩立',
+    reason: '语音识别同音字，应为「韩立」（同事）',
   },
   {
     wrong: '李建果',
@@ -2068,7 +2068,7 @@ export const entityRecognitionLogs = ref<EntityRecognitionLog[]>([
     createdAt: '2026-07-31',
     entityId: 'person-wang-ankang',
     id: 'log-027',
-    mention: '安康',
+    mention: '小韩',
     reportId: '2026-m07-ningde',
   },
 ]);
@@ -2247,10 +2247,10 @@ export function ensureReportEntityLogs(
   }
 }
 
-/** 报告汇报人（mock：部门月报→李建国，宁德项目月报→王安康，其余视为当前用户王天豪） */
+/** 报告汇报人（mock：部门月报→李建国，宁德项目月报→韩立，其余视为当前用户王天豪） */
 export function reportAuthorOf(reportId: string): string {
   if (reportId.includes('dept')) return '李建国';
-  if (reportId.includes('ningde')) return '王安康';
+  if (reportId.includes('ningde')) return '韩立';
   return '王天豪';
 }
 
@@ -2349,8 +2349,8 @@ export const mockReportContacts = ref<ReportContact[]>([
 
 /** 通知方式配置 */
 export const mockNotifyChannels = ref({
-  email: { enabled: true, address: 'wang.ankang@woke.cn' },
-  wecom: { enabled: true, account: '王安康' },
+  email: { enabled: true, address: 'han.li@example.com' },
+  wecom: { enabled: true, account: '韩立' },
   inApp: { enabled: true },
 });
 
@@ -2420,7 +2420,7 @@ export const mockReminders = ref<ReminderItem[]>([
 export const mockPendingApprovals = ref<PendingApprovalItem[]>([
   {
     id: 'pa-wang',
-    author: '王安康',
+    author: '韩立',
     avatar: mateAsset('咨询人员.jpg'),
     dept: '产品研发部',
     title: '喔壳智能体平台研发周报',
@@ -2765,7 +2765,7 @@ export interface PersonEntry {
 export const mockMyApprovals = ref<PersonEntry[]>([
   {
     id: 'ma-1',
-    name: '王安康',
+    name: '韩立',
     org: '产品研发部',
     position: '研发工程师',
     reportType: 'personal',

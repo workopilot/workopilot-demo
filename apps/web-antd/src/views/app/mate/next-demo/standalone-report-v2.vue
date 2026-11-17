@@ -152,7 +152,7 @@ const likedNames = computed(() => [
   '李四',
   '王五',
   '周小曼',
-  ...(liked.value ? ['王安康'] : []),
+  ...(liked.value ? ['韩立'] : []),
 ]);
 
 // 视频弹窗 + seek 状态
@@ -322,7 +322,7 @@ function handleModalClose() {
             <div class="author-line">
               <span>
                 汇报人
-                <b>王安康</b>
+                <b>韩立</b>
               </span>
               <span>产品研发部</span>
               <span>{{ report.range }}</span>

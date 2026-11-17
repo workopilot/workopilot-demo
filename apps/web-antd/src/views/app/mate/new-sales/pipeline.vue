@@ -229,7 +229,7 @@ const draft = reactive({
   amount: 0,
   category: "新签首单",
   status: "需求确认",
-  owner: "王安康",
+  owner: "韩立",
   date: "2026-11-30",
   note: "",
 });
@@ -343,7 +343,7 @@ function openDeal(d?: SalesRecord, stage = "需求确认") {
     amount: 0,
     category: "新签首单",
     status: stage,
-    owner: "王安康",
+    owner: "韩立",
     date: "",
     note: "",
   });
@@ -416,7 +416,7 @@ function save() {
   const d = addSales("deals", {
     ...draft,
     name: draft.name.trim(),
-    owner: c?.owner || "王安康",
+    owner: c?.owner || "韩立",
     category: c?.status === "合作客户" ? "老客复购与增购" : "新签首单",
     stageEnteredAt: "2026-11-02",
     historyMigrated: true,

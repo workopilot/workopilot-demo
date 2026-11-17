@@ -98,7 +98,7 @@ const reviewResult = ref<null | {
 }>(null);
 const reviewing = ref(false);
 
-const userName = '王安康';
+const userName = '韩立';
 const canEdit = computed(() => !props.readonly && status.value === 'draft');
 const canSubmit = computed(() => !props.readonly && status.value === 'draft');
 const canWithdraw = computed(
@@ -1098,7 +1098,7 @@ function attachmentIcon(type: string) {
           <span>别名 / 昵称（逗号分隔）</span>
           <Input
             v-model:value="entityForm.aliasesText"
-            placeholder="如：安康，王工，老王"
+            placeholder="如：小韩，韩工，老韩"
             size="large"
           />
         </label>

@@ -289,7 +289,7 @@ export const mateNotificationChannels = reactive<MateNotificationChannel[]>([
     description: '通过企业微信接收消息提醒',
     icon: 'lucide:messages-square',
     bound: true,
-    accountLabel: '王安康 · 喔壳科技',
+    accountLabel: '韩立 · 喔壳科技',
     enabled: false,
   },
 ]);

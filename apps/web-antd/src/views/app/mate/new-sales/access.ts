@@ -4,7 +4,7 @@ import type { SalesRecord } from "#/types/new-sales";
 
 // Demo-only shared identity. Production APIs must enforce the same scope.
 export const salesRole = ref("sales");
-export const currentSales = "王安康";
+export const currentSales = "韩立";
 export function canManageCustomer(c?: SalesRecord) {
   return !!c && (salesRole.value === "director" || c.owner === currentSales);
 }

@@ -115,7 +115,7 @@ function saveTask() {
     name: `跟进 ${salesDb.customers.find((c) => c.id === resultCustomer.value)?.name}`,
     customerId: resultCustomer.value,
     status: "待完成",
-    owner: "王安康",
+    owner: "韩立",
     date: salesToday,
     note: latestResult.value,
     category: "电话",

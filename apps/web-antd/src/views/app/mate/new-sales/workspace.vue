@@ -140,13 +140,13 @@ const views = computed(() =>
 );
 const base = computed(() =>
   db.customers.filter(
-    (c) => role.value === "director" || c.owner === "王安康" || !c.owner,
+    (c) => role.value === "director" || c.owner === "韩立" || !c.owner,
   ),
 );
 const scoped = computed(() =>
   base.value.filter((c) =>
     scope.value === "我的客户"
-      ? c.owner === "王安康"
+      ? c.owner === "韩立"
       : scope.value === "公海客户"
         ? !c.owner
         : scope.value === "成交老客"
@@ -171,16 +171,16 @@ const customers = computed(() =>
 );
 const leadBase = computed(() =>
   db.leads.filter(
-    (l) => role.value === "director" || l.owner === "王安康" || !l.owner,
+    (l) => role.value === "director" || l.owner === "韩立" || !l.owner,
   ),
 );
 const leadViewMatch = (l: SalesRecord, view: string) =>
   ["已转客户", "我的已转客户"].includes(view)
-    ? l.status === "已转化" && (view !== "我的已转客户" || l.owner === "王安康")
+    ? l.status === "已转化" && (view !== "我的已转客户" || l.owner === "韩立")
     : l.status !== "已转化" &&
       (view === "待领取"
         ? !l.owner
-        : view !== "我的线索" || l.owner === "王安康");
+        : view !== "我的线索" || l.owner === "韩立");
 const leads = computed(() =>
   leadBase.value.filter(
     (l) =>
@@ -269,7 +269,7 @@ const canBatchSend = computed(
     checkedRows.value.length > 0 &&
     checkedRows.value.every((r) =>
       tab.value === "leads"
-        ? role.value === "director" || r.owner === "王安康"
+        ? role.value === "director" || r.owner === "韩立"
         : canManageCustomer(r),
     ),
 );
@@ -376,7 +376,7 @@ function switchHubTab(value: string) {
 }
 function claimLead(l: SalesRecord) {
   if (l.owner || l.status === "已转化") return;
-  l.owner = "王安康";
+  l.owner = "韩立";
   l.status = "待联系";
   message.success("已领取到我的线索");
 }
@@ -612,7 +612,7 @@ function saveDeal() {
   addSales("deals", {
     name: dealDraft.name.trim(),
     customerId: selected.value.id,
-    owner: selected.value.owner || "王安康",
+    owner: selected.value.owner || "韩立",
     status: "需求确认",
     amount: Number(dealDraft.amount),
     category: "复购",
@@ -621,7 +621,7 @@ function saveDeal() {
   addSales("activities", {
     name: "发起复购商机",
     customerId: selected.value.id,
-    owner: "王安康",
+    owner: "韩立",
     status: "已记录",
     date: today,
     note: dealDraft.name,
@@ -665,7 +665,7 @@ function saveNote() {
     dealId: noteDeal.value || undefined,
     note: content,
     contact: noteContact.value || undefined,
-    owner: "王安康",
+    owner: "韩立",
     status: "已记录",
     category: "人工跟进",
     date: today,
@@ -677,7 +677,7 @@ function saveNote() {
       name: `跟进：${content.slice(0, 32)}`,
       customerId: c.id,
       dealId: noteDeal.value || undefined,
-      owner: c.owner || "王安康",
+      owner: c.owner || "韩立",
       status: "待完成",
       date: today,
       note: content,
@@ -791,7 +791,7 @@ function confirmProfile() {
   addSales("activities", {
     name: "客户画像已核对",
     customerId: selected.value.id,
-    owner: "王安康",
+    owner: "韩立",
     date: today,
     status: "已记录",
     category: "人工跟进",
@@ -906,7 +906,7 @@ function saveSchedule() {
   addSales("tasks", {
     name: scheduleDraft.name.trim(),
     customerId: selected.value.id,
-    owner: selected.value.owner || "王安康",
+    owner: selected.value.owner || "韩立",
     status: "待完成",
     date: scheduleDraft.date,
     category: scheduleDraft.category,
@@ -936,7 +936,7 @@ const activeFilterCount = computed(
 );
 const customerOpen = ref(false);
 const assigning = ref<SalesRecord>();
-const assignmentOwner = ref("王安康");
+const assignmentOwner = ref("韩立");
 const customerDraft = reactive({
   name: "",
   need: "",
@@ -950,7 +950,7 @@ const customerDraft = reactive({
   contactRole: "",
   contactEmail: "",
   phone: "",
-  owner: "王安康",
+  owner: "韩立",
 });
 function customerPipeline(c: SalesRecord) {
   return db.deals.filter(
@@ -1015,7 +1015,7 @@ function startCustomer() {
     contactRole: "",
     contactEmail: "",
     phone: "",
-    owner: "王安康",
+    owner: "韩立",
   });
   customerOpen.value = true;
 }
@@ -1029,7 +1029,7 @@ function saveCustomer() {
     name: customerDraft.name.trim(),
     industry: customerDraft.industry,
     region: customerDraft.region,
-    owner: role.value === "sales" ? "王安康" : customerDraft.owner,
+    owner: role.value === "sales" ? "韩立" : customerDraft.owner,
     status: "潜在客户",
     contact: customerDraft.contact,
     phone: customerDraft.phone,
@@ -1074,14 +1074,14 @@ function saveCustomer() {
 }
 function claimCustomer(c: SalesRecord) {
   if (c.owner) return;
-  transferCustomer(c, "王安康");
+  transferCustomer(c, "韩立");
   message.success("已领取，客户及其商机统一归属本人");
 }
 function saveAssignment() {
   if (!assigning.value) return;
   transferCustomer(
     assigning.value,
-    role.value === "sales" ? "王安康" : assignmentOwner.value,
+    role.value === "sales" ? "韩立" : assignmentOwner.value,
   );
   assigning.value = undefined;
   message.success("销售已分配");
@@ -1105,12 +1105,12 @@ function viewCount(view: string) {
   const rows =
     tab.value === "leads"
       ? db.leads.filter(
-          (c) => role.value === "director" || c.owner === "王安康" || !c.owner,
+          (c) => role.value === "director" || c.owner === "韩立" || !c.owner,
         )
       : base.value;
   return rows.filter((c) =>
     view === "我的客户"
-      ? c.owner === "王安康"
+      ? c.owner === "韩立"
       : view === "公海客户"
         ? !c.owner
         : !!c.owner,
@@ -1329,7 +1329,7 @@ watch(
                 aria-label="切换演示角色"
               >
                 <option value="director">销售总监</option>
-                <option value="sales">销售 · 王安康</option>
+                <option value="sales">销售 · 韩立</option>
               </select></label
             ><button
               class="sx-ai-toggle"
@@ -1389,7 +1389,7 @@ watch(
           <div class="hx-header-actions">
             <select v-model="role" aria-label="切换演示角色">
               <option value="director">销售总监</option>
-              <option value="sales">销售 · 王安康</option></select
+              <option value="sales">销售 · 韩立</option></select
             ><button
               class="hx-ai-button"
               :aria-expanded="aiOpen"
@@ -1652,7 +1652,7 @@ watch(
               aria-label="归属销售"
             >
               <option value="">全部销售</option>
-              <option>王安康</option>
+              <option>韩立</option>
               <option v-if="role === 'director'">林悦</option></select
             ><template v-if="tab !== 'leads'"
               ><select v-model="region" aria-label="区域">
@@ -2059,7 +2059,7 @@ watch(
                       @change="assignOwner"
                     >
                       <option value="">待分配</option>
-                      <option>王安康</option>
+                      <option>韩立</option>
                       <option>林悦</option>
                     </select></label
                   >
@@ -2715,7 +2715,7 @@ watch(
             v-model="customerDraft.owner"
             :disabled="role === 'sales'"
           >
-            <option>王安康</option>
+            <option>韩立</option>
             <option v-if="role === 'director'">林悦</option>
             <option v-if="role === 'director'" value="">待分配</option>
           </select></label
@@ -2838,7 +2838,7 @@ watch(
       <div class="sx-modal-form">
         <label
           >负责销售<select v-model="assignmentOwner">
-            <option>王安康</option>
+            <option>韩立</option>
             <option>林悦</option>
           </select></label
         >

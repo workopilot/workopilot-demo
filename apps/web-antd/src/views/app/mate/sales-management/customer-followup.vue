@@ -43,7 +43,7 @@ const customers = ref<CustomerFollowup[]>([
     id: 'c-001',
     company: '华东能源装备集团',
     contact: '李雪 · 信息化总监',
-    owner: '王安康',
+    owner: '韩立',
     ownership: 'private',
     stage: '方案验证',
     health: 'healthy',
@@ -94,7 +94,7 @@ const customers = ref<CustomerFollowup[]>([
     id: 'c-004',
     company: '西部交通投资集团',
     contact: '高宁 · 数字化负责人',
-    owner: '王安康',
+    owner: '韩立',
     ownership: 'private',
     stage: '合同签订',
     health: 'healthy',
@@ -137,7 +137,7 @@ const activeTab = ref<'overview' | 'timeline' | 'rules'>('overview');
 const visibleCustomers = computed(() => {
   const q = keyword.value.trim().toLowerCase();
   return customers.value.filter((customer) => {
-    const matchScope = scope.value === 'team' || customer.owner === '王安康';
+    const matchScope = scope.value === 'team' || customer.owner === '韩立';
     const matchOwnership = ownership.value === 'all' || customer.ownership === ownership.value;
     const matchHealth = health.value === 'all' || customer.health === health.value;
     const matchKeyword = !q || `${customer.company}${customer.contact}${customer.owner}`.toLowerCase().includes(q);

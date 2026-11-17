@@ -87,7 +87,7 @@ describe('report scheme publishing', () => {
     const config = demoReports.find(
       (report) => report.schemeId === scheme.id,
     )?.schemeConfig;
-    expect(config?.scope).toBe('王安康、陈静');
+    expect(config?.scope).toBe('韩立、陈静');
     expect(config?.sources).toEqual(['tasks']);
     scheme.sourcePrompts.tasks = 'Changed locally';
     expect(config?.sourcePrompts.tasks).toBe(

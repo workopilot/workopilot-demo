@@ -109,8 +109,8 @@ function seed(
   };
 }
 const seededReports = reactive<ReviewReport[]>([
-  seed('weekly', '王安康', '产品团队', true),
-  seed('daily', '王安康', '产品团队', true),
+  seed('weekly', '韩立', '产品团队', true),
+  seed('daily', '韩立', '产品团队', true),
   seed('project', '小刚', '项目交付组', true, 'engine'),
   seed('project', '小刚', '项目交付组', false, 'edb'),
   seed('customer', 'Angus', '客户服务组', true, 'huachen'),
@@ -244,7 +244,7 @@ export const reviewReports = computed<ReviewReport[]>(() =>
             ? '项目经理'
             : report.schemeId === 'customer'
               ? '客户经理'
-              : '王安康',
+              : '韩立',
         department: '当前汇报工作台',
         type:
           report.schemeId === 'project'

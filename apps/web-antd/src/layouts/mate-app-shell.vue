@@ -36,7 +36,7 @@ const primaryItems = [
     key: 'apps',
     label: '应用',
     icon: 'lucide:layers-3',
-    path: '/app/mate/apps/zhiji/schemes',
+    path: '/app/mate/apps/zhiji/home',
   },
   {
     key: 'files',
@@ -105,7 +105,7 @@ const activeApplicationId = computed(
   () =>
     aiWorkApplications.find((item) =>
       route.path.startsWith(`/app/mate/apps/${item.id}`),
-    )?.id || 'ai-work',
+    )?.id || '',
 );
 
 function go(path: string) {
@@ -221,13 +221,13 @@ function showHelp() {
           title="返回管理后台"
           @click="backToAdmin"
         >
-          王
+          韩
         </button>
       </div>
     </aside>
 
     <aside
-      v-if="!isGuidePage"
+      v-if="route.path !== '/app/mate/home' && !isGuidePage"
       class="mate-secondary"
     >
       <div
@@ -1509,7 +1509,7 @@ function showHelp() {
 }
 
 .mate-content.is-app-workspace {
-  padding: 16px;
+  padding: 8px 16px 16px;
   overflow: hidden;
 }
 

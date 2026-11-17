@@ -92,7 +92,7 @@ const likedNames = computed(() => [
   '李四',
   '王五',
   '周小曼',
-  ...(liked.value ? ['王安康'] : []),
+  ...(liked.value ? ['韩立'] : []),
 ]);
 const reviewMode = computed(() => route.query.review === '1');
 const reviewedApproverCount = computed(
@@ -105,7 +105,7 @@ const employeeId = computed(() => String(route.query.employee || 'wang'));
 const employees = [
   {
     value: 'wang',
-    name: '王安康',
+    name: '韩立',
     dept: '产品研发部',
     avatar: '咨询人员.jpg',
     status: 'pending',

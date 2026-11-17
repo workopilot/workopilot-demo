@@ -16,7 +16,7 @@ export const reportChatSessions = reactive<MateChatSession[]>([
         role: 'assistant',
         time: '今天',
         content:
-          '你好，王安康。我是新汇报助理，可以帮你整理工作成果、查看报告草稿，以及梳理风险和下一步计划。你想先处理哪份报告？',
+          '你好，韩立。我是新汇报助理，可以帮你整理工作成果、查看报告草稿，以及梳理风险和下一步计划。你想先处理哪份报告？',
       },
     ],
   },

@@ -619,17 +619,14 @@ export const aiWorkScoreTrend = [
 ];
 
 export const aiWorkApplications: AiWorkApplication[] = [
-  { id: 'zhiyue', name: '知约', description: '合同：读懂每份约定，守好每个承诺', icon: publicAsset('mate/apps/zhiyue.svg'), badge: '官方应用', badgeTone: 'green', path: '/app/mate/apps/zhiyue' },
-  { id: 'zhixing', name: '知行', description: '项目：让计划有行动，让行动有结果', icon: publicAsset('mate/apps/zhixing.svg'), badge: '官方应用', badgeTone: 'green', path: '/app/mate/apps/zhixing' },
-  { id: 'zhiji', name: '知记', description: '汇报：记下每一步，看见自己的成长', icon: publicAsset('mate/apps/zhiji.svg'), badge: '官方应用', badgeTone: 'green', path: '/app/mate/apps/zhiji/home' },
   {
-    id: 'ai-work',
-    name: 'AI Work',
-    description: 'AI 周报与工作复盘',
-    icon: publicAsset('mate/apps/weekly.png'),
+    id: 'zhiji',
+    name: '知记',
+    description: '汇报：记下每一步，看见自己的成长',
+    icon: publicAsset('mate/apps/zhiji.svg'),
     badge: '官方应用',
     badgeTone: 'green',
-    path: '/app/mate/apps/ai-work/cycle',
+    path: '/app/mate/apps/zhiji/home',
   },
   {
     id: 'smart-crm',
@@ -639,40 +636,6 @@ export const aiWorkApplications: AiWorkApplication[] = [
     badge: '官方应用',
     badgeTone: 'green',
     path: '/app/mate/apps/smart-crm',
-  },
-  {
-    id: 'invoice-check',
-    name: '票N 发票验真',
-    description: '发票识别与智能验真',
-    icon: publicAsset('mate/apps/piao_in.png'),
-    badge: '三方系统',
-    badgeTone: 'blue',
-    path: '/app/mate/apps/invoice-check',
-  },
-  {
-    id: 'smart-ticket',
-    name: '知应',
-    description: '运维：事事有回应，问题有着落',
-    icon: publicAsset('mate/apps/ticket.svg'),
-    badge: '官方应用',
-    badgeTone: 'green',
-    path: '/app/mate/apps/smart-ticket/home',
-  },
-  {
-    id: 'smart-contract',
-    name: '智能合同',
-    description: '合同管理配置与授权管理',
-    icon: publicAsset('mate/apps/contract.svg'),
-    badge: '官方应用',
-    badgeTone: 'green',
-    path: '/app/mate/apps/smart-contract/schemes',
-  },
-  {
-    id: 'zhangkou-filling',
-    name: '账扣核销单请款单数据收集',
-    description: '账扣核销与请款单智能填报',
-    icon: publicAsset('mate/apps/zhangkou.svg'),
-    path: '/app/mate/apps/zhangkou-filling/template',
   },
 ];
 

@@ -15,7 +15,7 @@ export interface SalesTarget {
   allocations: Record<string, number>;
 }
 export const salesPeople = [
-  "王安康",
+  "韩立",
   "林晓",
   "张悦",
   "陈晨",
@@ -68,7 +68,7 @@ export const salesSettings = reactive({
       name: "山东大区",
       coverage: "山东",
       manager: "周远",
-      members: ["王安康", "张悦"],
+      members: ["韩立", "张悦"],
     },
     {
       id: "east",
@@ -84,7 +84,7 @@ export const salesSettings = reactive({
       metric: "赢单金额",
       regionId: "shandong",
       amount: 600,
-      allocations: { 王安康: 360, 张悦: 200 },
+      allocations: { 韩立: 360, 张悦: 200 },
     },
     {
       period: "2027",

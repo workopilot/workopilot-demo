@@ -133,7 +133,7 @@ const scenarios = ref<Scenario[]>([
     latestStatus: 'published',
     latestVersion: 'v1.2.0',
     lastPublishedVersion: 'v1.2.0',
-    by: '王安康',
+    by: '韩立',
     updatedAt: '2026-08-20 10:22',
   },
   {

@@ -28,7 +28,7 @@ const timeRanges = [
   { value: 'year' as const, label: '本年', icon: 'lucide:calendar' },
 ];
 const projectOptions = computed(() => [{ label: '全部项目（含无项目）', value: 'all' }, { label: '无项目关联', value: 'none' }, ...todoProjects.value]);
-const members = computed(() => [...new Set(['王安康', '王天豪', '周小曼', '张三', '李四', '陈浩', '林晓', ...todoItems.value.map((item) => item.assignee)])].map((name) => ({ label: name, value: name })));
+const members = computed(() => [...new Set(['韩立', '王天豪', '周小曼', '张三', '李四', '陈浩', '林晓', ...todoItems.value.map((item) => item.assignee)])].map((name) => ({ label: name, value: name })));
 
 const demoToday = new Date(2026, 8, 8);
 function getCreatedDate(value: string) {

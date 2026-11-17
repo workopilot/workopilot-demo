@@ -624,7 +624,7 @@ async function send() {
             </div>
             <div
               class="chat-msg-avatar shadow-xs flex size-9 flex-none items-center justify-center rounded-full border border-[#0D6853] bg-[#0D6853] text-sm font-bold text-white"
-              title="王安康"
+              title="韩立"
             >
               王
             </div>

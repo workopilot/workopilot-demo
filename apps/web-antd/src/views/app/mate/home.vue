@@ -18,7 +18,7 @@ import {
 const router = useRouter();
 const stats = ref<MateStats>(getMateStats());
 const greeting = computed(() =>
-  new Date().getHours() < 12 ? '早上好，王安康' : '下午好，王安康',
+  new Date().getHours() < 12 ? '早上好，韩立' : '下午好，韩立',
 );
 
 onMounted(() => {

@@ -36,7 +36,7 @@ const scenarioFilter = ref<string>('');
 
 // 候选工程师列表（用于派单/改派选择）
 const engineerOptions = [
-  { label: '王安康', value: 'u-wangankang' },
+  { label: '韩立', value: 'u-wangankang' },
   { label: '李伟', value: 'e-liwei' },
   { label: '陈晓东', value: 'e-chenxiaodong' },
   { label: '刘建华', value: 'e-liujianhua' },

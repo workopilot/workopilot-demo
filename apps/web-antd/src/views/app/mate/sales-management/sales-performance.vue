@@ -22,9 +22,9 @@ interface CommissionRecord {
 }
 
 const records = ref<CommissionRecord[]>([
-  { id: 'p-001', customer: '西部交通投资集团', type: '新签', owner: '王安康', amount: '¥1,200,000', base: '¥1,200,000', commission: '¥60,000', sourceReward: '¥0', status: '待复核' },
+  { id: 'p-001', customer: '西部交通投资集团', type: '新签', owner: '韩立', amount: '¥1,200,000', base: '¥1,200,000', commission: '¥60,000', sourceReward: '¥0', status: '待复核' },
   { id: 'p-002', customer: '华南医药连锁', type: '续约', owner: '陈晨', amount: '¥860,000', base: '¥860,000', commission: '¥25,800', sourceReward: '¥0', status: '已确认' },
-  { id: 'p-003', customer: '华东能源装备集团', type: '增购', owner: '王安康', amount: '¥680,000', base: '¥680,000', commission: '¥34,000', sourceReward: '¥0', status: '已结算' },
+  { id: 'p-003', customer: '华东能源装备集团', type: '增购', owner: '韩立', amount: '¥680,000', base: '¥680,000', commission: '¥34,000', sourceReward: '¥0', status: '已结算' },
   { id: 'p-004', customer: '云港物流科技', type: '新签', owner: '陈晨', amount: '¥150,000', base: '¥150,000', commission: '¥7,500', sourceReward: '¥1,500', status: '待复核' },
   { id: 'p-005', customer: '南方智造研究院', type: '续约', owner: '林晓', amount: '¥320,000', base: '¥320,000', commission: '¥9,600', sourceReward: '¥0', status: '已结算' },
 ]);

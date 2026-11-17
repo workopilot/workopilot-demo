@@ -239,7 +239,7 @@ const sortedTimeline = computed(() =>
 
 const latestEvent = computed(() => sortedTimeline.value[0]);
 
-/** 最新一条记录的简短描述：王安康开始处理 */
+/** 最新一条记录的简短描述：韩立开始处理 */
 const latestShort = computed(() => {
   const t = latestEvent.value;
   if (!t) return '暂无流转记录';

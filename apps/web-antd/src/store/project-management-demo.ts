@@ -76,7 +76,7 @@ export const useProjectManagementDemoStore = defineStore(
       state.discussions.unshift({
         id: `discussion-${Date.now()}`,
         objectLabel: 'KR2.1 · 联调测试报告',
-        author: '王安康',
+        author: '韩立',
         role: '当前用户',
         time: '刚刚',
         content,

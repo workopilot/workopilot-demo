@@ -25,6 +25,8 @@ package-lock.json
 
 # local env files
 /.env
+skills/**/.env*
+skills/**/__pycache__/
 .env.local
 .env.*.local
 .eslintcache

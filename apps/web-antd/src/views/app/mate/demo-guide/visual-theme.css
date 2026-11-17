@@ -1336,3 +1336,23 @@
   background: #fffaf0;
   border-color: #bf7938;
 }
+
+.demo-guide .entry-audience {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--entry-border);
+}
+
+.demo-guide .entry-audience b,
+.demo-guide .entry-duty-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: var(--entry-tone);
+}
+
+.demo-guide .entry-audience span {
+  font-size: 12px;
+  line-height: 1.85;
+  color: var(--g-muted);
+}

@@ -167,7 +167,7 @@ export const zhijiDepartments = [
   { value: 'service', label: '客户服务组' },
 ];
 export const zhijiPeople = [
-  { value: 'wang', label: '王安康', department: '产品研发部' },
+  { value: 'wang', label: '韩立', department: '产品研发部' },
   { value: 'zhang', label: '张三', department: '产品研发部' },
   { value: 'li', label: '李明', department: '交付项目组' },
   { value: 'chen', label: '陈静', department: '客户服务组' },
@@ -392,7 +392,7 @@ export const zhijiObligations = reactive([
   {
     id: 'O-01',
     name: '个人周报',
-    person: '王安康',
+    person: '韩立',
     scope: '产品研发部',
     period: '10.12 — 10.18',
     deadline: '10-19 18:00',

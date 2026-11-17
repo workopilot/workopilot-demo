@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+
+import EntryLocationSketch from './entry-location-sketch.vue';
 </script>
 
 <template>
@@ -16,6 +18,7 @@ import { Icon } from '@iconify/vue';
     </div>
     <div class="entry-cards">
       <article class="entry-card conversation">
+        <EntryLocationSketch kind="chat" />
         <header>
           <span>01 / 数字员工</span>
           <Icon icon="lucide:messages-square" aria-hidden="true" />
@@ -29,6 +32,11 @@ import { Icon } from '@iconify/vue';
           <strong>用自然语言发起和处理业务</strong>
         </header>
         <div class="entry-card-content">
+          <div class="entry-audience">
+            <b>哪些人能看</b>
+            <span>具有该业务权限的业务人员，包括员工、主管或审批人。</span>
+          </div>
+          <b class="entry-duty-label">负责干什么</b>
           <p>
             承载业务问答、需求理解、信息补充、操作预览与确认，以及执行结果和下一步入口。
           </p>
@@ -48,6 +56,7 @@ import { Icon } from '@iconify/vue';
         </div>
       </article>
       <article class="entry-card operations">
+        <EntryLocationSketch kind="business" />
         <header>
           <span>02 / 数字员工</span>
           <Icon icon="lucide:panels-top-left" aria-hidden="true" />
@@ -61,6 +70,11 @@ import { Icon } from '@iconify/vue';
           <strong>通过页面持续办理具体业务</strong>
         </header>
         <div class="entry-card-content">
+          <div class="entry-audience">
+            <b>哪些人能看</b>
+            <span>具有该业务权限的业务人员，包括员工、主管或审批人。</span>
+          </div>
+          <b class="entry-duty-label">负责干什么</b>
           <p>
             承载业务列表、详情、表单和后续操作。用户可以查询、编辑、提交、审批、跟进，不必每次都从对话开始。
           </p>
@@ -80,6 +94,7 @@ import { Icon } from '@iconify/vue';
         </div>
       </article>
       <article class="entry-card configuration">
+        <EntryLocationSketch kind="application" />
         <header>
           <span>03 / 应用</span>
           <Icon icon="lucide:settings-2" aria-hidden="true" />
@@ -93,6 +108,11 @@ import { Icon } from '@iconify/vue';
           <strong>设置这类业务如何运行</strong>
         </header>
         <div class="entry-card-content">
+          <div class="entry-audience">
+            <b>哪些人能看</b>
+            <span>具有该应用管理权限的业务管理员。</span>
+          </div>
+          <b class="entry-duty-label">负责干什么</b>
           <p>
             承载共享资源、基础资料、业务规则、模板和权限，由业务管理员维护，并影响相关数字员工的业务操作。
           </p>

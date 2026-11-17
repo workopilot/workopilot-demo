@@ -161,7 +161,7 @@ function record(
     attachments,
     customerId: props.deal.customerId,
     dealId: props.deal.id,
-    owner: props.deal.owner || "王安康",
+    owner: props.deal.owner || "韩立",
     status: "已记录",
     date: today,
     occurredAt: new Date().toISOString(),

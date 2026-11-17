@@ -337,7 +337,7 @@ const people = [
   { label: '产品团队', value: '产品团队' },
   { label: '交付项目组', value: '交付项目组' },
   { label: '客户服务组', value: '客户服务组' },
-  { label: '王安康', value: '王安康' },
+  { label: '韩立', value: '韩立' },
   { label: 'PMO / 项目管理部', value: 'PMO / 项目管理部' },
 ];
 const analyzed = ref(false);
@@ -359,7 +359,7 @@ const match = computed(() =>
         : 'new',
 );
 const taskTitle = ref('');
-const taskOwner = ref('王安康');
+const taskOwner = ref('韩立');
 const taskDate = ref('2026-10-30');
 const materialConsent = ref(false);
 const matchedTask = computed(() =>
@@ -640,7 +640,7 @@ function analyzePlan() {
 function openTask() {
   if (readonly.value) return;
   taskTitle.value = analysisText.value;
-  taskOwner.value = '王安康';
+  taskOwner.value = '韩立';
   taskDate.value = match.value === 'covered' ? '2026-10-25' : '2026-10-30';
   materialConsent.value = false;
   modal.value = 'task';
@@ -1769,7 +1769,7 @@ function authorizeGit() {
           :disabled="match === 'covered'"
           v-model:value="taskOwner"
           :options="
-            ['王安康', '小刚'].map((value) => ({ label: value, value }))
+            ['韩立', '小刚'].map((value) => ({ label: value, value }))
           "
           style="width: 100%"
         /><label class="form-label" for="task-date">计划完成日期</label
