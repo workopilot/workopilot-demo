@@ -19,7 +19,13 @@ import { Icon } from '@iconify/vue';
         <header>
           <span>01 / 数字员工</span>
           <Icon icon="lucide:messages-square" aria-hidden="true" />
-          <h3>对话</h3>
+          <h3>
+            对话
+            <span class="entry-role-label">
+              <Icon icon="lucide:users-round" aria-hidden="true" />
+              业务人员使用
+            </span>
+          </h3>
           <strong>用自然语言发起和处理业务</strong>
         </header>
         <div class="entry-card-content">
@@ -45,7 +51,13 @@ import { Icon } from '@iconify/vue';
         <header>
           <span>02 / 数字员工</span>
           <Icon icon="lucide:panels-top-left" aria-hidden="true" />
-          <h3>业务菜单</h3>
+          <h3>
+            业务菜单
+            <span class="entry-role-label">
+              <Icon icon="lucide:users-round" aria-hidden="true" />
+              业务人员使用
+            </span>
+          </h3>
           <strong>通过页面持续办理具体业务</strong>
         </header>
         <div class="entry-card-content">
@@ -71,7 +83,13 @@ import { Icon } from '@iconify/vue';
         <header>
           <span>03 / 应用</span>
           <Icon icon="lucide:settings-2" aria-hidden="true" />
-          <h3>应用菜单</h3>
+          <h3>
+            应用菜单
+            <span class="entry-role-label">
+              <Icon icon="lucide:shield-check" aria-hidden="true" />
+              业务管理员使用
+            </span>
+          </h3>
           <strong>设置这类业务如何运行</strong>
         </header>
         <div class="entry-card-content">

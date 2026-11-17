@@ -1083,6 +1083,10 @@
 }
 
 .demo-guide .entry-card h3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
   margin: 12px 0 7px;
   font-size: 28px;
 }
@@ -1305,4 +1309,30 @@
   .demo-guide .guide-summary strong {
     margin-left: 5px;
   }
+}
+
+.demo-guide .entry-role-label {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 6px 9px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #244ca5;
+  white-space: nowrap;
+  background: #fff;
+  border: 1px solid #ffffffb3;
+  border-radius: 6px;
+  box-shadow: 0 2px 7px #132a6414;
+}
+
+.demo-guide .entry-card.operations .entry-role-label {
+  color: #5a439c;
+}
+
+.demo-guide .entry-card.configuration .entry-role-label {
+  color: #7a3c0d;
+  background: #fffaf0;
+  border-color: #bf7938;
 }
