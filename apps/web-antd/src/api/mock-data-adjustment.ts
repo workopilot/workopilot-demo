@@ -52,12 +52,12 @@ export const mockStats: AdjustmentStat[] = [
 ];
 
 const demoImages = [
-  '/auditdemo/demo/1.png',
-  '/auditdemo/demo/2.png',
-  '/auditdemo/demo/3.png',
-  '/auditdemo/demo/4.png',
-  '/auditdemo/demo/5.jpg',
-  '/auditdemo/demo/6.png',
+  `${import.meta.env.BASE_URL}demo/1.png`,
+  `${import.meta.env.BASE_URL}demo/2.png`,
+  `${import.meta.env.BASE_URL}demo/3.png`,
+  `${import.meta.env.BASE_URL}demo/4.png`,
+  `${import.meta.env.BASE_URL}demo/5.jpg`,
+  `${import.meta.env.BASE_URL}demo/6.png`,
 ];
 
 const getRandomImage = () => {

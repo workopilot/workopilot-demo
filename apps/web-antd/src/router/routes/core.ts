@@ -22,7 +22,13 @@ const mateAppRoute: RouteRecordRaw = {
   children: [
     {
       path: '',
-      redirect: '/app/mate/employee/project-assistant/project-chat',
+      redirect: '/app/mate/employee/new-report-assistant/report-chat',
+    },
+    {
+      name: 'MateDemoGuide',
+      path: 'help',
+      component: () => import('#/views/app/mate/demo-guide/index.vue'),
+      meta: { hideInMenu: true, title: 'Demo 开发指南' },
     },
     {
       name: 'MateHome',
@@ -33,7 +39,7 @@ const mateAppRoute: RouteRecordRaw = {
     {
       name: 'MateEmployees',
       path: 'employees',
-      redirect: '/app/mate/employee/project-assistant/project-chat',
+      redirect: '/app/mate/employee/new-report-assistant/report-chat',
       meta: { hideInMenu: true, title: '数字员工' },
     },
     {
@@ -42,36 +48,36 @@ const mateAppRoute: RouteRecordRaw = {
       component: () =>
         import('#/views/app/mate/ai-work/employee-workspace.vue'),
       redirect: (to) => {
-        const id = String(to.params.employeeId);
-        if (id === 'new-sales-assistant') return `${to.path}/sales/chat`;
-        if (id === 'new-report-assistant') return `${to.path}/report-chat`;
-        if (id === 'new-review-assistant') return `${to.path}/review-chat`;
-        if (id === 'contract-assistant') return `${to.path}/contract-chat`;
-        if (id === 'sales-assistant') return `${to.path}/sales-chat`;
-        if (
-          ['meeting-assistant', 'pmo-assistant', 'project-assistant'].includes(
-            id,
-          )
-        )
-          return `${to.path}/project-chat`;
-        if (
-          ['insight-copilot', 'report-copilot', 'review-copilot'].includes(id)
-        )
-          return `${to.path}/new-chat`;
-        if (['fill-assistant', 'ticket-assistant'].includes(id))
-          return `${to.path}/ticket-chat`;
-        return `${to.path}/chat`;
+        return to.params.employeeId === 'ticket-assistant'
+          ? '/app/mate/employee/ticket-assistant/ticket-chat'
+          : '/app/mate/employee/new-report-assistant/report-chat';
       },
       meta: { hideInMenu: true, title: 'AI Work 数字员工' },
       children: [
         {
-          name: 'NewSalesAssistantPage', path: 'sales/chat',
+          name: 'NewSalesAssistantPage',
+          path: 'sales/chat',
           component: () => import('#/views/app/mate/new-sales/chat.vue'),
           meta: { hideInMenu: true, title: '新销售助理' },
         },
-        { name: 'SalesCommandCenter', path: 'sales/workbench', component: () => import('#/views/app/mate/new-sales/workspace.vue'), meta: { hideInMenu: true, title: '销售工作台' } },
-        { name: 'SalesDealsPipeline', path: 'sales/pipeline', component: () => import('#/views/app/mate/new-sales/pipeline.vue'), meta: { hideInMenu: true, title: '商机' } },
-        { name: 'SalesCustomerHub', path: 'sales/customers', component: () => import('#/views/app/mate/new-sales/workspace.vue'), meta: { hideInMenu: true, title: '客户中心' } },
+        {
+          name: 'SalesCommandCenter',
+          path: 'sales/workbench',
+          component: () => import('#/views/app/mate/new-sales/workspace.vue'),
+          meta: { hideInMenu: true, title: '销售工作台' },
+        },
+        {
+          name: 'SalesDealsPipeline',
+          path: 'sales/pipeline',
+          component: () => import('#/views/app/mate/new-sales/pipeline.vue'),
+          meta: { hideInMenu: true, title: '商机' },
+        },
+        {
+          name: 'SalesCustomerHub',
+          path: 'sales/customers',
+          component: () => import('#/views/app/mate/new-sales/workspace.vue'),
+          meta: { hideInMenu: true, title: '客户中心' },
+        },
         {
           path: 'sales/:salesPage',
           redirect: '/app/mate/employee/new-sales-assistant/sales/chat',
@@ -123,7 +129,7 @@ const mateAppRoute: RouteRecordRaw = {
           name: 'TicketEmployeeChat',
           path: 'ticket-chat',
           component: () => import('#/views/app/mate/ticket/ticket-chat.vue'),
-          meta: { hideInMenu: true, title: '数字员工' },
+          meta: { hideInMenu: true, title: '对话' },
         },
         {
           name: 'FillEmployeeChat',
@@ -863,7 +869,8 @@ const mateAppRoute: RouteRecordRaw = {
       ],
     },
     {
-      name: 'ZhiyingSettings', path: 'apps/smart-crm/settings/:salesPage',
+      name: 'ZhiyingSettings',
+      path: 'apps/smart-crm/settings/:salesPage',
       component: () => import('#/views/app/mate/new-sales/settings.vue'),
       meta: { hideInMenu: true, title: '知赢 · 销售配置' },
     },

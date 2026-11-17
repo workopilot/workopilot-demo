@@ -58,7 +58,7 @@ const employeesUsage = ref([
   {
     id: 'EMP-001',
     name: '订单专员',
-    avatar: '/auditdemo/images/ai-employee/sales.png',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/sales.png`,
     used: 2500,
     unit: '10/订单',
     price: 10,
@@ -70,7 +70,7 @@ const employeesUsage = ref([
   {
     id: 'EMP-002',
     name: '收单专员',
-    avatar: '/auditdemo/images/ai-employee/warehouse.png',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/warehouse.png`,
     used: 1800,
     unit: '15/订单',
     price: 15,
@@ -82,7 +82,7 @@ const employeesUsage = ref([
   {
     id: 'EMP-003',
     name: '审核助理',
-    avatar: '/auditdemo/images/ai-employee/技术员.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/技术员.jpg`,
     used: 1200,
     unit: '20/单',
     price: 20,
@@ -94,7 +94,7 @@ const employeesUsage = ref([
   {
     id: 'EMP-004',
     name: '财务对账专员',
-    avatar: '/auditdemo/images/ai-employee/财务.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/财务.jpg`,
     used: 1000,
     unit: '10/单',
     price: 10,
@@ -107,7 +107,7 @@ const employeesUsage = ref([
   {
     id: 'EMP-005',
     name: 'AI问数',
-    avatar: '/auditdemo/images/ai-employee/咨询人员.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/咨询人员.jpg`,
     used: 650,
     unit: '1/次, 包月 99',
     price: 1,
@@ -119,7 +119,7 @@ const employeesUsage = ref([
   {
     id: 'EMP-006',
     name: '知识库问答',
-    avatar: '/auditdemo/images/ai-employee/商务分析助手.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/商务分析助手.jpg`,
     used: 420,
     unit: '1/次, 包月 59',
     price: 1,
@@ -131,7 +131,7 @@ const employeesUsage = ref([
   {
     id: 'EMP-007',
     name: 'PPT专员',
-    avatar: '/auditdemo/images/ai-employee/产品经理.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/产品经理.jpg`,
     used: 310,
     unit: '10/PPT, 包月 99',
     price: 10,
@@ -143,7 +143,7 @@ const employeesUsage = ref([
   {
     id: 'EMP-008',
     name: '商业分析专员',
-    avatar: '/auditdemo/images/ai-employee/数据分析师.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/数据分析师.jpg`,
     used: 120,
     unit: '10/次, 99包月',
     price: 10,

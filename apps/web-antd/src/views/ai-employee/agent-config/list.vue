@@ -14,7 +14,7 @@ const agents = ref([
     name: '选品报价员',
     role: '销售部',
     intro: '熟悉市场的选品与报价专家，快速根据需求筛选高利润药品并生成报价。',
-    image: '/auditdemo/images/ai-employee/sales.png',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/sales.png`,
     status: 'online',
   },
   {
@@ -22,7 +22,7 @@ const agents = ref([
     name: '数据分析员',
     role: '数据中心',
     intro: '实时抓取前中台系统的各业务线数据并生成多维可视化分析报表。',
-    image: '/auditdemo/images/ai-employee/data.png',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/data.png`,
     status: 'online',
   },
   {
@@ -30,7 +30,7 @@ const agents = ref([
     name: '库管预警员',
     role: '供应链部',
     intro: '24小时无休的仓库看守，每日巡检库存并拦截即效期或濒临缺货产品。',
-    image: '/auditdemo/images/ai-employee/warehouse.png',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/warehouse.png`,
     status: 'offline',
   },
   {
@@ -38,7 +38,7 @@ const agents = ref([
     name: '合规审核专员',
     role: '风控合规部',
     intro: '进行合同条款与药监局规定的自动比对，发现潜在合规风险。',
-    image: '/auditdemo/images/ai-employee/finance.png',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/finance.png`,
     status: 'busy',
   },
 ]);

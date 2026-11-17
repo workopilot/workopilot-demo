@@ -209,7 +209,7 @@ const fillAssistantMenus: MateEmployeeMenu[] = [
 const ticketAssistantMenus: MateEmployeeMenu[] = [
   {
     key: 'chat',
-    title: '数字员工',
+    title: '对话',
     icon: 'lucide:bot',
     summary: '通过对话引导式收集分析现场信息，快速创建工单。',
     path: '/app/mate/employee/ticket-assistant/ticket-chat',
@@ -340,7 +340,7 @@ const salesAssistantMenus: MateEmployeeMenu[] = [
   },
 ];
 
-export const mockMateEmployees: MateEmployee[] = [
+const mateEmployeeCatalog: MateEmployee[] = [
   {
     id: 'new-review-assistant',
     name: '新审核助理',
@@ -377,10 +377,46 @@ export const mockMateEmployees: MateEmployee[] = [
   },
   {
     id: 'new-sales-assistant',
-    name: '新销售助理', role: 'AI 销售协作数字员工', description: '客户、商机与每一次跟进。',
-    avatar: matePublicAsset('images/ai-employee/商务分析助手.jpg'), accent: '#087f8c', status: 'online', unread: 0, pinned: true, lastActive: '刚刚',
-    menus: [{ key: 'chat', title: '对话', icon: 'lucide:messages-square', summary: '对话', path: '/app/mate/employee/new-sales-assistant/sales/chat' }, { key: 'workbench', title: '销售工作台', icon: 'lucide:layout-dashboard', summary: '每日行动', path: '/app/mate/employee/new-sales-assistant/sales/workbench' }, { key: 'customers', title: '客户中心', icon: 'lucide:building-2', summary: '客户与线索', path: '/app/mate/employee/new-sales-assistant/sales/customers' }, { key: 'pipeline', title: '商机', icon: 'lucide:kanban', summary: '每一笔商机的推进', path: '/app/mate/employee/new-sales-assistant/sales/pipeline' }],
-    quickPrompts: ['挖掘客户画像','分析重点商机','生成客户方案'],
+    name: '新销售助理',
+    role: 'AI 销售协作数字员工',
+    description: '客户、商机与每一次跟进。',
+    avatar: matePublicAsset('images/ai-employee/商务分析助手.jpg'),
+    accent: '#087f8c',
+    status: 'online',
+    unread: 0,
+    pinned: true,
+    lastActive: '刚刚',
+    menus: [
+      {
+        key: 'chat',
+        title: '对话',
+        icon: 'lucide:messages-square',
+        summary: '对话',
+        path: '/app/mate/employee/new-sales-assistant/sales/chat',
+      },
+      {
+        key: 'workbench',
+        title: '销售工作台',
+        icon: 'lucide:layout-dashboard',
+        summary: '每日行动',
+        path: '/app/mate/employee/new-sales-assistant/sales/workbench',
+      },
+      {
+        key: 'customers',
+        title: '客户中心',
+        icon: 'lucide:building-2',
+        summary: '客户与线索',
+        path: '/app/mate/employee/new-sales-assistant/sales/customers',
+      },
+      {
+        key: 'pipeline',
+        title: '商机',
+        icon: 'lucide:kanban',
+        summary: '每一笔商机的推进',
+        path: '/app/mate/employee/new-sales-assistant/sales/pipeline',
+      },
+    ],
+    quickPrompts: ['挖掘客户画像', '分析重点商机', '生成客户方案'],
   },
   {
     id: 'new-report-assistant',
@@ -669,6 +705,11 @@ export const mockMateEmployees: MateEmployee[] = [
     } as MateEmployeeProfile,
   },
 ] as MateEmployee[];
+
+// 当前演示只开放汇报和工单两个数字员工，所有入口共用此列表。
+export const mockMateEmployees = mateEmployeeCatalog.filter((employee) =>
+  ['new-report-assistant', 'ticket-assistant'].includes(employee.id),
+);
 
 function createEmployeeSessions(
   employee: MateEmployee,

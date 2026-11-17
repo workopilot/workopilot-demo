@@ -34,13 +34,13 @@ const isPptEmployee = computed(() => route.params.id === 'ppt-b');
 const isOrderEmployee = computed(() => route.params.id === 'order');
 const employeeProfile = computed(() => isOrderEmployee.value ? {
   name: '订单录入助理', department: '销售运营部', code: 'AGT-ORDER-001', type: 'TASK',
-  avatar: '/auditdemo/images/ai-employee/sales.png', metric: '订单录入量', actual: 326, target: 420, unit: '单', rate: 78,
+  avatar: `${import.meta.env.BASE_URL}images/ai-employee/sales.png`, metric: '订单录入量', actual: 326, target: 420, unit: '单', rate: 78,
 } : isPptEmployee.value ? {
   name: '演示文稿设计师 B', department: '售前支持部', code: 'AGT-PPT-002', type: 'TASK',
-  avatar: '/auditdemo/images/ai-employee/插画设计师.jpg', metric: 'PPT 数', actual: 6, target: 50, unit: '份', rate: 12,
+  avatar: `${import.meta.env.BASE_URL}images/ai-employee/插画设计师.jpg`, metric: 'PPT 数', actual: 6, target: 50, unit: '份', rate: 12,
 } : {
   name: '运维智能助手', department: '信息技术部', code: 'AGT-OPS-001', type: 'CHAT',
-  avatar: '/auditdemo/images/ai-employee/技术员.jpg', metric: '已解决工单数', actual: 240, target: 450, unit: '单', rate: 53,
+  avatar: `${import.meta.env.BASE_URL}images/ai-employee/技术员.jpg`, metric: '已解决工单数', actual: 240, target: 450, unit: '单', rate: 53,
 });
 
 const coachAdvice = computed(() => isOrderEmployee.value ? [

@@ -4,7 +4,7 @@ import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 import { Icon } from '@iconify/vue';
-import { Button, Input, message } from 'ant-design-vue';
+import { Button, Input } from 'ant-design-vue';
 
 import { aiWorkApplications } from '#/api/mock-data-ai-work';
 import { mockMateEmployees } from '#/api/mock-data-mate';
@@ -30,7 +30,7 @@ const primaryItems = [
     key: 'employees',
     label: '数字员工',
     icon: 'lucide:bot',
-    path: '/app/mate/employee/project-assistant/project-chat',
+    path: '/app/mate/employee/new-report-assistant/report-chat',
   },
   {
     key: 'apps',
@@ -85,7 +85,10 @@ watch(
   { immediate: true },
 );
 
+const isGuidePage = computed(() => route.path === '/app/mate/help');
+
 const activeKey = computed(() => {
+  if (isGuidePage.value) return 'help';
   if (route.path.includes('/employee/')) return 'employees';
   if (route.path.includes('/apps/')) return 'apps';
   return (
@@ -152,7 +155,7 @@ function toggleCollapsed() {
 }
 
 function showHelp() {
-  message.info('Mate 用户端 Demo：所有数据均为前端 Mock。');
+  void router.push('/app/mate/help');
 }
 </script>
 
@@ -186,7 +189,9 @@ function showHelp() {
             v-if="item.key === 'messages' && messageUnreadCount"
             class="mate-primary-badge"
             :aria-label="`${messageUnreadCount} 条未读消息`"
-          >{{ messageUnreadCount > 9 ? '9+' : messageUnreadCount }}</i>
+          >
+            {{ messageUnreadCount > 9 ? '9+' : messageUnreadCount }}
+          </i>
         </button>
       </nav>
 
@@ -204,6 +209,8 @@ function showHelp() {
           class="mate-icon-button"
           type="button"
           title="帮助"
+          aria-label="帮助"
+          :aria-current="isGuidePage ? 'page' : undefined"
           @click="showHelp"
         >
           <Icon icon="lucide:circle-help" />
@@ -219,25 +226,29 @@ function showHelp() {
       </div>
     </aside>
 
-    <aside class="mate-secondary">
+    <aside
+      v-if="!isGuidePage"
+      class="mate-secondary"
+    >
       <div
         class="mate-secondary__head"
         :class="{ 'is-employee-head': activeKey === 'employees' }"
       >
         <div class="mate-secondary__title">
-          <span class="mate-secondary__icon"
-            ><Icon
+          <span class="mate-secondary__icon">
+            <Icon
               :icon="
                 activeKey === 'employees'
                   ? 'lucide:users-round'
                   : primaryItems.find((item) => item.key === activeKey)?.icon ||
                     'lucide:gauge'
               "
-          /></span>
+            />
+          </span>
           <div v-if="!collapsed">
-            <strong>{{
-              primaryItems.find((item) => item.key === activeKey)?.label
-            }}</strong>
+            <strong>
+              {{ primaryItems.find((item) => item.key === activeKey)?.label }}
+            </strong>
             <small v-if="activeKey === 'apps'">已启用的智能应用</small>
             <small v-else-if="activeKey !== 'employees'">Mate 智能工作台</small>
           </div>
@@ -280,7 +291,8 @@ function showHelp() {
         class="mate-secondary__body mate-employee-list"
       >
         <div v-if="!collapsed" class="mate-secondary__label">
-          <Icon icon="lucide:clock-3" />最近联系
+          <Icon icon="lucide:clock-3" />
+          最近联系
         </div>
         <button
           v-for="employee in sidebarEmployees"
@@ -296,7 +308,7 @@ function showHelp() {
           @click="
             go(
               employee.menus[0]?.path ||
-                '/app/mate/employee/project-assistant/project-chat',
+                '/app/mate/employee/new-report-assistant/report-chat',
             )
           "
         >
@@ -318,7 +330,8 @@ function showHelp() {
         class="mate-secondary__body mate-application-list"
       >
         <div v-if="!collapsed" class="mate-secondary__label">
-          <Icon icon="lucide:blocks" />智能应用中心
+          <Icon icon="lucide:blocks" />
+          智能应用中心
         </div>
         <button
           v-for="application in aiWorkApplications"
@@ -341,7 +354,8 @@ function showHelp() {
           type="button"
           @click="showHelp"
         >
-          <Icon icon="lucide:circle-help" />查看应用说明
+          <Icon icon="lucide:circle-help" />
+          查看应用说明
         </button>
       </div>
 
@@ -351,7 +365,10 @@ function showHelp() {
       >
         <template v-if="!collapsed">
           <div class="mate-message-query-head">
-            <span><Icon icon="lucide:list-filter" />消息查询</span>
+            <span>
+              <Icon icon="lucide:list-filter" />
+              消息查询
+            </span>
             <button
               type="button"
               title="通知设置"
@@ -378,7 +395,10 @@ function showHelp() {
               :class="{ 'is-active': activeMessageStatus === 'all' }"
               @click="updateMessageQuery('status', 'all')"
             >
-              <span><Icon icon="lucide:inbox" />全部消息</span>
+              <span>
+                <Icon icon="lucide:inbox" />
+                全部消息
+              </span>
               <b>{{ mateMessages.length }}</b>
             </button>
             <button
@@ -387,7 +407,10 @@ function showHelp() {
               :class="{ 'is-active': activeMessageStatus === 'unread' }"
               @click="updateMessageQuery('status', 'unread')"
             >
-              <span><Icon icon="lucide:mail" />未读</span>
+              <span>
+                <Icon icon="lucide:mail" />
+                未读
+              </span>
               <b class="is-unread-count">{{ messageUnreadCount }}</b>
             </button>
             <button
@@ -396,7 +419,10 @@ function showHelp() {
               :class="{ 'is-active': activeMessageStatus === 'read' }"
               @click="updateMessageQuery('status', 'read')"
             >
-              <span><Icon icon="lucide:mail-open" />已读</span>
+              <span>
+                <Icon icon="lucide:mail-open" />
+                已读
+              </span>
               <b>{{ messageReadCount }}</b>
             </button>
           </div>
@@ -413,11 +439,16 @@ function showHelp() {
               }"
               @click="updateMessageQuery('category', category.key)"
             >
-              <span><Icon :icon="category.icon" />{{ category.label }}</span>
-              <b>{{
-                mateMessages.filter((item) => item.category === category.key)
-                  .length
-              }}</b>
+              <span>
+                <Icon :icon="category.icon" />
+                {{ category.label }}
+              </span>
+              <b>
+                {{
+                  mateMessages.filter((item) => item.category === category.key)
+                    .length
+                }}
+              </b>
             </button>
           </div>
 
@@ -431,7 +462,8 @@ function showHelp() {
             class="mate-message-clear"
             @click="clearMessageFilters"
           >
-            <Icon icon="lucide:rotate-ccw" />清除筛选
+            <Icon icon="lucide:rotate-ccw" />
+            清除筛选
           </button>
 
           <div class="mate-secondary-note mate-message-note">
@@ -446,25 +478,33 @@ function showHelp() {
             title="通知设置"
             aria-label="打开通知设置"
             @click="openMessageNotificationSettings"
-          ><Icon icon="lucide:settings-2" /></button>
+          >
+            <Icon icon="lucide:settings-2" />
+          </button>
           <button
             class="mate-message-filter-icon"
             type="button"
             title="全部消息"
             @click="updateMessageQuery('status', 'all')"
-          ><Icon icon="lucide:inbox" /></button>
+          >
+            <Icon icon="lucide:inbox" />
+          </button>
           <button
             class="mate-message-filter-icon"
             type="button"
             title="未读消息"
             @click="updateMessageQuery('status', 'unread')"
-          ><Icon icon="lucide:mail" /></button>
+          >
+            <Icon icon="lucide:mail" />
+          </button>
           <button
             class="mate-message-filter-icon"
             type="button"
             title="已读消息"
             @click="updateMessageQuery('status', 'read')"
-          ><Icon icon="lucide:mail-open" /></button>
+          >
+            <Icon icon="lucide:mail-open" />
+          </button>
         </template>
       </div>
 
@@ -474,36 +514,35 @@ function showHelp() {
           type="button"
           @click="go('/app/mate/employees')"
         >
-          <span><Icon icon="lucide:bot" /></span
-          ><b v-if="!collapsed">开始与员工对话</b>
+          <span><Icon icon="lucide:bot" /></span>
+          <b v-if="!collapsed">开始与员工对话</b>
         </button>
         <button
           class="mate-shortcut"
           type="button"
           @click="go('/app/mate/files')"
         >
-          <span><Icon icon="lucide:upload-cloud" /></span
-          ><b v-if="!collapsed">上传文件资产</b>
+          <span><Icon icon="lucide:upload-cloud" /></span>
+          <b v-if="!collapsed">上传文件资产</b>
         </button>
         <button
           class="mate-shortcut"
           type="button"
           @click="go('/app/mate/automation')"
         >
-          <span><Icon icon="lucide:plus" /></span
-          ><b v-if="!collapsed">新建自动化任务</b>
+          <span><Icon icon="lucide:plus" /></span>
+          <b v-if="!collapsed">新建自动化任务</b>
         </button>
         <div v-if="!collapsed" class="mate-secondary-note">
-          <Icon icon="lucide:shield-check" /><span
-            >演示环境已开启，操作不会影响真实数据。</span
-          >
+          <Icon icon="lucide:shield-check" />
+          <span>演示环境已开启，操作不会影响真实数据。</span>
         </div>
       </div>
     </aside>
 
     <main class="mate-main">
       <header
-        v-if="!activeEmployee && activeKey !== 'apps'"
+        v-if="!activeEmployee && activeKey !== 'apps' && !isGuidePage"
         class="mate-topbar"
       >
         <div>
@@ -511,15 +550,20 @@ function showHelp() {
           <strong>普通用户工作台</strong>
         </div>
         <div class="mate-topbar__actions">
-          <span class="mate-online"><i></i>演示数据已同步</span>
+          <span class="mate-online">
+            <i></i>
+            演示数据已同步
+          </span>
           <Button type="text" size="small" @click="backToAdmin">
-            <Icon icon="lucide:arrow-up-right" /> 管理后台
+            <Icon icon="lucide:arrow-up-right" />
+            管理后台
           </Button>
         </div>
       </header>
       <div
         class="mate-content"
         :class="{
+          'is-guide-page': isGuidePage,
           'is-employee-workspace': activeEmployee,
           'is-app-workspace': activeKey === 'apps',
         }"
@@ -532,6 +576,13 @@ function showHelp() {
 </template>
 
 <style scoped>
+.mate-content.is-guide-page {
+  padding: 0;
+}
+.mate-icon-button[aria-current='page'] {
+  background: #27594c;
+  color: #fff;
+}
 @media (max-width: 900px) {
   .mate-shell {
     --mate-rail-width: 56px;

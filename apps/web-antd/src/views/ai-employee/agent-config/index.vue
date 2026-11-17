@@ -27,7 +27,7 @@ const router = useRouter();
 const route = useRoute();
 
 const activeKey = ref(route.query.tab === 'performance' ? 'performance' : 'skills');
-const avatarUrl = ref('/auditdemo/images/ai-employee/sales.png');
+const avatarUrl = ref(`${import.meta.env.BASE_URL}images/ai-employee/sales.png`);
 
 // File Upload mock logic
 const beforeUpload = (file: File) => {

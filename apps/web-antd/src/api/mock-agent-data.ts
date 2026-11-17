@@ -8,7 +8,7 @@ export const mockAgents: AgentItem[] = [
     code: 'smart_audit',
     description:
       '自然语言编写审核规则，工具链对接内外部数据，浏览器插件非侵入式对接。',
-    logo: '/auditdemo/demo/shenhe.png',
+    logo: `${import.meta.env.BASE_URL}demo/shenhe.png`,
     logoColor: '#3b82f6', // blue-500
     logoBgColor: '#eff6ff', // blue-50
     status: 'active',
@@ -21,7 +21,7 @@ export const mockAgents: AgentItem[] = [
     code: 'smart_filling',
     description:
       '基于制度规则生成单据数据，AI-RPA智能填写三方系统，无需系统对接。',
-    logo: '/auditdemo/demo/tianbao.png',
+    logo: `${import.meta.env.BASE_URL}demo/tianbao.png`,
     logoColor: '#10b981', // emerald-500
     logoBgColor: '#ecfdf5', // emerald-50
     status: 'active',
@@ -33,7 +33,7 @@ export const mockAgents: AgentItem[] = [
     name: '智能附件分类',
     code: 'smart_classify',
     description: '自然语言定义分类规则，智能分类非标附件并提取关键数据。',
-    logo: '/auditdemo/demo/fenlei.png',
+    logo: `${import.meta.env.BASE_URL}demo/fenlei.png`,
     logoColor: '#f59e0b', // amber-500
     logoBgColor: '#fffbeb', // amber-50
     status: 'active',

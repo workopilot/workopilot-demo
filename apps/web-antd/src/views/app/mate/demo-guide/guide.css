@@ -1,0 +1,1098 @@
+.demo-guide {
+  --g-bg: #f8faf9;
+  --g-paper: #fff;
+  --g-ink: #16362f;
+  --g-muted: #587069;
+  --g-green: #11695a;
+  --g-pale: #edf5f0;
+  --g-line: #dce7e0;
+  --g-amber: #8b5b21;
+
+  min-height: 100%;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--g-ink);
+  background: var(--g-bg);
+}
+
+.demo-guide * {
+  box-sizing: border-box;
+}
+
+.demo-guide h1,
+.demo-guide h2,
+.demo-guide h3,
+.demo-guide p {
+  margin: 0;
+}
+
+.demo-guide button {
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    border-color 0.18s;
+}
+
+.demo-guide button:focus-visible,
+.demo-guide summary:focus-visible {
+  outline: 3px solid var(--g-green);
+  outline-offset: 4px;
+}
+
+.demo-guide .iconify {
+  flex: none;
+}
+
+:where(.demo-guide) .guide-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 4%;
+  background: var(--g-paper);
+  border-bottom: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .guide-topline > span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+}
+
+:where(.demo-guide) .guide-topline .ant-btn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--g-green);
+}
+
+:where(.demo-guide) .guide-wrap {
+  max-width: 1320px;
+  padding: 0 48px;
+  margin: auto;
+}
+
+:where(.demo-guide) .guide-hero {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 64px 0 52px;
+}
+
+:where(.demo-guide) .eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--g-muted);
+  letter-spacing: 1.6px;
+}
+
+:where(.demo-guide) .guide-hero h1 {
+  margin: 16px 0 20px;
+  font-size: clamp(30px, 3.1vw, 46px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -1.7px;
+}
+
+:where(.demo-guide) .guide-hero h1 span {
+  color: var(--g-green);
+}
+
+:where(.demo-guide) .guide-hero p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .guide-primary.ant-btn {
+  display: inline-flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 28px;
+  font-size: 14px;
+  background: var(--g-green);
+  border-color: var(--g-green);
+  border-radius: 7px;
+  box-shadow: none;
+}
+
+:where(.demo-guide) .hero-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .hero-meta i {
+  width: 3px;
+  height: 3px;
+  background: var(--g-muted);
+  border-radius: 50%;
+}
+
+:where(.demo-guide) .guide-nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  padding: 9px 0;
+  border-top: 1px solid var(--g-line);
+  border-bottom: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .guide-nav button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  font-size: 13px;
+  color: var(--g-ink);
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+}
+
+:where(.demo-guide) .guide-nav button:hover {
+  color: var(--g-green);
+  background: var(--g-pale);
+}
+
+:where(.demo-guide) .guide-nav small {
+  font: 11px monospace;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .guide-section {
+  padding-top: 64px;
+  scroll-margin-top: 24px;
+}
+
+:where(.demo-guide) .section-heading {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+:where(.demo-guide) .section-number {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  font-family: monospace;
+  font-size: 15px;
+  color: var(--g-green);
+  border: 1px solid var(--g-line);
+  border-radius: 50%;
+}
+
+:where(.demo-guide) .section-heading h2 {
+  margin-top: 5px;
+  font-size: 25px;
+  font-weight: 650;
+  letter-spacing: -0.7px;
+}
+
+:where(.demo-guide) .section-heading > p {
+  margin-left: auto;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .relationship-map {
+  overflow: hidden;
+  background: var(--g-paper);
+  border: 1px solid var(--g-line);
+  border-radius: 12px;
+}
+
+:where(.demo-guide) .diagram-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .diagram-label {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+:where(.demo-guide) .scenario-switch {
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  background: var(--g-bg);
+  border: 1px solid var(--g-line);
+  border-radius: 7px;
+}
+
+:where(.demo-guide) .scenario-switch button {
+  min-height: 38px;
+  padding: 0 15px;
+  font-size: 12px;
+  color: var(--g-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+}
+
+:where(.demo-guide) .scenario-switch button.selected {
+  color: #fff;
+  background: var(--g-green);
+}
+
+:where(.demo-guide) .diagram-footnote {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 13px 22px;
+  font-size: 11px;
+  color: var(--g-muted);
+  border-top: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .principle-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 22px;
+}
+
+:where(.demo-guide) .principle-row p {
+  padding-left: 14px;
+  border-left: 2px solid #bdd3c5;
+}
+
+:where(.demo-guide) .principle-row b {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+:where(.demo-guide) .principle-row span {
+  font-size: 12px;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .decision-map {
+  padding: 28px;
+  background: var(--g-paper);
+  border: 1px solid var(--g-line);
+  border-radius: 12px;
+}
+
+:where(.demo-guide) .decision-question {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+}
+
+:where(.demo-guide) .decision-question .iconify {
+  font-size: 20px;
+  color: var(--g-green);
+}
+
+:where(.demo-guide) .decision-question span {
+  font-size: 12px;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .decision-branches {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-top: 23px;
+  border-top: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .decision-branches article {
+  position: relative;
+  padding: 20px;
+  background: var(--g-bg);
+  border: 1px solid var(--g-line);
+  border-radius: 7px;
+}
+
+:where(.demo-guide) .decision-branches article::before {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  height: 24px;
+  content: '';
+  border-left: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .decision-branches small {
+  font-size: 11px;
+  color: var(--g-green);
+}
+
+:where(.demo-guide) .decision-branches h3 {
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+:where(.demo-guide) .decision-branches p {
+  font-size: 12px;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .decision-branches article > div {
+  margin: 20px 0 15px;
+  font-size: 12px;
+}
+
+:where(.demo-guide) .decision-branches article > div span {
+  padding: 0 8px;
+  color: var(--g-green);
+}
+
+:where(.demo-guide) .decision-branches footer {
+  padding-top: 13px;
+  font-size: 11px;
+  color: var(--g-muted);
+  border-top: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .guide-note {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px !important;
+  font-size: 12px;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .design-workflow {
+  overflow: hidden;
+  background: var(--g-paper);
+  border: 1px solid var(--g-line);
+  border-radius: 12px;
+}
+
+:where(.demo-guide) .design-step-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  padding: 22px 18px;
+}
+
+:where(.demo-guide) .design-step-grid button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: center;
+  padding: 13px 5px;
+  color: var(--g-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+}
+
+:where(.demo-guide) .design-step-grid button.selected {
+  color: var(--g-green);
+  background: var(--g-pale);
+  border-color: #c7dccf;
+}
+
+:where(.demo-guide) .design-step-grid button:hover {
+  background: var(--g-bg);
+}
+
+:where(.demo-guide) .design-step-grid small {
+  font: 10px monospace;
+}
+
+:where(.demo-guide) .design-step-grid .iconify {
+  font-size: 22px;
+}
+
+:where(.demo-guide) .design-step-grid strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+:where(.demo-guide) .design-step-grid .step-arrow {
+  position: absolute;
+  top: 48px;
+  right: -10px;
+  font-size: 12px;
+  color: #78968a;
+}
+
+:where(.demo-guide) .step-explanation {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  min-height: 205px;
+  padding: 30px;
+  background: var(--g-pale);
+  border-top: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .step-detail h3 {
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+:where(.demo-guide) .step-detail p,
+:where(.demo-guide) .step-output p {
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .step-output {
+  padding-left: 28px;
+  border-left: 1px solid #c8dcd0;
+}
+
+:where(.demo-guide) .step-output > small {
+  display: block;
+  font-size: 11px;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .step-output > strong {
+  display: block;
+  margin: 8px 0 12px;
+  font-size: 15px;
+}
+
+:where(.demo-guide) .step-output p span {
+  display: block;
+  font-size: 10px;
+  color: var(--g-green);
+}
+
+:where(.demo-guide) .loop-panel {
+  padding: 28px;
+  background: var(--g-paper);
+  border: 1px solid var(--g-line);
+  border-radius: 12px;
+}
+
+:where(.demo-guide) .loop-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+:where(.demo-guide) .loop-steps button {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  padding: 5px;
+  color: var(--g-muted);
+  background: transparent;
+  border: 0;
+}
+
+:where(.demo-guide) .loop-steps button:not(:last-child)::after {
+  position: absolute;
+  top: 20px;
+  right: -23px;
+  font-size: 22px;
+  color: #a0b5a9;
+  content: '→';
+}
+
+:where(.demo-guide) .loop-steps button > span {
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  background: var(--g-bg);
+  border: 1px solid var(--g-line);
+  border-radius: 50%;
+}
+
+:where(.demo-guide) .loop-steps button.selected > span {
+  color: #fff;
+  background: var(--g-green);
+  border-color: var(--g-green);
+}
+
+:where(.demo-guide) .loop-steps small {
+  margin-bottom: 5px;
+  font: 10px monospace;
+}
+
+:where(.demo-guide) .loop-steps strong {
+  font-size: 13px;
+}
+
+:where(.demo-guide) .loop-return {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px;
+  margin: 18px 8% 24px;
+  font-size: 11px;
+  color: var(--g-green);
+  border: 1px dashed #b8d3c2;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+}
+
+:where(.demo-guide) .loop-detail {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  min-height: 175px;
+  padding: 24px;
+  background: var(--g-bg);
+  border-radius: 7px;
+}
+
+:where(.demo-guide) .loop-detail h3 {
+  margin: 7px 0;
+  font-size: 20px;
+}
+
+:where(.demo-guide) .loop-detail p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .expected-result {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  column-gap: 9px;
+  align-content: center;
+  padding-left: 24px;
+  color: var(--g-green);
+  border-left: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .expected-result small {
+  font-size: 11px;
+}
+
+:where(.demo-guide) .expected-result strong {
+  grid-column: 2;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+:where(.demo-guide) .exception-path {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-top: 22px;
+  font-size: 11px;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .exception-path b {
+  font-size: 12px;
+  color: var(--g-amber);
+}
+
+:where(.demo-guide) .exception-path > span {
+  padding: 4px 9px;
+  background: #faf5eb;
+  border-radius: 4px;
+}
+
+:where(.demo-guide) .delivery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  gap: 24px;
+}
+
+:where(.demo-guide) .implementation-panel,
+:where(.demo-guide) .acceptance-panel {
+  padding: 27px;
+  background: var(--g-paper);
+  border: 1px solid var(--g-line);
+  border-radius: 12px;
+}
+
+:where(.demo-guide) .delivery-grid h3 {
+  margin: 7px 0 23px;
+  font-size: 20px;
+}
+
+:where(.demo-guide) .code-flow {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  font-size: 12px;
+  text-align: center;
+  background: var(--g-pale);
+  border-radius: 7px;
+}
+
+:where(.demo-guide) .code-flow b {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .code-flow code {
+  padding: 8px;
+  color: var(--g-green);
+  overflow-wrap: anywhere;
+  background: var(--g-paper);
+  border: 1px solid var(--g-line);
+  border-radius: 4px;
+}
+
+:where(.demo-guide) .code-flow small {
+  font-size: 10px;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .implementation-panel > p {
+  margin: 18px 0;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .implementation-panel details {
+  padding-top: 8px;
+  border-top: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .implementation-panel summary {
+  align-content: center;
+  min-height: 44px;
+  font-size: 12px;
+  color: var(--g-green);
+  cursor: pointer;
+}
+
+:where(.demo-guide) .implementation-panel ul {
+  padding-left: 18px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .command-block {
+  display: block;
+  padding: 14px;
+  font-size: 12px;
+  background: var(--g-pale);
+}
+
+:where(.demo-guide) .checklist-title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:where(.demo-guide) .checklist-title h3 {
+  margin-bottom: 12px;
+}
+
+:where(.demo-guide) .check-count {
+  font: 15px monospace;
+  color: var(--g-green);
+  white-space: nowrap;
+}
+
+:where(.demo-guide) .check-progress {
+  height: 4px;
+  margin: 6px 0 20px;
+  overflow: hidden;
+  background: var(--g-pale);
+  border-radius: 4px;
+}
+
+:where(.demo-guide) .check-progress > span {
+  display: block;
+  height: 100%;
+  background: var(--g-green);
+  transition: width 0.2s;
+}
+
+:where(.demo-guide) .acceptance-list.ant-checkbox-group {
+  display: grid;
+  gap: 0;
+}
+
+:where(.demo-guide) .acceptance-list .ant-checkbox-wrapper {
+  padding: 12px 0;
+  margin: 0 !important;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--g-ink);
+  border-bottom: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .acceptance-list .ant-checkbox-checked .ant-checkbox-inner {
+  background: var(--g-green);
+  border-color: var(--g-green);
+}
+
+:where(.demo-guide) .checklist-bottom {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  font-size: 10px;
+  color: var(--g-muted);
+}
+
+:where(.demo-guide) .guide-footer {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 0;
+  margin-top: 56px;
+  font-size: 12px;
+  color: var(--g-muted);
+  border-top: 1px solid var(--g-line);
+}
+
+:where(.demo-guide) .guide-footer > div {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+
+:where(.demo-guide) .guide-footer small {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+}
+
+:where(.demo-guide) .guide-footer button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 44px;
+  font-size: 12px;
+  color: var(--g-green);
+  background: transparent;
+  border: 0;
+}
+
+@media (min-width: 1600px) {
+  :where(.demo-guide) .guide-wrap {
+    max-width: 1400px;
+  }
+
+  :where(.demo-guide) .guide-hero {
+    padding: 76px 0 64px;
+  }
+}
+
+@media (max-width: 1100px) {
+  :where(.demo-guide) .guide-wrap {
+    padding: 0 28px;
+  }
+
+  :where(.demo-guide) .guide-hero {
+    gap: 28px;
+  }
+
+  :where(.demo-guide) .section-heading > p {
+    max-width: 220px;
+  }
+
+  :where(.demo-guide) .design-step-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  :where(.demo-guide) .design-step-grid button:nth-child(4) .step-arrow {
+    display: none;
+  }
+
+  :where(.demo-guide) .step-explanation {
+    gap: 24px;
+  }
+
+  :where(.demo-guide) .delivery-grid {
+    gap: 16px;
+  }
+
+  :where(.demo-guide) .implementation-panel,
+  :where(.demo-guide) .acceptance-panel {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 760px) {
+  :where(.demo-guide) .guide-topline {
+    padding: 14px 18px;
+    font-size: 12px;
+  }
+
+  :where(.demo-guide) .guide-topline .ant-btn {
+    font-size: 12px;
+  }
+
+  :where(.demo-guide) .guide-wrap {
+    padding: 0 20px;
+  }
+
+  :where(.demo-guide) .guide-hero {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 38px 0 30px;
+  }
+
+  :where(.demo-guide) .guide-hero h1 {
+    font-size: 34px;
+  }
+
+  :where(.demo-guide) .guide-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  :where(.demo-guide) .guide-nav button {
+    justify-content: flex-start;
+    padding: 0 10px;
+  }
+
+  :where(.demo-guide) .guide-section {
+    padding-top: 40px;
+  }
+
+  :where(.demo-guide) .section-heading {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  :where(.demo-guide) .section-heading h2 {
+    font-size: 21px;
+  }
+
+  :where(.demo-guide) .section-heading > p {
+    max-width: none;
+    margin-left: 54px;
+  }
+
+  :where(.demo-guide) .decision-branches,
+  :where(.demo-guide) .step-explanation,
+  :where(.demo-guide) .loop-detail,
+  :where(.demo-guide) .delivery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  :where(.demo-guide) .diagram-toolbar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  :where(.demo-guide) .scenario-switch {
+    width: 100%;
+  }
+
+  :where(.demo-guide) .scenario-switch button {
+    flex: 1;
+    min-height: 44px;
+    padding: 0 6px;
+  }
+
+  :where(.demo-guide) .diagram-footnote {
+    align-items: flex-start;
+  }
+
+  :where(.demo-guide) .principle-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  :where(.demo-guide) .decision-map {
+    padding: 20px;
+  }
+
+  :where(.demo-guide) .decision-question {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  :where(.demo-guide) .decision-question span {
+    width: 100%;
+    text-align: center;
+  }
+
+  :where(.demo-guide) .decision-branches {
+    gap: 22px;
+  }
+
+  :where(.demo-guide) .step-explanation {
+    padding: 22px;
+  }
+
+  :where(.demo-guide) .step-output {
+    padding-top: 20px;
+    padding-left: 0;
+    border-top: 1px solid var(--g-line);
+    border-left: 0;
+  }
+
+  :where(.demo-guide) .loop-panel {
+    padding: 18px;
+  }
+
+  :where(.demo-guide) .loop-steps {
+    gap: 4px;
+  }
+
+  :where(.demo-guide) .loop-steps strong {
+    font-size: 11px;
+  }
+
+  :where(.demo-guide) .loop-steps button > span {
+    width: 34px;
+    height: 34px;
+    font-size: 17px;
+  }
+
+  :where(.demo-guide) .loop-steps button:not(:last-child)::after {
+    top: 15px;
+    right: -9px;
+    font-size: 13px;
+  }
+
+  :where(.demo-guide) .loop-return {
+    margin: 16px 0;
+    font-size: 10px;
+  }
+
+  :where(.demo-guide) .loop-detail {
+    gap: 18px;
+    padding: 18px;
+  }
+
+  :where(.demo-guide) .expected-result {
+    padding: 15px 0 0;
+    border-top: 1px solid var(--g-line);
+    border-left: 0;
+  }
+
+  :where(.demo-guide) .exception-path {
+    gap: 9px;
+  }
+
+  :where(.demo-guide) .guide-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  :where(.demo-guide) .guide-note {
+    align-items: flex-start;
+  }
+
+  :where(.demo-guide) .desktop-break {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  :where(.demo-guide) .guide-wrap {
+    padding: 0 14px;
+  }
+
+  :where(.demo-guide) .guide-topline {
+    padding: 12px;
+  }
+
+  :where(.demo-guide) .guide-topline > span {
+    gap: 5px;
+    font-size: 11px;
+  }
+
+  :where(.demo-guide) .guide-topline .ant-btn {
+    padding: 3px 5px;
+  }
+
+  :where(.demo-guide) .guide-hero h1 {
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+
+  :where(.demo-guide) .section-heading h2 {
+    font-size: 18px;
+  }
+
+  :where(.demo-guide) .section-number {
+    width: 32px;
+    height: 32px;
+  }
+
+  :where(.demo-guide) .design-step-grid {
+    padding: 15px 8px;
+  }
+
+  :where(.demo-guide) .design-step-grid strong {
+    font-size: 11px;
+  }
+
+  :where(.demo-guide) .delivery-grid h3 {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-guide * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+:where(.demo-guide) .delivery-grid > article {
+  min-width: 0;
+}
+
+:where(.demo-guide) .implementation-panel code {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+:where(.demo-guide) .code-flow > * {
+  min-width: 0;
+}
+
+.demo-guide .acceptance-list {
+  min-width: 0;
+}
+
+.demo-guide .acceptance-list .ant-checkbox-wrapper {
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+  white-space: normal;
+}
+
+.demo-guide .acceptance-list .ant-checkbox {
+  margin-top: 4px;
+}
+
+.demo-guide .acceptance-list .ant-checkbox + span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}

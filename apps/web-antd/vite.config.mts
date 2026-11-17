@@ -6,25 +6,13 @@ import { copyFileSync } from 'node:fs';
 
 import { defineConfig } from '@vben/vite-config';
 
+import { loadDemoBase } from '../../scripts/demo-deployment.mjs';
+
 export default defineConfig(async () => {
   return {
     application: {},
     vite: {
-      base: '/auditdemo/',
-      plugins: [
-        {
-          name: 'standalone-report-entry-points',
-          closeBundle() {
-            const appEntry = fileURLToPath(
-              new URL('./dist/index.html', import.meta.url),
-            );
-            const reportEntry = fileURLToPath(
-              new URL('./dist/report-share.html', import.meta.url),
-            );
-            copyFileSync(appEntry, reportEntry);
-          },
-        },
-      ],
+      base: loadDemoBase(),
       resolve: {
         alias: {
           '@wangeditor/editor-for-vue': fileURLToPath(
@@ -43,6 +31,18 @@ export default defineConfig(async () => {
         },
       },
       plugins: [
+        {
+          name: 'standalone-report-entry-points',
+          closeBundle() {
+            const appEntry = fileURLToPath(
+              new URL('./dist/index.html', import.meta.url),
+            );
+            const reportEntry = fileURLToPath(
+              new URL('./dist/report-share.html', import.meta.url),
+            );
+            copyFileSync(appEntry, reportEntry);
+          },
+        },
         {
           name: 'serve-public-markdown',
           configureServer(server) {

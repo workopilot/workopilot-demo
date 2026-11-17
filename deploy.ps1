@@ -1,5 +1,8 @@
 # 1. 定义路径变量
-$targetDir = "\\10.0.0.29\Shared\Demo\auditdemo"
+$directory = & node (Join-Path $PSScriptRoot 'scripts/demo-deployment.mjs') --directory
+if ($LASTEXITCODE -ne 0) { throw '无法读取本地部署配置 .env' }
+$targetRoot = "\\10.0.0.29\Shared\Demo"
+$targetDir = if ([string]::IsNullOrWhiteSpace($directory)) { $targetRoot } else { Join-Path $targetRoot $directory.Trim() }
 $backupBase = Join-Path $targetDir "backup"
 $dateStr = Get-Date -Format "yyyy-MM-dd"
 $backupDir = Join-Path $backupBase $dateStr

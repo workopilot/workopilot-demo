@@ -1,7 +1,7 @@
 # 新销售助理 Demo 交付说明
 
-入口：/auditdemo/app/mate/employee/new-sales-assistant/sales/chat
-配置：/auditdemo/app/mate/apps/smart-crm/settings/settings
+入口：/wkdemo/app/mate/employee/new-sales-assistant/sales/chat
+配置：/wkdemo/app/mate/apps/smart-crm/settings/settings
 
 ## 已实现
 - 数字员工新增「新销售助理」，旧销售助理保留；默认对话，随后 7 个业务菜单。

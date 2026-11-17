@@ -12,7 +12,7 @@ const agents = ref([
     role: '销售线',
     colorClass: 'text-blue-600 bg-blue-50 border-blue-200',
     intro: '熟悉市场的选品与报价专家，快速根据需求筛选高利润药品并生成报价。',
-    image: '/auditdemo/images/ai-employee/sales.png',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/sales.png`,
     status: 'online',
   },
   {
@@ -21,7 +21,7 @@ const agents = ref([
     role: '数据线',
     colorClass: 'text-purple-600 bg-purple-50 border-purple-200',
     intro: '实时抓取前中台系统的各业务线数据并生成多维可视化分析报表。',
-    image: '/auditdemo/images/ai-employee/data.png',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/data.png`,
     status: 'online',
   },
   {
@@ -30,7 +30,7 @@ const agents = ref([
     role: '供应链线',
     colorClass: 'text-amber-600 bg-amber-50 border-amber-200',
     intro: '24小时无休的仓库看守，每日巡检库存并拦截即效期或濒临缺货产品。',
-    image: '/auditdemo/images/ai-employee/warehouse.png',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/warehouse.png`,
     status: 'offline',
   },
   {
@@ -39,7 +39,7 @@ const agents = ref([
     role: '财务线',
     colorClass: 'text-red-600 bg-red-50 border-red-200',
     intro: '进行合同条款与药监局规定的自动比对，发现潜在合规风险。',
-    image: '/auditdemo/images/ai-employee/finance.png',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/finance.png`,
     status: 'busy',
   },
   {
@@ -48,7 +48,7 @@ const agents = ref([
     role: '财务线',
     colorClass: 'text-cyan-600 bg-cyan-50 border-cyan-200',
     intro: '智能报销单据生成专家，自动筛选发票并创建差旅报销单。',
-    image: '/auditdemo/images/ai-employee/咨询人员.jpg',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/咨询人员.jpg`,
     status: 'online',
   },
   {
@@ -58,7 +58,7 @@ const agents = ref([
     colorClass: 'text-indigo-600 bg-indigo-50 border-indigo-200',
     intro:
       '企业专属 PPT 生成专家，基于方案库、模板库、案例库和知识库一键生成专业演示文稿。',
-    image: '/auditdemo/images/ai-employee/插画设计师.jpg',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/插画设计师.jpg`,
     status: 'online',
   },
   {
@@ -67,7 +67,7 @@ const agents = ref([
     role: '财务线',
     colorClass: 'text-cyan-600 bg-cyan-50 border-cyan-200',
     intro: '智能费用报销单据生成专家，自动筛选费用类发票并创建费用报销单。',
-    image: '/auditdemo/images/ai-employee/咨询人员.jpg',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/咨询人员.jpg`,
     status: 'online',
   },
   {
@@ -77,7 +77,7 @@ const agents = ref([
     colorClass: 'text-teal-600 bg-teal-50 border-teal-200',
     intro:
       '智能费用报销单据生成专家v2，支持数据收集步骤配置，灵活编排填报流程。',
-    image: '/auditdemo/images/ai-employee/咨询人员.jpg',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/咨询人员.jpg`,
     status: 'online',
   },
   {
@@ -86,7 +86,7 @@ const agents = ref([
     role: '财务线',
     colorClass: 'text-sky-600 bg-sky-50 border-sky-200',
     intro: '智能费用报销单据生成专家v3，独立数据驱动的填报流程演示。',
-    image: '/auditdemo/images/ai-employee/咨询人员.jpg',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/咨询人员.jpg`,
     status: 'online',
   },
   {
@@ -96,7 +96,7 @@ const agents = ref([
     colorClass: 'text-violet-600 bg-violet-50 border-violet-200',
     intro:
       '引导式报销填报助理，自动扫描发票池、智能匹配行程并预校验合规，分步协助完成报销单填报。',
-    image: '/auditdemo/images/ai-employee/咨询人员.jpg',
+    image: `${import.meta.env.BASE_URL}images/ai-employee/咨询人员.jpg`,
     status: 'online',
   },
 ]);

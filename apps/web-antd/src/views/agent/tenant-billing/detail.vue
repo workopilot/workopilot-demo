@@ -32,15 +32,15 @@ onMounted(() => {
   const employeeNames: Record<string, { avatar: string; name: string }> = {
     'EMP-001': {
       name: '选品报价员',
-      avatar: '/auditdemo/images/ai-employee/sales.png',
+      avatar: `${import.meta.env.BASE_URL}images/ai-employee/sales.png`,
     },
     'EMP-002': {
       name: '数据分析员',
-      avatar: '/auditdemo/images/ai-employee/data.png',
+      avatar: `${import.meta.env.BASE_URL}images/ai-employee/data.png`,
     },
     'EMP-003': {
       name: '合规审核专员',
-      avatar: '/auditdemo/images/ai-employee/finance.png',
+      avatar: `${import.meta.env.BASE_URL}images/ai-employee/finance.png`,
     },
   };
 

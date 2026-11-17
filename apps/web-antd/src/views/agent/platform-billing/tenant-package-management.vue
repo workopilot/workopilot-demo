@@ -252,7 +252,7 @@ const exclusiveMonitorEmployees = computed(() => {
       remain: e.points - used,
       avatar:
         allEmployees.value.find((a) => a.name === e.name)?.avatar ||
-        '/auditdemo/images/ai-employee/sales.png',
+        `${import.meta.env.BASE_URL}images/ai-employee/sales.png`,
     };
   });
 });
@@ -271,7 +271,7 @@ const sharedMonitorEmployees = computed(() => {
     used: Math.floor(Math.random() * 500) + 100,
     avatar:
       allEmployees.value.find((a) => a.name === e.name)?.avatar ||
-      '/auditdemo/images/ai-employee/sales.png',
+      `${import.meta.env.BASE_URL}images/ai-employee/sales.png`,
   }));
 });
 
@@ -351,7 +351,7 @@ const allEmployees = ref([
   {
     id: 'EMP-012',
     name: 'PPT自动生成专员',
-    avatar: '/auditdemo/images/ai-employee/产品经理.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/产品经理.jpg`,
     desc: '根据大纲自动生成精美的演示文稿。',
     price: 5,
     unit: '点/PPT',
@@ -359,7 +359,7 @@ const allEmployees = ref([
   {
     id: 'EMP-015',
     name: '订单专员',
-    avatar: '/auditdemo/images/ai-employee/sales.png',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/sales.png`,
     desc: '处理海量订单流入与状态追踪。',
     price: 10,
     unit: '点/订单',
@@ -367,7 +367,7 @@ const allEmployees = ref([
   {
     id: 'EMP-022',
     name: '财务对账专员',
-    avatar: '/auditdemo/images/ai-employee/财务.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/财务.jpg`,
     desc: '自动化核对流水账单与对账单。',
     price: 10,
     unit: '点/单',
@@ -375,7 +375,7 @@ const allEmployees = ref([
   {
     id: 'EMP-025',
     name: '数据分析师',
-    avatar: '/auditdemo/images/ai-employee/数据分析师.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/数据分析师.jpg`,
     desc: '自动化分析报表数据并出具总结。',
     price: 15,
     unit: '点/报表',
@@ -383,7 +383,7 @@ const allEmployees = ref([
   {
     id: 'EMP-033',
     name: '全能问答助手',
-    avatar: '/auditdemo/images/ai-employee/咨询人员.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/咨询人员.jpg`,
     desc: '支持多领域的全能对话智能体。',
     price: 1,
     unit: '点/交互',
@@ -391,7 +391,7 @@ const allEmployees = ref([
   {
     id: 'EMP-041',
     name: '文案优化大师',
-    avatar: '/auditdemo/images/ai-employee/设计师.jpg',
+    avatar: `${import.meta.env.BASE_URL}images/ai-employee/设计师.jpg`,
     desc: '商业文案与新媒体软文润色大师。',
     price: 2,
     unit: '点/千字',
