@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router';
 import { Icon } from '@iconify/vue';
 import { Button, Checkbox } from 'ant-design-vue';
 
+import CollaborationGuide from './components/collaboration-guide.vue';
 import DesignWorkflow from './components/design-workflow.vue';
 import EntryOverview from './components/entry-overview.vue';
 import RelationshipMap from './components/relationship-map.vue';
@@ -20,6 +21,7 @@ const flow = computed(() => reportFlow[activeFlow.value] ?? reportFlow[0]);
 const sections = [
   { id: 'entries', label: '认识三个入口' },
   { id: 'relationships', label: '理解产品关系' },
+  { id: 'collaboration', label: '让员工协作' },
   { id: 'boundaries', label: '判断业务入口' },
   { id: 'design', label: '设计一项业务' },
   { id: 'loop', label: '跑通演示闭环' },
@@ -182,9 +184,25 @@ function jump(id: string) {
         </div>
       </section>
 
-      <section id="guide-boundaries" class="guide-section">
+      <section id="guide-collaboration" class="guide-section">
         <div class="section-heading">
           <span class="section-number">03</span>
+          <div>
+            <span class="eyebrow">CONNECTED DIGITAL EMPLOYEES</span>
+            <h2>下一步，让另一位数字员工接着帮你。</h2>
+          </div>
+          <p>
+            从当前业务出发，推荐关联员工与具体动作。
+            <br />
+            点击下方示例，体验一次带着上下文的交接。
+          </p>
+        </div>
+        <CollaborationGuide />
+      </section>
+
+      <section id="guide-boundaries" class="guide-section">
+        <div class="section-heading">
+          <span class="section-number">04</span>
           <div>
             <span class="eyebrow">ENTRY DECISION</span>
             <h2>这个功能，应该放在哪里？</h2>
@@ -232,7 +250,7 @@ function jump(id: string) {
 
       <section id="guide-design" class="guide-section">
         <div class="section-heading">
-          <span class="section-number">04</span>
+          <span class="section-number">05</span>
           <div>
             <span class="eyebrow">DESIGN → BUILD</span>
             <h2>从需求开始，走过八个步骤。</h2>
@@ -244,7 +262,7 @@ function jump(id: string) {
 
       <section id="guide-loop" class="guide-section">
         <div class="section-heading">
-          <span class="section-number">05</span>
+          <span class="section-number">06</span>
           <div>
             <span class="eyebrow">A COMPLETE BUSINESS LOOP</span>
             <h2>从生成到审批，让两个助理真正协作。</h2>
@@ -302,7 +320,7 @@ function jump(id: string) {
 
       <section id="guide-delivery" class="guide-section">
         <div class="section-heading">
-          <span class="section-number">06</span>
+          <span class="section-number">07</span>
           <div>
             <span class="eyebrow">IMPLEMENTATION & ACCEPTANCE</span>
             <h2>让演示落到代码与验证。</h2>

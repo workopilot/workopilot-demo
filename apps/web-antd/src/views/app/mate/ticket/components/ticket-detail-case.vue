@@ -13,6 +13,8 @@ import { Icon } from '@iconify/vue';
 import { Tag } from 'ant-design-vue';
 
 import { mockMateEmployees } from '#/api/mock-data-mate';
+import EmployeeRecommendations from '../../components/employee-recommendations.vue';
+import { ticketRecommendations } from '#/utils/ticket-recommendations';
 import {
   engineers,
   slaStatusLabel,
@@ -65,10 +67,7 @@ const metaExpanded = ref(false);
 /** 数字员工头像（复用数字员工中心的照片资源） */
 const ticketAssistantAvatar =
   mockMateEmployees.find((e) => e.id === 'ticket-assistant')?.avatar ?? '';
-const meetingAssistantAvatar =
-  mockMateEmployees.find((e) => e.id === 'meeting-assistant')?.avatar ?? '';
-const fillAssistantAvatar =
-  mockMateEmployees.find((e) => e.id === 'fill-assistant')?.avatar ?? '';
+const collaboration = computed(() => ticketRecommendations(props.order));
 
 /** AI 下一步建议文案（随工单状态变化） */
 const nextAdviceText = computed(() => {
@@ -137,32 +136,6 @@ function goToAssistant(
   void router.push({
     path: '/app/mate/employee/ticket-assistant/ticket-chat',
     query: { action, prefill, ticketCode: order.code },
-  });
-}
-
-/** 跳转会议助理聊天框，并带入预约请求 */
-function goToMeeting() {
-  const order = props.order;
-  const prefill = `请帮我为客户 ${order.customer ?? '—'}（工单 ${order.code} ${order.title}）预约一次客户沟通会议，同步问题处理进展，时间建议安排在今天下午。`;
-  void router.push({
-    path: '/app/mate/employee/meeting-assistant/project-chat',
-    query: { prefill },
-  });
-}
-
-/** 跳转填报助理聊天框，发起上门申请单创建（完成后工单进入待上门处理） */
-function goToFillAssistant() {
-  const order = props.order;
-  const prefill = [
-    `请帮我为工单 ${order.code}（${order.title}）创建上门申请单`,
-    `客户：${order.customer ?? '—'}（${order.contact ?? '—'} ${order.phone ?? '—'}）`,
-    `设备：${order.device ?? '—'}，服务地点：${order.customerLocation ?? '—'}`,
-    `当前状态：${ticketStatusLabel[order.status]}，已按 AI 排查路径完成初步排查`,
-    '帮我创建上门申请单',
-  ].join('\n');
-  void router.push({
-    path: '/app/mate/employee/fill-assistant/ticket-chat',
-    query: { action: 'onsite', prefill, ticketCode: order.code },
   });
 }
 
@@ -312,8 +285,6 @@ const recommendedAction = computed<
   }
 });
 
-/** 处理中可申请上门（填报助理：帮我创建上门申请单） */
-const canRequestOnsite = computed(() => props.order.status === 'processing');
 /** 待验收显示验收登记操作 */
 const canAcceptance = computed(
   () => props.order.status === 'pending-acceptance',
@@ -518,8 +489,8 @@ const canAcceptance = computed(
             </i>
             <div class="wdc-next__heading">
               <small>AI COPILOT</small>
-              <h3>下一步建议</h3>
-              <p>基于当前工单阶段选择合适的数字员工。</p>
+              <h3>当前工单处理</h3>
+              <p>由工单助理继续处理当前工单。</p>
             </div>
           </header>
 
@@ -607,64 +578,11 @@ const canAcceptance = computed(
               当前工单状态暂无需数字员工执行的操作
             </p>
           </article>
-
-          <!-- 数字员工：会议助理 -->
-          <article class="wdc-emp">
-            <div class="wdc-emp__head">
-              <img
-                class="wdc-emp__avatar"
-                :src="meetingAssistantAvatar"
-                alt="会议助理"
-              />
-              <div class="wdc-emp__meta">
-                <b>会议助理</b>
-                <small>客户沟通预约与会议跟进</small>
-              </div>
-              <Icon class="wdc-emp__goto" icon="lucide:arrow-up-right" />
-            </div>
-            <div class="wdc-emp__actions">
-              <button
-                type="button"
-                class="wdc-emp__action"
-                @click="goToMeeting"
-              >
-                <Icon icon="lucide:calendar-plus" />
-                <span>帮我预约客户沟通</span>
-              </button>
-            </div>
-          </article>
-
-          <!-- 数字员工：填报助理（处理中可发起上门申请） -->
-          <article v-if="canRequestOnsite" class="wdc-emp">
-            <div class="wdc-emp__head">
-              <img
-                class="wdc-emp__avatar"
-                :src="fillAssistantAvatar"
-                alt="填报助理"
-              />
-              <div class="wdc-emp__meta">
-                <b>填报助理</b>
-                <small>上门申请单创建与单据填报</small>
-              </div>
-              <Icon class="wdc-emp__goto" icon="lucide:arrow-up-right" />
-            </div>
-            <div class="wdc-emp__actions">
-              <button
-                type="button"
-                class="wdc-emp__action"
-                @click="goToFillAssistant"
-              >
-                <Icon icon="lucide:file-plus-2" />
-                <span>帮我创建上门申请单</span>
-              </button>
-            </div>
-          </article>
-
-          <p class="wdc-next__hint">
-            <Icon icon="lucide:pencil-line" />
-            点击后会自动带入工单、客户、设备与当前处理进度上下文。
-          </p>
         </section>
+        <EmployeeRecommendations
+          :context="collaboration.context"
+          :employees="collaboration.employees"
+        />
       </aside>
     </div>
   </section>

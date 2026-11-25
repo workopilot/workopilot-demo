@@ -6,6 +6,8 @@ import { Icon } from '@iconify/vue';
 import { Button, Input, message, Tag } from 'ant-design-vue';
 
 import { useProjectManagementDemoStore } from '#/store/project-management-demo';
+import { managedProjects } from '#/api/mock-project-management';
+import { projectRecommendations } from '#/utils/project-recommendations';
 
 import ContractBusinessPanel from '../contract-assistant/components/contract-business-panel.vue';
 
@@ -30,6 +32,7 @@ const route = useRoute();
 const router = useRouter();
 const store = useProjectManagementDemoStore();
 const input = ref('');
+const receivedContext = ref('');
 const historyKeyword = ref('');
 const employeeId = computed(() => String(route.params.employeeId));
 const isManager = computed(() => employeeId.value === 'pmo-assistant');
@@ -161,24 +164,43 @@ function resetRole() {
   messages.value = [seedMessage(first)];
   historyKeyword.value = '';
   input.value = '';
+  receivedContext.value = '';
 }
 
 watch(employeeId, resetRole, { immediate: true });
 
 watch(
-  () => route.query.prefill,
-  (prefill) => {
+  () => [route.query.prefill, route.params.employeeId, route.query.businessId],
+  () => {
+    const prefill = route.query.prefill;
     input.value = typeof prefill === 'string' ? prefill : '';
+    receivedContext.value = '';
+    if (input.value && route.query.source && route.query.businessId) {
+      receivedContext.value =
+        input.value.split('\n')[0]?.replace(/^来源：/, '') || '关联业务';
+      activeSessionId.value = 'handoff';
+      messages.value = [
+        {
+          id: `handoff-${String(route.query.businessId)}`,
+          role: 'assistant',
+          title: '已接收关联业务上下文',
+          content: `来自${receivedContext.value}的需求已放入下方输入框。请核对后发送，当前尚未预约会议或创建任务。`,
+        },
+      ];
+    }
   },
   { immediate: true },
 );
 
 function selectSession(session: ChatSession) {
+  receivedContext.value = '';
+  input.value = '';
   activeSessionId.value = session.id;
   messages.value = [seedMessage(session)];
 }
 
 function newConversation() {
+  receivedContext.value = '';
   activeSessionId.value = 'new';
   let title = '新的项目对话';
   let content = '你可以询问下一步、检查成果物，或让我协助生成工作材料。';
@@ -201,6 +223,32 @@ function newConversation() {
 }
 
 function assistantReply(prompt: string): ChatMessage {
+  if (receivedContext.value) {
+    const request = prompt.split('当前需求：').at(-1)?.trim() || prompt;
+    const project = managedProjects.find(
+      (item) => item.id === route.query.projectId,
+    );
+    let title = '协作需求已接收';
+    let content = `当前范围：${receivedContext.value}\n需求：${request}\n请确认需要处理的具体记录和完成标准，我会先准备草稿。当前尚未修改业务状态。`;
+    if (isMeetingAssistant.value) {
+      title = '会议安排草稿 · 待补充时间与参会人';
+      content = `当前范围：${receivedContext.value}\n会议需求：${request}\n建议议程：核对当前进展、讨论待协调事项、明确下一步负责人和反馈时间。\n请补充会议时间、时长和参会人；当前仅准备草稿，尚未预约或发送邀请。`;
+    } else if (project && /查询.*延期/.test(request)) {
+      const overdue = projectRecommendations(
+        project,
+        employeeId.value,
+      ).overdueTasks;
+      title = `${project.name} · 延期任务查询`;
+      content =
+        overdue.length > 0
+          ? `按当前项目记录，以下 ${overdue.length} 项未验收任务已过截止日期：\n${overdue.map((task) => `• ${task.title}｜负责人：${task.owner}｜截止：${task.dueDate}｜编号：${task.id}`).join('\n')}\n以上仅查询当前项目，未修改任务状态；阻塞原因需向负责人进一步核实。`
+          : `当前项目“${project.name}”没有查到已过截止日期且未验收的任务，未修改任何记录。`;
+    } else if (/任务/.test(request)) {
+      title = '任务跟进草稿 · 待核对';
+      content = `当前范围：${receivedContext.value}\n任务需求：${request}\n请先核对已有任务是否覆盖，再确认负责人、截止时间和验收标准。当前仅准备需求草稿，尚未创建、修改或分派任务。`;
+    }
+    return { id: `assistant-${Date.now()}`, role: 'assistant', title, content };
+  }
   if (isMeetingAssistant.value && prompt.includes('纪要'))
     return {
       id: `assistant-${Date.now()}`,
@@ -389,7 +437,8 @@ function act(action: string) {
             <div>
               <strong>{{ assistantName }}</strong>
               <small>
-                {{ activeSession?.project || '新对话' }} · AI 已就绪
+                {{ receivedContext || activeSession?.project || '新对话' }} · AI
+                已就绪
               </small>
             </div>
           </div>
@@ -400,7 +449,13 @@ function act(action: string) {
             </Button>
           </div>
         </header>
-        <div class="chat-context">
+        <div v-if="receivedContext" class="chat-context">
+          <Tag color="blue">{{ receivedContext }}</Tag>
+          <Tag>
+            {{ input.trim() ? '已带入草稿 · 发送前请核对' : '关联业务对话' }}
+          </Tag>
+        </div>
+        <div v-else class="chat-context">
           <Tag color="green">客户 B 集成交付</Tag>
           <Tag>O2 · 接口联调</Tag>
           <Tag
@@ -458,8 +513,10 @@ function act(action: string) {
           <Button type="text" aria-label="添加附件">
             <Icon icon="lucide:paperclip" />
           </Button>
-          <Input
+          <Input.TextArea
             v-model:value="input"
+            :auto-size="{ minRows: 2, maxRows: 8 }"
+            aria-label="对话输入"
             :placeholder="
               isManager
                 ? '询问项目风险、管理建议或生成干预材料'
@@ -467,7 +524,7 @@ function act(action: string) {
                   ? '生成议程、整理纪要或提取会后任务'
                   : '询问下一步、检查成果物或生成工作材料'
             "
-            @press-enter="send()"
+            @keydown.ctrl.enter.prevent="send()"
           />
           <Button
             type="primary"

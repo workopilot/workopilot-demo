@@ -8,7 +8,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { Icon } from '@iconify/vue';
 import { Button, Input, message, Select } from 'ant-design-vue';
 
-import { mockMateEmployees } from '#/api/mock-data-mate';
+import { mockMateAvailableEmployees } from '#/api/mock-data-mate';
 import {
   aiReportAnalysis,
   aiReportSummary,
@@ -45,8 +45,8 @@ const employeeId = computed(() =>
 );
 const employee = computed(
   () =>
-    mockMateEmployees.find((item) => item.id === employeeId.value) ||
-    mockMateEmployees[0]!,
+    mockMateAvailableEmployees.find((item) => item.id === employeeId.value) ||
+    mockMateAvailableEmployees[0]!,
 );
 
 /** 根据当前数字员工加载预置对话场景 */

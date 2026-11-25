@@ -7,7 +7,10 @@ import { Icon } from '@iconify/vue';
 import { Button, Input } from 'ant-design-vue';
 
 import { aiWorkApplications } from '#/api/mock-data-ai-work';
-import { mockMateEmployees } from '#/api/mock-data-mate';
+import {
+  mockMateAvailableEmployees,
+  mockMateEmployees,
+} from '#/api/mock-data-mate';
 import DemoStoryDrawer from '#/views/app/mate/ai-work/components/demo-story-drawer.vue';
 import { mateMessages } from '#/views/app/mate/messages/message-state';
 
@@ -98,7 +101,7 @@ const activeKey = computed(() => {
 
 const activeEmployeeId = computed(() => String(route.params.employeeId || ''));
 const activeEmployee = computed(() =>
-  mockMateEmployees.find((item) => item.id === activeEmployeeId.value),
+  mockMateAvailableEmployees.find((item) => item.id === activeEmployeeId.value),
 );
 const sidebarEmployees = computed(() => mockMateEmployees);
 const activeApplicationId = computed(

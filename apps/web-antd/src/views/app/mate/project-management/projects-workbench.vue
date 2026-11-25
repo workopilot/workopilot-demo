@@ -28,7 +28,8 @@ import {
   Upload,
 } from 'ant-design-vue';
 
-import { mockMateEmployees } from '#/api/mock-data-mate';
+import EmployeeRecommendations from '../components/employee-recommendations.vue';
+import { projectRecommendations } from '#/utils/project-recommendations';
 import { managedProjects } from '#/api/mock-project-management';
 import AiWorkPage from '#/views/app/mate/ai-work/components/ai-work-page.vue';
 
@@ -88,35 +89,6 @@ const executorProgressNote = ref('');
 const executorUploadedFiles = reactive<
   Record<string, Array<{ name: string; size: string; uploadedAt: string }>>
 >({});
-
-const projectAiGuides = [
-  {
-    employeeId: 'meeting-assistant',
-    name: '会议助理',
-    specialty: '议程、纪要与会后跟进',
-    example: '帮我创建个项目周会',
-    icon: 'lucide:messages-square',
-  },
-  {
-    employeeId: 'project-assistant',
-    name: '任务助理',
-    specialty: '任务拆解与执行推进',
-    example: '根据当前阶段拆解本周任务',
-    icon: 'lucide:list-checks',
-  },
-  {
-    employeeId: 'pmo-assistant',
-    name: '交付项目 PMO',
-    specialty: '风险判断与管理干预',
-    example: '分析当前风险并给出干预建议',
-    icon: 'lucide:shield-alert',
-  },
-].map((item) => ({
-  ...item,
-  avatar:
-    mockMateEmployees.find((employee) => employee.id === item.employeeId)
-      ?.avatar || '',
-}));
 
 function ensureManagerEditAccess() {
   if (isManager.value) return true;
@@ -224,6 +196,10 @@ const projectGroups = computed(() => {
   }
   return [...groups.entries()].map(([name, projects]) => ({ name, projects }));
 });
+
+const projectCollaboration = computed(() => activeStructureProject.value
+  ? projectRecommendations(activeStructureProject.value, String(route.params.employeeId || 'pmo-assistant'))
+  : undefined);
 
 function currentStage(project: ManagedProject) {
   return (
@@ -466,36 +442,6 @@ function backToStructureProjectList() {
   stageFlowExpanded.value = false;
   expandedStageIds.value = [];
   expandedObjectiveIds.value = [];
-}
-
-function buildProjectChatContext(project: ManagedProject) {
-  const stats = projectBoardStats(project);
-  return [
-    '请基于以下项目上下文协助我：',
-    `项目：${project.name}（${project.code}）`,
-    `项目经理：${project.manager}`,
-    `当前阶段：${project.stage}（第 ${currentStageNumber(project)}/${project.stages.length} 阶段）`,
-    `项目状态：${healthLabel(project.health)}，整体进度 ${project.progress}%`,
-    `执行情况：任务 ${stats.completedTasks}/${stats.tasks}，目标 ${stats.completedObjectives}/${stats.objectives}，成果物 ${stats.completedDeliverables}/${stats.deliverables}`,
-    `项目说明：${project.summary}`,
-    '',
-    '请结合以上信息给出下一步建议。',
-  ].join('\n');
-}
-
-function openLinkedProjectEmployee(
-  project: ManagedProject,
-  employeeId: string,
-  instruction = '',
-) {
-  const context = buildProjectChatContext(project);
-  void router.push({
-    path: `/app/mate/employee/${employeeId}/project-chat`,
-    query: {
-      prefill: instruction ? `${context}\n\n当前需求：${instruction}` : context,
-      projectId: project.id,
-    },
-  });
 }
 
 function selectProject(project: ManagedProject) {
@@ -2962,67 +2908,12 @@ const activeStageDiagnosis = computed<null | StageDiagnosis>(() => {
             />
           </section>
 
-          <aside
-            v-if="structureProjectDetailOpen && activeStructureProject"
-            class="project-ai-guide-panel"
-          >
-            <header class="project-ai-guide-header">
-              <span class="ai-guide-mark"><Icon icon="lucide:sparkles" /></span>
-              <div>
-                <small>AI COPILOT</small>
-                <h2>下一步建议</h2>
-                <p>基于当前项目阶段选择合适的数字员工。</p>
-              </div>
-            </header>
-
-            <div class="project-ai-insight">
-              <span><Icon icon="lucide:lightbulb" />AI 建议</span>
-              <strong>
-                当前处于“{{ currentStage(activeStructureProject)?.name || activeStructureProject.stage }}”，建议先明确本周会议决策，再拆解负责人任务。
-              </strong>
-            </div>
-
-            <div class="project-ai-employee-list">
-              <article
-                v-for="employee in projectAiGuides"
-                :key="employee.employeeId"
-                class="project-ai-employee-card"
-              >
-                <button
-                  type="button"
-                  class="project-ai-employee-main"
-                  @click="openLinkedProjectEmployee(activeStructureProject, employee.employeeId)"
-                >
-                  <img :src="employee.avatar" :alt="employee.name" />
-                  <span>
-                    <strong>{{ employee.name }}</strong>
-                    <small>{{ employee.specialty }}</small>
-                  </span>
-                  <Icon icon="lucide:arrow-up-right" />
-                </button>
-                <button
-                  type="button"
-                  class="project-ai-example"
-                  @click="
-                    openLinkedProjectEmployee(
-                      activeStructureProject,
-                      employee.employeeId,
-                      employee.example,
-                    )
-                  "
-                >
-                  <Icon :icon="employee.icon" />
-                  <span>{{ employee.example }}</span>
-                  <Icon icon="lucide:chevron-right" />
-                </button>
-              </article>
-            </div>
-
-            <div class="project-ai-context-note">
-              <Icon icon="lucide:paperclip" />
-              点击后会自动带入项目、当前阶段、进度、目标与成果物上下文。
-            </div>
-          </aside>
+          <EmployeeRecommendations
+            v-if="structureProjectDetailOpen && projectCollaboration"
+            class="project-collaboration-panel"
+            :context="projectCollaboration.context"
+            :employees="projectCollaboration.employees"
+          />
         </div>
 
         <Empty v-else description="没有符合条件的项目" />
@@ -12116,7 +12007,7 @@ const activeStageDiagnosis = computed<null | StageDiagnosis>(() => {
   border-color: #8fc4b5 !important;
 }
 
-.project-ai-guide-panel {
+.project-collaboration-panel {
   min-width: 0;
   padding: 14px;
   overflow: auto;
@@ -12205,7 +12096,7 @@ const activeStageDiagnosis = computed<null | StageDiagnosis>(() => {
 @media (max-width: 760px) {
   .structure-workbench { grid-template-columns: 1fr; overflow: auto; }
   .structure-project-card-grid { grid-template-columns: 1fr; }
-  .project-ai-guide-panel { min-height: 420px; }
+  .project-collaboration-panel { min-height: 420px; }
   .execution-flat-item { grid-template-columns: 36px minmax(0, 1fr); }
   .execution-flat-state,
   .execution-flat-actions { grid-column: 2; }

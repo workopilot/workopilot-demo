@@ -706,9 +706,23 @@ const mateEmployeeCatalog: MateEmployee[] = [
   },
 ] as MateEmployee[];
 
-// 当前演示只开放汇报和工单两个数字员工，所有入口共用此列表。
+// 侧栏保持两个常用入口；关联协作目标单独开放，不扩展常用员工列表。
 export const mockMateEmployees = mateEmployeeCatalog.filter((employee) =>
   ['new-report-assistant', 'ticket-assistant'].includes(employee.id),
+);
+
+/** Accessible Demo employees, including contextual collaboration destinations. */
+export const mockMateAvailableEmployees = mateEmployeeCatalog.filter(
+  (employee) =>
+    [
+      'new-report-assistant',
+      'ticket-assistant',
+      'meeting-assistant',
+      'project-assistant',
+      'pmo-assistant',
+      'fill-assistant',
+      'new-review-assistant',
+    ].includes(employee.id),
 );
 
 function createEmployeeSessions(

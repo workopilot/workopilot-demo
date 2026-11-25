@@ -16,6 +16,8 @@ import {
 } from '#/api/contract-inspection';
 import { inspectionNextDate } from '#/api/inspection-rules';
 import { mockMateEmployees } from '#/api/mock-data-mate';
+import EmployeeRecommendations from '../components/employee-recommendations.vue';
+import { recommendationEmployee } from '#/utils/employee-recommendations';
 
 import InspectionContractReview from './components/inspection-contract-review.vue';
 import InspectionDeviceSummary from './components/inspection-device-summary.vue';
@@ -174,9 +176,6 @@ async function copy(plan: InspectionPlan) {
 
 const ticketAssistantAvatar =
   mockMateEmployees.find((e) => e.id === 'ticket-assistant')?.avatar ?? '';
-const meetingAssistantAvatar =
-  mockMateEmployees.find((e) => e.id === 'meeting-assistant')?.avatar ?? '';
-
 /** AI 下一步建议文案（随计划状态变化） */
 const nextAdviceText = computed(() => {
   switch (current.value?.status) {
@@ -249,16 +248,40 @@ function goToAssistant(
   });
 }
 
-/** 跳转会议助理聊天框，并带入预约请求 */
-function goToMeeting() {
+const collaboration = computed(() => {
   const plan = current.value;
-  if (!plan) return;
-  const prefill = `请帮我为客户 ${plan.customer}（巡检计划 ${plan.id} ${plan.name}）预约一次巡检沟通会议，同步巡检安排与执行进展，时间建议安排在今天下午。`;
-  void router.push({
-    path: '/app/mate/employee/meeting-assistant/project-chat',
-    query: { prefill },
-  });
-}
+  if (!plan) return undefined;
+  const purpose =
+    plan.status === '已暂停'
+      ? '恢复巡检协调'
+      : plan.status === '已完成' || plan.status === '已终止'
+        ? '巡检复盘'
+        : '巡检安排沟通';
+  return {
+    context: {
+      currentEmployeeId: 'ticket-assistant',
+      source: 'inspection-plan-detail',
+      businessId: plan.id,
+      title: `巡检计划 · ${plan.name}`,
+      query: { planId: plan.id },
+      summary: `计划：${plan.id}（${plan.name}）\n客户：${plan.customer}；合同：${plan.contract}\n状态：${plan.status}；负责人：${plan.owner}；频次：${plan.frequency}`,
+    },
+    employees: [
+      recommendationEmployee(
+        'meeting-assistant',
+        `计划当前为“${plan.status}”，可与${plan.customer}沟通${purpose}事项。`,
+        [
+          {
+            id: 'meeting',
+            title: `为${plan.customer}准备${purpose}会议`,
+            icon: 'lucide:calendar-plus',
+            prompt: `请根据巡检计划 ${plan.id} 的当前情况准备${purpose}会议草稿，候选参会人包括${plan.owner}，请核对客户参会人及时间后再预约。`,
+          },
+        ],
+      ),
+    ],
+  };
+});
 </script>
 
 <template>
@@ -496,8 +519,8 @@ function goToMeeting() {
             </i>
             <div class="wdc-next__heading">
               <small>AI COPILOT</small>
-              <h3>下一步建议</h3>
-              <p>基于当前计划阶段选择合适的数字员工。</p>
+              <h3>当前巡检处理</h3>
+              <p>由工单助理继续处理当前巡检计划。</p>
             </div>
           </header>
 
@@ -578,38 +601,12 @@ function goToMeeting() {
               当前计划状态暂无需数字员工执行的操作
             </p>
           </article>
-
-          <!-- 数字员工：会议助理 -->
-          <article class="wdc-emp">
-            <div class="wdc-emp__head">
-              <img
-                class="wdc-emp__avatar"
-                :src="meetingAssistantAvatar"
-                alt="会议助理"
-              />
-              <div class="wdc-emp__meta">
-                <b>会议助理</b>
-                <small>客户沟通预约与巡检进展同步</small>
-              </div>
-              <Icon class="wdc-emp__goto" icon="lucide:arrow-up-right" />
-            </div>
-            <div class="wdc-emp__actions">
-              <button
-                type="button"
-                class="wdc-emp__action"
-                @click="goToMeeting"
-              >
-                <Icon icon="lucide:calendar-plus" />
-                <span>帮我预约客户沟通</span>
-              </button>
-            </div>
-          </article>
-
-          <p class="wdc-next__hint">
-            <Icon icon="lucide:pencil-line" />
-            点击后会自动带入计划、客户、合同与当前执行进度上下文。
-          </p>
         </section>
+        <EmployeeRecommendations
+          v-if="collaboration"
+          :context="collaboration.context"
+          :employees="collaboration.employees"
+        />
       </aside>
     </div>
 

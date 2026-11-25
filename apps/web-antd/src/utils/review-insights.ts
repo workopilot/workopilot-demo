@@ -1,21 +1,9 @@
 import type { ReviewReport } from '#/api/mock-new-review';
 import { materialSections } from '#/api/mock-report-materials';
 
-export interface ReviewNextAction {
-  id: string;
-  title: string;
-  icon: string;
-  prompt: string;
-}
-export interface ReviewNextEmployee {
-  id: string;
-  name: string;
-  avatar: string;
-  role: string;
-  path: string;
-  reason: string;
-  actions: ReviewNextAction[];
-}
+export type { EmployeeRecommendationAction as ReviewNextAction } from '#/types/employee-recommendation';
+import type { EmployeeRecommendation } from '#/types/employee-recommendation';
+export type ReviewNextEmployee = EmployeeRecommendation;
 function plain(text: string) {
   return text
     .replace(/[*`#>]/g, '')

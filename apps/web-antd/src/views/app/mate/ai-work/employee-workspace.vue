@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router';
 
 import { message } from 'ant-design-vue';
 
-import { mockMateEmployees } from '#/api/mock-data-mate';
+import { mockMateAvailableEmployees } from '#/api/mock-data-mate';
 
 import EmployeeConsoleToolbar from '../components/employee-console-toolbar.vue';
 
@@ -14,7 +14,7 @@ const router = useRouter();
 
 const employeeId = computed(() => String(route.params.employeeId || ''));
 const employee = computed(() =>
-  mockMateEmployees.find((item) => item.id === employeeId.value),
+  mockMateAvailableEmployees.find((item) => item.id === employeeId.value),
 );
 const activeMenuKey = computed(() => {
   if (
